@@ -1,6 +1,6 @@
 //import './global.css';
 import React from 'react';
-import { Routes, Route, NavLink } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Footer from './application/footer';
 import NotFound from './application/notFound';
 import FirstPage from './application/firstPage';
