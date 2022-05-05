@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/footer.css';
+import '../../css/footer.css';
 
 export default function Footer() {
   return (
@@ -17,12 +17,10 @@ export default function Footer() {
             target="_blank"
             rel="noreferrer"
           >
-            {' '}
-            Марина{' '}
+            Марина
           </a>
           <a className="git-acc" href="https://github.com/petr9ra" target="_blank" rel="noreferrer">
-            {' '}
-            Петр{' '}
+            Петр
           </a>
           <a
             className="git-acc"
@@ -30,8 +28,7 @@ export default function Footer() {
             target="_blank"
             rel="noreferrer"
           >
-            {' '}
-            Сергей{' '}
+            Сергей
           </a>
         </div>
         <h5 className="footer-year"> 2022 </h5>

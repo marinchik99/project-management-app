@@ -1,14 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import App from './App';
+import NotFound from '../application/notFound';
 
-test('renders learn react link', () => {
+test('notFound component', () => {
   render(
     <MemoryRouter>
-      <App />
+      <NotFound />
     </MemoryRouter>
   );
-  const linkElement = screen.getByText(/welcome Page/i);
+  const linkElement = screen.getByText(/404 Not Found/i);
   expect(linkElement).toBeInTheDocument();
 });

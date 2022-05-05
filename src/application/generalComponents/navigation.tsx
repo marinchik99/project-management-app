@@ -22,6 +22,14 @@ export default function Navigation() {
           Log in
         </NavLink>
         <NavLink
+          data-testid="about-link"
+          to="/Signup"
+          className="navbar__a"
+          style={({ isActive }) => (isActive ? { color: 'red' } : { color: 'black' })}
+        >
+          Sign up
+        </NavLink>
+        <NavLink
           data-testid="form-link"
           to="/Main"
           className="navbar__a"
