@@ -11,7 +11,7 @@ export default function Navigation() {
           className="navbar__a"
           style={({ isActive }) => (isActive ? { color: 'red' } : { color: 'black' })}
         >
-          Главная
+          Welcome
         </NavLink>
         <NavLink
           data-testid="about-link"
@@ -23,19 +23,19 @@ export default function Navigation() {
         </NavLink>
         <NavLink
           data-testid="form-link"
-          to="/Project"
+          to="/Main"
           className="navbar__a"
           style={({ isActive }) => (isActive ? { color: 'red' } : { color: 'black' })}
         >
-          Проект
+          main
         </NavLink>
         <NavLink
           data-testid="modal-link"
-          to="/Projects"
+          to="/Board"
           className="navbar__a"
           style={({ isActive }) => (isActive ? { color: 'red' } : { color: 'black' })}
         >
-          Проекты
+          Board
         </NavLink>
       </nav>
     </div>
