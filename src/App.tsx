@@ -17,9 +17,7 @@ function App() {
             data-testid="home-link"
             to="/"
             className="navbar__a"
-            style={({ isActive }) =>
-              isActive ? { color: 'red' } : { color: 'black' }
-            }
+            style={({ isActive }) => (isActive ? { color: 'red' } : { color: 'black' })}
           >
             Главная
           </NavLink>
@@ -27,9 +25,7 @@ function App() {
             data-testid="about-link"
             to="/Login"
             className="navbar__a"
-            style={({ isActive }) =>
-              isActive ? { color: 'red' } : { color: 'black' }
-            }
+            style={({ isActive }) => (isActive ? { color: 'red' } : { color: 'black' })}
           >
             Log in
           </NavLink>
@@ -37,9 +33,7 @@ function App() {
             data-testid="form-link"
             to="/Project"
             className="navbar__a"
-            style={({ isActive }) =>
-              isActive ? { color: 'red' } : { color: 'black' }
-            }
+            style={({ isActive }) => (isActive ? { color: 'red' } : { color: 'black' })}
           >
             Проект
           </NavLink>
@@ -47,9 +41,7 @@ function App() {
             data-testid="modal-link"
             to="/Projects"
             className="navbar__a"
-            style={({ isActive }) =>
-              isActive ? { color: 'red' } : { color: 'black' }
-            }
+            style={({ isActive }) => (isActive ? { color: 'red' } : { color: 'black' })}
           >
             Проекты
           </NavLink>

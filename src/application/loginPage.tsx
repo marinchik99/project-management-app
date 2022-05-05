@@ -1,8 +1,5 @@
 import React from 'react';
 
 export default function LoginPage() {
-
-  return(
-    <div>Log in</div>
-  );
+  return <div>Log in</div>;
 }
