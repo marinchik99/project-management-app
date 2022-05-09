@@ -12,7 +12,7 @@ import SignupPage from './application/authorizationForms/signupPage';
 function App() {
   return (
     <div className="App">
-      <Navigation />
+      {/* <Navigation /> */}
       <Routes>
         <Route path="/" element={<WelcomePage />} />
         <Route path="/Login" element={<LoginPage />} />

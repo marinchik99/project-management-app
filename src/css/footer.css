@@ -1,31 +1,21 @@
 .footer {
   width: 100%;
-  flex-shrink: 0;
-  position: absolute;
-  bottom: 0;
+  flex: 0 0 auto;
+  background: var(--main-color);
 }
 
-.footer-section {
-  background: var(--main-color);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
+.github-accounts {
+  text-align: center;
 }
-.footer-section .git {
-  display: flex;
-  width: 30%;
-  justify-content: space-between;
-  align-items: center;
-  color: var(--text-color);
-}
+
 .git-acc {
   font-weight: 600;
+  margin: 0px 20px;
   color: var(--text-color);
   text-decoration: none;
 }
 .git-acc:hover {
-  color: rgb(218, 145, 77);
+  color: var(--secondary-color);
   transition: 0.5s ease-in-out;
   cursor: pointer;
 }
@@ -34,5 +24,11 @@
 }
 .footer-year{
   color: var(--text-color);
+  text-align: center;
   margin: 0;
+  font-size: 1.2rem;
+}
+
+.footer .MuiContainer-root.MuiContainer-maxWidthXl.css-19r6kue-MuiContainer-root {
+  padding: 15px;
 }
