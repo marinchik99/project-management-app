@@ -1,6 +1,5 @@
 .welcome-page {
   padding: 0;
-  margin: 30px auto 0;
 }
 
 .welcome-page .MuiContainer-root.MuiContainer-maxWidthXl.css-19r6kue-MuiContainer-root {
@@ -38,7 +37,7 @@
 
 .general-welcome {
   padding: 0;
-  background: #fafafa;
+  background: #f7f7f7;
   height: auto;
 }
 
@@ -62,8 +61,10 @@
 }
 
 .desk-container {
-  margin: 40px auto;
+  margin: 0px auto;
+  padding: 80px !important;
   height: auto;
+  background: #d8e5eba9;
 }
 
 .avatar {
@@ -91,6 +92,7 @@
   width: 80%;
   height: 2px;
   background: #9fa2a3;
+  margin: 30px auto;
 }
 
 .team-title {

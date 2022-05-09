@@ -29,7 +29,7 @@ export default function WelcomePage() {
           <Grid item xs={6}>
             <img
               className="general-pict"
-              src={require('../assets/welcome/general.jpg')}
+              src={require('../assets/welcome/general.png')}
               alt="general"
             />
           </Grid>
@@ -51,7 +51,7 @@ export default function WelcomePage() {
             </p>
           </Grid>
           <Grid item xs={5} className="desk-text">
-            <img className="desk-pict" src={require('../assets/welcome/desk.jpg')} alt="desk" />
+            <img className="desk-pict" src={require('../assets/welcome/desk1.png')} alt="desk" />
           </Grid>
         </Grid>
         <hr className="block-line" />
@@ -63,7 +63,7 @@ export default function WelcomePage() {
             </p>
           </Grid>
           <Grid item xs={5} className="desk-text">
-            <img className="desk-pict" src={require('../assets/welcome/move.png')} alt="desk" />
+            <img className="desk-pict" src={require('../assets/welcome/move1.png')} alt="desk" />
           </Grid>
         </Grid>
       </Container>
