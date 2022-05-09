@@ -16,11 +16,16 @@ export default function AboutTeam() {
   };
 
   return (
-    <motion.section initial="hidden" whileInView="visible" viewport={{ amount: 0.2 }}>
+    <motion.section
+      data-testid="section-visible"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ amount: 0.2 }}
+    >
       <Container maxWidth="xl" className="team-container">
         <h3 className="team-title">О разработчиках</h3>
         <Grid container spacing={2} direction="column" className="team-block">
-          <motion.section custom={1} variants={animation}>
+          <motion.section custom={1} variants={animation} data-testid="section-one">
             <Grid container item xs={6} className="team-card">
               <Grid item xs={4} className="desk-text">
                 <Avatar
@@ -47,7 +52,7 @@ export default function AboutTeam() {
               </Grid>
             </Grid>
           </motion.section>
-          <motion.section custom={2} variants={animation}>
+          <motion.section custom={2} variants={animation} data-testid="section-two">
             <Grid container item xs={6} className="team-card">
               <Grid item xs={4} className="desk-text">
                 <Avatar
@@ -74,7 +79,7 @@ export default function AboutTeam() {
               </Grid>
             </Grid>
           </motion.section>
-          <motion.section custom={3} variants={animation}>
+          <motion.section custom={3} variants={animation} data-testid="section-three">
             <Grid container item xs={6} className="team-card">
               <Grid item xs={4} className="desk-text">
                 <Avatar

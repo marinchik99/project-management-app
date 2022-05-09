@@ -141,12 +141,10 @@
   border-radius: 10px;
   padding: 40px;
   color: black;
-  /* transform: scale(1); */
   transition: 0.5s ease-in-out;
 }
 
 .course-block:hover {
-  /* transform: scale(1.05); */
   background: rgba(91, 172, 168, 0.76);
   transition: 0.5s ease-in-out;
 }
