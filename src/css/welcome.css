@@ -60,6 +60,31 @@
   align-self: center;
 }
 
+.welcome-page button {
+  color: black;
+  margin-right: 10px;
+}
+
+.welcome-page button:hover {
+  border-color: #ff8a65;
+  color: var(--secondary-color);
+}
+
+.desk-text button {
+  border-color: var(--main-color);
+}
+
+.authoriz-buttons > a:nth-child(2) > button{
+  background: var(--main-color);
+  color: black;
+  font-size: 0.95rem;
+  border-color:  var(--main-color);
+}
+
+.authoriz-buttons > a:nth-child(2) > button:hover {
+  background: #ff8a65;
+}
+
 .desk-container {
   margin: 0px auto;
   padding: 80px !important;
@@ -71,11 +96,8 @@
   object-fit: cover;
 }
 
-.desk-first {
-  width: 80%;
-}
-
-.desk-text {
+.desk-text,
+.course-text {
   margin: 0;
   text-align: center;
   line-height: 1.5;
@@ -95,30 +117,74 @@
   margin: 30px auto;
 }
 
+.welcome-page > .course-container {
+  background: #f7f7f7;
+  margin: 0;
+  padding: 30px !important;
+}
+
+.course-title,
 .team-title {
   text-align: center;
   margin-bottom: 60px;
   font-size: 2rem;
 }
 
+.course-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  margin: auto;
+  background: #b0bde7b9;
+  border-radius: 10px;
+  padding: 40px;
+  color: black;
+  /* transform: scale(1); */
+  transition: 0.5s ease-in-out;
+}
+
+.course-block:hover {
+  /* transform: scale(1.05); */
+  background: rgba(91, 172, 168, 0.76);
+  transition: 0.5s ease-in-out;
+}
+
+.course-title {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.course-list {
+  margin-top: 20px;
+  font-size: 1.3rem;
+  list-style: square;
+  line-height: 2rem;
+}
+
 .team-container {
-  background-color: #f7f7f7;
+  background-color: #d8e5eba9;
   padding: 10px 40px !important;
   background-image: 
      url('../assets/welcome/team1.png');
-  background-size: 450px auto;
+  background-size: 35% auto;
   background-position: left bottom;
   background-repeat: no-repeat ;
 }
 
-.team-block > div:nth-child(2) {
-  align-self: center;
+.team-block > section {
+  height: 253px;
+}
+
+.team-block > section:nth-child(2) > div {
+  margin: 0px auto;
   background: rgba(91, 172, 168, 0.76);
   box-shadow: 0px 0px 5px 10px rgba(63, 83, 82, 0.596);
 }
 
-.team-block > div:nth-child(3) {
-  align-self: flex-end;
+.team-block > section:nth-child(3) > div {
+  margin-left: auto;
   background: rgba(91, 103, 172, 0.76);
   box-shadow: 0px 0px 5px 10px rgba(63, 83, 82, 0.596);
 }
@@ -129,7 +195,7 @@
 }
 
 .team-card {
-  padding: 20px !important;
+  padding: 30px !important;
   background: rgba(143, 174, 209, 0.76);
   box-shadow: 0px 0px 5px 10px rgba(63, 72, 83, 0.596);
 }

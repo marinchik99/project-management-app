@@ -4,7 +4,7 @@ import Footer from './application/generalComponents/footer';
 import NotFound from './application/notFound';
 import LoginPage from './application/authorizationForms/loginPage';
 import Navigation from './application/generalComponents/navigation';
-import WelcomePage from './application/welcomePage';
+import WelcomePage from './application/welcomePage/welcomePage';
 import MainPage from './application/mainPage';
 import BoardPage from './application/boardPage';
 import SignupPage from './application/authorizationForms/signupPage';
