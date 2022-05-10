@@ -17,7 +17,12 @@ export default function AboutProject() {
   };
 
   return (
-    <motion.section initial="hidden" whileInView="visible" viewport={{ amount: 0.2 }}>
+    <motion.section
+      className="project"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ amount: 0.2 }}
+    >
       <Container maxWidth="xl" className="desk-container">
         <Grid
           container

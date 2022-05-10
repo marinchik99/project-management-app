@@ -6,6 +6,7 @@
 
 .github-accounts {
   text-align: center;
+  margin: 0 auto !important;
 }
 
 .git-acc {
@@ -21,6 +22,7 @@
 }
 .logo-icon {
   width: 90px;
+  margin-right: 20px;
 }
 .footer-year{
   color: var(--text-color);
@@ -31,4 +33,39 @@
 
 .footer .MuiContainer-root.MuiContainer-maxWidthXl.css-19r6kue-MuiContainer-root {
   padding: 15px;
+}
+
+@media (max-width: 595px){ 
+  .footer {
+    font-size: 0.9rem;
+  }
+  .footer-year{
+    font-size: 0.9rem;
+  }
+  .logo-icon {
+    width: 70px;
+    margin-right: 20px;
+  }
+  .git-acc {
+    font-weight: 500;
+    margin: 0px 5px;
+  }
+}
+
+@media (max-width: 420px){ 
+  .MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-1.css-u78q51-MuiGrid-root {
+    max-width: 15% !important;
+  }
+}
+
+@media (max-width: 360px){ 
+  .footer-year{
+    font-size: 0.85rem;
+  }
+  .logo-icon {
+    width: 60px;
+  }
+  .footer {
+    font-size: 0.85rem;
+  }
 }

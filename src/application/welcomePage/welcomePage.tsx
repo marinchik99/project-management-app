@@ -10,9 +10,9 @@ export default function WelcomePage() {
   return (
     <section className="welcome-page">
       <Container maxWidth="xl" className="general-welcome">
-        <Grid container spacing={1}>
-          <Grid item xs={9}></Grid>
-          <Grid item xs={3} className="authoriz-butt-cont">
+        <Grid container spacing={1} justifyContent="center" alignItems="center">
+          <Grid item xs={3}></Grid>
+          <Grid item xs={9} className="authoriz-butt-cont">
             <ButtonGroup className="authoriz-buttons">
               <NavLink to="/Login" style={{ textDecoration: 'none' }}>
                 <Button variant="text">Log in</Button>

@@ -18,6 +18,7 @@ export default function AboutTeam() {
   return (
     <motion.section
       data-testid="section-visible"
+      className="team"
       initial="hidden"
       whileInView="visible"
       viewport={{ amount: 0.2 }}
@@ -36,7 +37,7 @@ export default function AboutTeam() {
                 />
               </Grid>
               <Grid item xs={8} className="team-text">
-                <div className="">
+                <div className="team-main-text">
                   <h3 className="team-name">Марина</h3>
                   <h4 className="developer">Team leader, frontend developer</h4>
                   <p className="person-text">Структура приложения, роутинг, welcome-page.</p>
@@ -63,7 +64,7 @@ export default function AboutTeam() {
                 />
               </Grid>
               <Grid item xs={8} className="team-text">
-                <div className="">
+                <div className="team-main-text">
                   <h3 className="team-name">Петр</h3>
                   <h4 className="developer">Frontend developer</h4>
                   <p className="person-text">Здесь будет описание того, что сделали</p>
@@ -90,7 +91,7 @@ export default function AboutTeam() {
                 />
               </Grid>
               <Grid item xs={8} className="team-text">
-                <div className="">
+                <div className="team-main-text">
                   <h3 className="team-name">Сергей</h3>
                   <h4 className="developer">Frontend developer</h4>
                   <p className="person-text">Здесь будет описание того, что сделали</p>
