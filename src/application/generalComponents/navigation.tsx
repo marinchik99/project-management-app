@@ -39,11 +39,11 @@ export default function Navigation() {
         </NavLink>
         <NavLink
           data-testid="modal-link"
-          to="/Board"
+          to="/Boards"
           className="navbar__a"
           style={({ isActive }) => (isActive ? { color: 'red' } : { color: 'black' })}
         >
-          Board
+          Boards
         </NavLink>
       </nav>
     </div>

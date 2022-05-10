@@ -31,6 +31,7 @@ code {
 }
 
 :root {
-  --main-color: #554f88;
-  --text-color: rgb(255, 255, 255);
+  --main-color: #b0bec5;
+  --secondary-color: #c75b39;
+  --text-color: rgb(0, 0, 0);
 }
