@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -9,7 +9,6 @@ import Search from './mainRoute/search';
 import AddBoardBtn from './mainRoute/addBoardBtn';
 
 export default function BoardsPage() {
-  const [boardList, setBoardsList] = useState([]);
 
   return (
     <div className="container boards-page">
