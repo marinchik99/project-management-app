@@ -34,8 +34,8 @@ export default function AboutProject() {
         >
           <Grid item xs={5} className="desk-text">
             <motion.p custom={1} variants={textAnimation}>
-              Начните с создания досок, в которые будете помещать карточки с заданиями. Доски и
-              карточки могут располагаться в нужном для Вас порядке.
+              Начните с создания досок, в которые будете помещать списки и карточки с заданиями. Они
+              могут располагаться в нужном для Вас порядке.
             </motion.p>
             <motion.div custom={1} variants={textAnimation}>
               <NavLink to="/Main" style={{ textDecoration: 'none' }}>
@@ -57,8 +57,8 @@ export default function AboutProject() {
         <Grid container spacing={1} justifyContent="center" alignItems="center">
           <Grid item xs={5} className="desk-text">
             <motion.p custom={2} variants={textAnimation}>
-              Карточки можно переносить на другую доску, редактировать и удалять. Удаление доски
-              автоматически удаляет привязанные к ней каточки.
+              Карточки можно переносить в другой список, редактировать и удалять. Удаление доски
+              автоматически удаляет привязанные к ней списки и каточки.
             </motion.p>
           </Grid>
           <Grid item xs={5} className="desk-text">
