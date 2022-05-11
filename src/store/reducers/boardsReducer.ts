@@ -8,6 +8,7 @@ type BoardsState = {
   currentBoard: Board;
   search: string;
   isLoading: boolean;
+  isModal: boolean;
 };
 
 const initialState: BoardsState = {
@@ -15,6 +16,7 @@ const initialState: BoardsState = {
   currentBoard: null,
   search: '',
   isLoading: false,
+  isModal: false,
 };
 
 export const createBoard = createAsyncThunk(
@@ -108,7 +110,11 @@ export const updateBoardById = createAsyncThunk(
 export const boardsReducer = createSlice({
   name: 'boardsReducer',
   initialState,
-  reducers: {},
+  reducers: {
+    setModalState: (state, { payload }: PayloadAction<boolean>) => {
+      state.isModal = payload;
+    },
+  },
   extraReducers: (builder) =>
     builder
       .addCase(getBoards['fulfilled'], (state, { payload }: PayloadAction<BoardList>) => {
@@ -133,5 +139,5 @@ export const boardsReducer = createSlice({
       }),
 });
 
-export const {} = boardsReducer.actions;
+export const { setModalState } = boardsReducer.actions;
 export default boardsReducer.reducer;

@@ -7,3 +7,7 @@ export interface Board {
 export type BoardList = Array<Board>
 
 export type BoardBody = Omit<Board, 'id'>;
+
+export type TRemoveConf = {
+  id: string,
+}
