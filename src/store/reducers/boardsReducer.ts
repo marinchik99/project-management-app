@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Board, BoardBody, BoardList } from '../../.d';
+import { Board, BoardBody, BoardList, ModalState } from '../../.d';
 
 export const baseUrl = 'https://kanban-rest-marina-team.herokuapp.com/';
 
@@ -8,7 +8,7 @@ type BoardsState = {
   currentBoard: Board;
   search: string;
   isLoading: boolean;
-  isModal: boolean;
+  modal: ModalState;
 };
 
 const initialState: BoardsState = {
@@ -16,7 +16,10 @@ const initialState: BoardsState = {
   currentBoard: null,
   search: '',
   isLoading: false,
-  isModal: false,
+  modal: {
+    isOpen: false,
+    type: null,
+  },
 };
 
 export const createBoard = createAsyncThunk(
@@ -111,8 +114,8 @@ export const boardsReducer = createSlice({
   name: 'boardsReducer',
   initialState,
   reducers: {
-    setModalState: (state, { payload }: PayloadAction<boolean>) => {
-      state.isModal = payload;
+    setModalState: (state, { payload }: PayloadAction<ModalState>) => {
+      state.modal = payload;
     },
   },
   extraReducers: (builder) =>

@@ -8,9 +8,10 @@ import Search from './mainRoute/search';
 import AddBoardBtn from './mainRoute/addBoardBtn';
 import BoardList from './mainRoute/boardList';
 import { getBoards } from '../store/reducers/boardsReducer';
+import ModalForm from './generalComponents/modalForm';
 
 export default function BoardsPage() {
-  const { isLoading, boardList } = useAppSelector(({ boardsReducer }) => boardsReducer);
+  const { isLoading, boardList, modal } = useAppSelector(({ boardsReducer }) => boardsReducer);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -27,6 +28,7 @@ export default function BoardsPage() {
         <>
           <BoardList />
           <AddBoardBtn />
+          {modal.isOpen && modal.type === 'board' && <ModalForm />}
         </>
       )}
     </div>
