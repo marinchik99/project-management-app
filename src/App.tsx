@@ -6,7 +6,7 @@ import LoginPage from './application/authorizationForms/loginPage';
 import Navigation from './application/generalComponents/navigation';
 import WelcomePage from './application/welcomePage/welcomePage';
 import MainPage from './application/mainPage';
-import BoardPage from './application/boardPage';
+import BoardsPage from './application/boardsPage';
 import SignupPage from './application/authorizationForms/signupPage';
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
         <Route path="/Login" element={<LoginPage />} />
         <Route path="/Signup" element={<SignupPage />} />
         <Route path="/Main" element={<MainPage />} />
-        <Route path="/Board" element={<BoardPage />} />
+        <Route path="/Boards" element={<BoardsPage />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
       <Footer />
