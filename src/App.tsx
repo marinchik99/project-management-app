@@ -2,12 +2,12 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Footer from './application/generalComponents/footer';
 import NotFound from './application/notFound';
-import LoginPage from './application/authorizationForms/loginPage';
 import Navigation from './application/generalComponents/navigation';
 import WelcomePage from './application/welcomePage/welcomePage';
 import MainPage from './application/mainPage';
 import BoardsPage from './application/boardsPage';
 import SignupPage from './application/authorizationForms/signupPage';
+import LoginPage from './application/authorizationForms/LoginPage/LoginPage';
 
 function App() {
   return (
