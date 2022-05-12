@@ -26,7 +26,7 @@ export default function LoginPage() {
       select: {},
     },
   });
-  // const onSubmit = (data: unknown) => console.log(data);
+  const onSubmit = (data: unknown) => console.log(data);
 
   return (
     <ThemeProvider theme={theme}>
@@ -46,7 +46,7 @@ export default function LoginPage() {
           <Typography component="h1" variant="h5">
             Войти
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
