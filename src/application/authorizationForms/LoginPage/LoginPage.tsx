@@ -15,6 +15,9 @@ import {
 } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import theme from '../../../utils/themeSettings';
+import { useLoginMutation, userApi } from '../../../store/services/users';
+import { UserType } from '../../../types/types';
+import { useAppDispatch } from '../../../store';
 
 export default function LoginPage() {
   const {
@@ -27,8 +30,13 @@ export default function LoginPage() {
       password: '',
     },
   });
+  const dispatch = useAppDispatch();
 
-  const onSubmit = (data: unknown) => console.log(data);
+  const onSubmit = async (data: Partial<UserType>) => {
+    console.log(data);
+    const result = await dispatch(userApi.endpoints.login.initiate(data));
+    console.log(result);
+  };
 
   return (
     <ThemeProvider theme={theme}>

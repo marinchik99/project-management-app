@@ -1,9 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import boardsReducer from './reducers/boardsReducer';
+import { userApi } from './services/users';
 
 export const store = configureStore({
-  reducer: { boardsReducer },
+  reducer: {
+    boardsReducer,
+    [userApi.reducerPath]: userApi.reducer,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
