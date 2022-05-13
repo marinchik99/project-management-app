@@ -1,17 +1,14 @@
 import React from 'react';
 import './LoginPage.scss';
 import { useForm, Controller } from 'react-hook-form';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import {
   Avatar,
   Box,
   Button,
-  Checkbox,
   Container,
   CssBaseline,
-  FormControlLabel,
   Grid,
-  Input,
   Link,
   TextField,
   Typography,
@@ -20,12 +17,17 @@ import PersonIcon from '@mui/icons-material/Person';
 import theme from '../../../utils/themeSettings';
 
 export default function LoginPage() {
-  const { control, handleSubmit } = useForm({
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     defaultValues: {
-      firstName: '',
-      select: {},
+      login: '',
+      password: '',
     },
   });
+
   const onSubmit = (data: unknown) => console.log(data);
 
   return (
@@ -46,26 +48,48 @@ export default function LoginPage() {
           <Typography component="h1" variant="h5">
             Войти
           </Typography>
-          <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate sx={{ mt: 1 }}>
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email адрес"
-              name="email"
-              autoComplete="email"
-              autoFocus
+          <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ mt: 1 }}>
+            <Controller
+              name="login"
+              control={control}
+              rules={{
+                required: { value: true, message: 'Заполните поле' },
+                minLength: { value: 3, message: 'Минимальная длина логина 3 символа' },
+                pattern: {
+                  value: /^[A-Za-z0-9]+$/i,
+                  message: 'Логин может содержать только латинские буквы и цифры',
+                },
+              }}
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  margin="normal"
+                  fullWidth
+                  label="Логин"
+                  autoFocus
+                  error={!!errors.login}
+                  helperText={errors.login?.message}
+                />
+              )}
             />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
+            <Controller
               name="password"
-              label="Пароль"
-              type="password"
-              id="password"
-              autoComplete="current-password"
+              control={control}
+              rules={{
+                required: { value: true, message: 'Заполните поле' },
+                minLength: { value: 4, message: 'Минимальная длина пароля 4 символа' },
+              }}
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  margin="normal"
+                  fullWidth
+                  label="Пароль"
+                  type="password"
+                  error={!!errors.password}
+                  helperText={errors.password?.message}
+                />
+              )}
             />
             <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
               Войти
@@ -86,3 +110,25 @@ export default function LoginPage() {
 
 //  {/* <Controller name="firstName" control={control} render={({ field }) => <Input {...field} />} />
 //  <input type="submit" /> */}
+
+// <TextField
+// margin="normal"
+// required
+// fullWidth
+// id="email"
+// label="Email адрес"
+// name="email"
+// autoComplete="email"
+// autoFocus
+// /> />
+
+// <TextField
+// margin="normal"
+// required
+// fullWidth
+// name="password"
+// label="Пароль"
+// type="password"
+// id="password"
+// autoComplete="current-password"
+// />
