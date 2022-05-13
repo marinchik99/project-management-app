@@ -32,9 +32,14 @@ code {
     monospace;
 }
 
+button, input[type="submit"] {
+  cursor: pointer;
+}
+
 :root {
   --main-color: #b0bec5;
   --secondary-color: #c75b39;
+  --secondary-light-color: #ffbb93;
   --text-color: rgb(0, 0, 0);
 }
 

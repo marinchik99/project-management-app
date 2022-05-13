@@ -16,7 +16,7 @@ export default function BoardsPage() {
 
   useEffect(() => {
     dispatch(getBoards());
-  }, [dispatch, boardList, isLoading]);
+  }, [dispatch, boardList]);
 
   return (
     <div className="container boards-page">

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAppDispatch } from '../../../store';
+import { useAppDispatch, useAppSelector } from '../../../store';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import Box from '@mui/material/Box';
@@ -9,7 +9,8 @@ import Modal from '@mui/material/Modal';
 
 import './ModalForm.scss';
 import { BoardBody } from '../../../.d';
-import { createBoard } from '../../../store/reducers/boardsReducer';
+import { createBoard, setModalState } from '../../../store/reducers/boardsReducer';
+import { Container } from '@mui/material';
 
 type Inputs = {
   title: string;
@@ -18,8 +19,8 @@ type Inputs = {
 
 export default function ModalForm() {
   const dispatch = useAppDispatch();
-  // const { isLoading, boardList } = useAppSelector(({ boardsReducer }) => boardsReducer);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { modal } = useAppSelector(({ boardsReducer }) => boardsReducer);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
 
   const {
     register,
@@ -31,11 +32,11 @@ export default function ModalForm() {
   const onSubmit: SubmitHandler<Inputs> = (data: BoardBody) => {
     dispatch(createBoard(data));
     console.log(data);
-    setIsModalOpen(false);
+    dispatch(setModalState({ isOpen: false, type: null }));
   };
 
   const handleClose = () => {
-    setIsModalOpen(false);
+    dispatch(setModalState({ isOpen: false, type: null }));
   };
 
   const style = {
@@ -54,7 +55,7 @@ export default function ModalForm() {
   return (
     <div className="modal-form">
       <Modal
-        open={isModalOpen}
+        open={modal.isOpen}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
@@ -63,19 +64,21 @@ export default function ModalForm() {
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Создать доску
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          <Container id="modal-modal-description" sx={{ mt: 2 }}>
             <form className="form form--board" onSubmit={handleSubmit(onSubmit)}>
               <label>Заголовок доски</label>
-              <input {...(register('title'), { required: true })} />
-              {errors.description && <span>Это поле обязательно для заполнения</span>}
+              <input className="form__input-text" {...(register('title'), { required: true })} />
+              {errors.description && (
+                <span className="form__error-text">*Это поле обязательно для заполнения</span>
+              )}
 
               <label>Описание</label>
-              <input {...register('description')} />
+              <textarea className="form__textarea" rows={5} {...register('description')} />
 
-              <input type="submit" />
-              <button onClick={handleClose}>Закрыть</button>
+              <input className="form__btn" type="submit" />
+              <button className="form__btn-close" onClick={handleClose}></button>
             </form>
-          </Typography>
+          </Container>
         </Box>
       </Modal>
     </div>

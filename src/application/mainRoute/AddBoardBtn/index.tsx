@@ -25,7 +25,7 @@ export default function AddBoardBtn() {
       <CardActionArea onClick={handleCreateBoard}>
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Add Board
+            Добавить доску
           </Typography>
           <AddCircleOutlineIcon />
         </CardContent>
