@@ -65,7 +65,7 @@ export default function LoginPage() {
                   {...field}
                   margin="normal"
                   fullWidth
-                  label="Логин"
+                  label="Введите логин"
                   autoFocus
                   error={!!errors.login}
                   helperText={errors.login?.message}
@@ -84,7 +84,7 @@ export default function LoginPage() {
                   {...field}
                   margin="normal"
                   fullWidth
-                  label="Пароль"
+                  label="Введите пароль"
                   type="password"
                   error={!!errors.password}
                   helperText={errors.password?.message}
