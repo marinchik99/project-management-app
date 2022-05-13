@@ -6,7 +6,7 @@ import Navigation from './application/generalComponents/navigation';
 import WelcomePage from './application/welcomePage/welcomePage';
 import MainPage from './application/mainPage';
 import BoardsPage from './application/boardsPage';
-import SignupPage from './application/authorizationForms/signupPage';
+import SignupPage from './application/authorizationForms/SignupPage/SignupPage';
 import LoginPage from './application/authorizationForms/LoginPage/LoginPage';
 
 function App() {
