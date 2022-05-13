@@ -54,7 +54,7 @@ export default function SignupPage() {
             <PersonIcon></PersonIcon>
           </Avatar>
           <Typography component="h1" variant="h5">
-            Зарегистрироваться
+            Регистрация
           </Typography>
           <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ mt: 1 }}>
             <Controller

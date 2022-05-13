@@ -46,7 +46,7 @@ export default function LoginPage() {
             <PersonIcon></PersonIcon>
           </Avatar>
           <Typography component="h1" variant="h5">
-            Войти
+            Войти в аккаунт
           </Typography>
           <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ mt: 1 }}>
             <Controller
