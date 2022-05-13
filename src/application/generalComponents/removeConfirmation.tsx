@@ -43,7 +43,7 @@ export default function RemoveConfirmation(props: TRemoveConf) {
   };
 
   return (
-    <div className="modal-form">
+    <div className="modal-confirmation">
       <Button onClick={handleOpen}>Удалить</Button>
 
       <Modal

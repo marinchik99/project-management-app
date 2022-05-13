@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../store';
+import { useAppDispatch, useAppSelector } from '../../store';
 
-import '../css/boardsPage.css';
+import './BoardsPage.scss';
 
-import Preloader from './generalComponents/preloader';
-import Search from './mainRoute/search';
-import AddBoardBtn from './mainRoute/addBoardBtn';
-import BoardList from './mainRoute/boardList';
-import { getBoards } from '../store/reducers/boardsReducer';
-import ModalForm from './generalComponents/modalForm';
+import Preloader from '../generalComponents/preloader';
+import Search from './Search';
+import AddBoardBtn from './AddBoardBtn';
+import BoardList from './BoardList';
+import { getBoards } from '../../store/reducers/boardsReducer';
+import ModalForm from '../generalComponents/ModalForm/ModalForm';
 
 export default function BoardsPage() {
   const { isLoading, boardList, modal } = useAppSelector(({ boardsReducer }) => boardsReducer);
@@ -16,11 +16,11 @@ export default function BoardsPage() {
 
   useEffect(() => {
     dispatch(getBoards());
-  }, [dispatch, boardList]);
+  }, [dispatch, boardList, isLoading]);
 
   return (
     <div className="container boards-page">
-      <h1>Boards</h1>
+      <h1>Доски</h1>
       <Search />
       {isLoading ? (
         <Preloader />

@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import { useAppDispatch } from '../../store';
+import { useAppDispatch } from '../../../store';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { BoardBody } from '../../.d';
-import { createBoard } from '../../store/reducers/boardsReducer';
+
+import './ModalForm.scss';
+import { BoardBody } from '../../../.d';
+import { createBoard } from '../../../store/reducers/boardsReducer';
 
 type Inputs = {
   title: string;
