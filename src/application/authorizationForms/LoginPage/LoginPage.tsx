@@ -107,28 +107,3 @@ export default function LoginPage() {
     </ThemeProvider>
   );
 }
-
-//  {/* <Controller name="firstName" control={control} render={({ field }) => <Input {...field} />} />
-//  <input type="submit" /> */}
-
-// <TextField
-// margin="normal"
-// required
-// fullWidth
-// id="email"
-// label="Email адрес"
-// name="email"
-// autoComplete="email"
-// autoFocus
-// /> />
-
-// <TextField
-// margin="normal"
-// required
-// fullWidth
-// name="password"
-// label="Пароль"
-// type="password"
-// id="password"
-// autoComplete="current-password"
-// />
