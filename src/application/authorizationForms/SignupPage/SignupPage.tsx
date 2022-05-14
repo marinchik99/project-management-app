@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { ThemeProvider } from '@mui/material/styles';
@@ -36,11 +36,15 @@ export default function SignupPage() {
   const [register, { data, isError, error }] = useRegisterMutation();
   const [isAgree, setAgree] = useState(false);
 
-  const onSubmit = (inputs: unknown) => {
-    console.log(inputs);
-    register(inputs);
-    reset();
-    setAgree(false);
+  useEffect(() => {
+    if (!isError) {
+      setAgree(false);
+      reset();
+    }
+  }, [data]);
+
+  const onSubmit = async (inputs: unknown) => {
+    await register(inputs);
   };
 
   const checkboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -106,7 +110,6 @@ export default function SignupPage() {
                   margin="normal"
                   fullWidth
                   label="Введите логин"
-                  autoFocus
                   error={!!errors.login}
                   helperText={errors.login?.message}
                 />
@@ -132,7 +135,7 @@ export default function SignupPage() {
               )}
             />
             <FormControlLabel
-              control={<Checkbox value={isAgree} color="default" onChange={checkboxChange} />}
+              control={<Checkbox checked={isAgree} color="default" onChange={checkboxChange} />}
               label="Согласен с политикой безопасности"
             />
             <Button
