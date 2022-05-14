@@ -9,10 +9,16 @@ type ThemeOptions = {
     secondary: {
       main: string;
     };
+    error: {
+      main: string;
+      light: string;
+      dark: string;
+      contrastText: string;
+    };
   };
 };
 
-const themeOptions: ThemeOptions = {
+export const themeOptions: ThemeOptions = {
   palette: {
     type: 'light',
     primary: {
@@ -20,6 +26,12 @@ const themeOptions: ThemeOptions = {
     },
     secondary: {
       main: '#c75b39',
+    },
+    error: {
+      main: '#d1010b',
+      light: '#f16151',
+      dark: '#aa3128',
+      contrastText: '#ffffff',
     },
   },
 };

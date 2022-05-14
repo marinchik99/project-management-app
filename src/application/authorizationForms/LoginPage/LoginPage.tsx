@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './LoginPage.scss';
 import { useForm, Controller } from 'react-hook-form';
 import { ThemeProvider } from '@mui/material/styles';
@@ -18,6 +18,7 @@ import theme from '../../../utils/themeSettings';
 import { UserType } from '../../../types/types';
 import { useAppDispatch } from '../../../store';
 import { useLoginMutation } from '../../../store/services/usersApi';
+import { useNavigate } from 'react-router-dom';
 
 export default function LoginPage() {
   const {
@@ -33,11 +34,18 @@ export default function LoginPage() {
   });
 
   const [login, { data, isError, error }] = useLoginMutation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isError && data) {
+      navigate('/');
+    }
+  }, [data]);
 
   const onSubmit = async (data: Partial<UserType>) => {
-    console.log(data);
+    // console.log(data);
     login(data);
-    reset();
+    // reset();
   };
 
   return (

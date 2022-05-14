@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { ThemeProvider } from '@mui/material/styles';
@@ -14,10 +14,14 @@ import {
   Typography,
   FormControlLabel,
   Checkbox,
+  Snackbar,
+  Alert,
 } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import theme from '../../../utils/themeSettings';
 import { useRegisterMutation } from '../../../store/services/usersApi';
+import { UserType } from '../../../types/types';
+import { useNavigate } from 'react-router-dom';
 
 export default function SignupPage() {
   const {
@@ -33,22 +37,37 @@ export default function SignupPage() {
     },
   });
 
-  const [register, { data, isError, error }] = useRegisterMutation();
+  const [register, { data, isError }] = useRegisterMutation();
   const [isAgree, setAgree] = useState(false);
+  const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isError) {
+    if (!isError && data) {
       setAgree(false);
-      reset();
+      navigate('/Login');
     }
   }, [data]);
 
-  const onSubmit = async (inputs: unknown) => {
+  useEffect(() => {
+    if (isError) {
+      setOpen(true);
+    }
+  }, [isError]);
+
+  const onSubmit = async (inputs: Partial<UserType>) => {
     await register(inputs);
   };
 
   const checkboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAgree(e.target.checked);
+  };
+
+  const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
   };
 
   return (
@@ -156,6 +175,22 @@ export default function SignupPage() {
             </Grid>
           </Box>
         </Box>
+        <Snackbar
+          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+          open={open}
+          autoHideDuration={6000}
+          onClose={handleClose}
+        >
+          <Alert
+            onClose={handleClose}
+            severity="error"
+            sx={{ width: '100%' }}
+            variant="filled"
+            color="error"
+          >
+            Аккаунт с таким логином существует
+          </Alert>
+        </Snackbar>
       </Container>
     </ThemeProvider>
   );
