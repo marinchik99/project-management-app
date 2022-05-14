@@ -15,27 +15,29 @@ import {
 } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import theme from '../../../utils/themeSettings';
-import { useLoginMutation, userApi } from '../../../store/services/users';
 import { UserType } from '../../../types/types';
 import { useAppDispatch } from '../../../store';
+import { useLoginMutation } from '../../../store/services/usersApi';
 
 export default function LoginPage() {
   const {
     control,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     defaultValues: {
       login: '',
       password: '',
     },
   });
-  const dispatch = useAppDispatch();
+
+  const [login, { data, isError, error }] = useLoginMutation();
 
   const onSubmit = async (data: Partial<UserType>) => {
     console.log(data);
-    const result = await dispatch(userApi.endpoints.login.initiate(data));
-    console.log(result);
+    login(data);
+    reset();
   };
 
   return (

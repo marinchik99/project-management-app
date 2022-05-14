@@ -1,4 +1,5 @@
-import React, { ChangeEvent, useState } from 'react';
+import React from 'react';
+import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { ThemeProvider } from '@mui/material/styles';
 import {
@@ -16,12 +17,14 @@ import {
 } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import theme from '../../../utils/themeSettings';
+import { useRegisterMutation } from '../../../store/services/usersApi';
 
 export default function SignupPage() {
   const {
     control,
     handleSubmit,
-    formState: { errors, isDirty },
+    formState: { errors },
+    reset,
   } = useForm({
     defaultValues: {
       name: '',
@@ -30,11 +33,17 @@ export default function SignupPage() {
     },
   });
 
+  const [register, { data, isError, error }] = useRegisterMutation();
   const [isAgree, setAgree] = useState(false);
 
-  const onSubmit = (data: unknown) => console.log(data);
+  const onSubmit = (inputs: unknown) => {
+    console.log(inputs);
+    register(inputs);
+    reset();
+    setAgree(false);
+  };
 
-  const checkboxChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const checkboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAgree(e.target.checked);
   };
 
