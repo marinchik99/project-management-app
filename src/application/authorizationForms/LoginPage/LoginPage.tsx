@@ -16,7 +16,6 @@ import {
 import PersonIcon from '@mui/icons-material/Person';
 import theme from '../../../utils/themeSettings';
 import { UserType } from '../../../types/types';
-import { useAppDispatch } from '../../../store';
 import { useLoginMutation } from '../../../store/services/usersApi';
 import { useNavigate } from 'react-router-dom';
 
@@ -25,7 +24,6 @@ export default function LoginPage() {
     control,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm({
     defaultValues: {
       login: '',
@@ -33,7 +31,7 @@ export default function LoginPage() {
     },
   });
 
-  const [login, { data, isError, error }] = useLoginMutation();
+  const [login, { data, isError }] = useLoginMutation();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -43,9 +41,7 @@ export default function LoginPage() {
   }, [data]);
 
   const onSubmit = async (data: Partial<UserType>) => {
-    // console.log(data);
     login(data);
-    // reset();
   };
 
   return (
