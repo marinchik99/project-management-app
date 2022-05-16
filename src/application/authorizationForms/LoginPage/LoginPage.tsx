@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './LoginPage.scss';
 import { useForm, Controller } from 'react-hook-form';
 import { ThemeProvider } from '@mui/material/styles';
 import {
+  Alert,
   Avatar,
   Box,
   Container,
   CssBaseline,
   Grid,
   Link,
+  Snackbar,
   TextField,
   Typography,
 } from '@mui/material';
@@ -33,6 +35,7 @@ export default function LoginPage() {
 
   const [login, { data, isError, isLoading }] = useLoginMutation();
   const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if (!isError && data) {
@@ -40,8 +43,21 @@ export default function LoginPage() {
     }
   }, [data]);
 
+  useEffect(() => {
+    if (isError) {
+      setOpen(true);
+    }
+  }, [isError]);
+
   const onSubmit = async (data: Partial<UserType>) => {
     login(data);
+  };
+
+  const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
   };
 
   return (
@@ -123,6 +139,22 @@ export default function LoginPage() {
             </Grid>
           </Box>
         </Box>
+        <Snackbar
+          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+          open={open}
+          autoHideDuration={6000}
+          onClose={handleClose}
+        >
+          <Alert
+            onClose={handleClose}
+            severity="error"
+            sx={{ width: '100%' }}
+            variant="filled"
+            color="error"
+          >
+            Неверный логин или пароль!
+          </Alert>
+        </Snackbar>
       </Container>
     </ThemeProvider>
   );

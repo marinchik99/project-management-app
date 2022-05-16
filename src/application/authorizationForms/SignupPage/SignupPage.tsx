@@ -5,7 +5,6 @@ import { ThemeProvider } from '@mui/material/styles';
 import {
   Avatar,
   Box,
-  Button,
   Container,
   CssBaseline,
   Grid,
@@ -29,7 +28,6 @@ export default function SignupPage() {
     control,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm({
     defaultValues: {
       name: '',
@@ -40,7 +38,7 @@ export default function SignupPage() {
 
   const [register, { data, isError, isLoading }] = useRegisterMutation();
   const [isAgree, setAgree] = useState(false);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -190,7 +188,7 @@ export default function SignupPage() {
             variant="filled"
             color="error"
           >
-            Аккаунт с таким логином существует
+            Аккаунт с таким логином существует.
           </Alert>
         </Snackbar>
       </Container>
