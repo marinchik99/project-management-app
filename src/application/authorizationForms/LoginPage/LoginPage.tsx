@@ -5,7 +5,6 @@ import { ThemeProvider } from '@mui/material/styles';
 import {
   Avatar,
   Box,
-  Button,
   Container,
   CssBaseline,
   Grid,
@@ -13,6 +12,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
+import { LoadingButton } from '@mui/lab';
 import PersonIcon from '@mui/icons-material/Person';
 import theme from '../../../utils/themeSettings';
 import { UserType } from '../../../types/types';
@@ -31,7 +31,7 @@ export default function LoginPage() {
     },
   });
 
-  const [login, { data, isError }] = useLoginMutation();
+  const [login, { data, isError, isLoading }] = useLoginMutation();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -105,9 +105,15 @@ export default function LoginPage() {
                 />
               )}
             />
-            <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+            <LoadingButton
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+              loading={isLoading}
+            >
               Войти
-            </Button>
+            </LoadingButton>
             <Grid container>
               <Grid item>
                 <Link href="/Signup" variant="body2">

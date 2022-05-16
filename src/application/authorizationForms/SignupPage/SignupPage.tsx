@@ -17,6 +17,7 @@ import {
   Snackbar,
   Alert,
 } from '@mui/material';
+import { LoadingButton } from '@mui/lab';
 import PersonIcon from '@mui/icons-material/Person';
 import theme from '../../../utils/themeSettings';
 import { useRegisterMutation } from '../../../store/services/usersApi';
@@ -37,7 +38,7 @@ export default function SignupPage() {
     },
   });
 
-  const [register, { data, isError }] = useRegisterMutation();
+  const [register, { data, isError, isLoading }] = useRegisterMutation();
   const [isAgree, setAgree] = useState(false);
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
@@ -157,15 +158,16 @@ export default function SignupPage() {
               control={<Checkbox checked={isAgree} color="default" onChange={checkboxChange} />}
               label="Согласен с политикой безопасности"
             />
-            <Button
+            <LoadingButton
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
               disabled={!isAgree}
+              loading={isLoading}
             >
               Зарегистрироваться
-            </Button>
+            </LoadingButton>
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link href="/Login" variant="body2">

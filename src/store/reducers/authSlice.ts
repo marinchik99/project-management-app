@@ -1,20 +1,27 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { UserType } from '../../types/types';
 import { RootState } from '../index';
 import { userApi } from '../services/usersApi';
 
 type AuthState = {
-  user: UserType | null;
+  login: string | null;
   token: string | null;
+};
+
+const authInitialState: AuthState = {
+  login: localStorage.getItem('login'),
+  token: localStorage.getItem('token'),
 };
 
 const slice = createSlice({
   name: 'auth',
-  initialState: { user: null, token: null } as AuthState,
+  initialState: authInitialState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addMatcher(userApi.endpoints.login.matchFulfilled, (state, { payload }) => {
       state.token = payload.token;
+      state.login = payload.login;
+      localStorage.setItem('token', payload.token);
+      localStorage.setItem('login', payload.login);
     });
   },
 });

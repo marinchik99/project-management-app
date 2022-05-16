@@ -7,4 +7,5 @@ export type UserType = {
 
 export type SigninResponseType = {
   token: string;
+  login?: string;
 };
