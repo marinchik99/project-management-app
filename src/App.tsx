@@ -11,7 +11,7 @@ import LoginPage from './application/authorizationForms/LoginPage/LoginPage';
 import { useAppSelector } from './store';
 
 function App() {
-  const token = useAppSelector((state) => state.auth.token);
+  const token = localStorage.getItem('token') || null;
 
   return (
     <div className="App">

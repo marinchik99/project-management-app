@@ -14,6 +14,17 @@ export const userApi = createApi({
       transformResponse: (response: SigninResponseType, _, arg: { login: string }) => {
         return { login: arg.login, ...response };
       },
+      async onQueryStarted(_, { queryFulfilled }) {
+        try {
+          const result = await queryFulfilled;
+          if (result.data.token) {
+            localStorage.setItem('token', result.data.token);
+            localStorage.setItem('login', result.data.login);
+          }
+        } catch (e) {
+          console.error('Login error: ', e);
+        }
+      },
     }),
     register: builder.mutation<Partial<UserType>, Partial<UserType>>({
       query: (credentials: Partial<UserType>) => ({
