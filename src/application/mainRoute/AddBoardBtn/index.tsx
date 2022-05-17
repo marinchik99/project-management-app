@@ -22,7 +22,7 @@ export default function AddBoardBtn() {
 
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea onClick={handleCreateBoard}>
+      <CardActionArea onClick={handleCreateBoard} data-testid="addBoardBtn">
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             Добавить доску

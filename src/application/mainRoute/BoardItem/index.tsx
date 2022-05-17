@@ -27,9 +27,6 @@ export default function BoardItem(props: Board) {
         </CardActionArea>
       </Link>
       <CardActions>
-        {/* <Button size="small" color="primary" onClick={handleDelete}>
-          Delete
-        </Button> */}
         <RemoveConfirmation id={id} />
       </CardActions>
     </Card>

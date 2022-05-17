@@ -25,7 +25,6 @@ export default function ModalForm() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<Inputs>();
 
@@ -66,17 +65,30 @@ export default function ModalForm() {
           </Typography>
           <Container id="modal-modal-description" sx={{ mt: 2 }}>
             <form className="form form--board" onSubmit={handleSubmit(onSubmit)}>
-              <label>Заголовок доски</label>
-              <input className="form__input-text" {...(register('title'), { required: true })} />
+              <label htmlFor="form-title-input">Заголовок доски</label>
+              <input
+                id="form-title-input"
+                className="form__input-text"
+                {...register('title', { required: true })}
+              />
               {errors.description && (
                 <span className="form__error-text">*Это поле обязательно для заполнения</span>
               )}
 
-              <label>Описание</label>
-              <textarea className="form__textarea" rows={5} {...register('description')} />
+              <label htmlFor="form-description-input">Описание</label>
+              <textarea
+                id="form-description-input"
+                className="form__textarea"
+                rows={5}
+                {...register('description')}
+              />
 
-              <input className="form__btn" type="submit" />
-              <button className="form__btn-close" onClick={handleClose}></button>
+              <input data-testid="form-submit-btn" className="form__btn" type="submit" />
+              <button
+                data-testid="form-close-btn"
+                className="form__btn-close"
+                onClick={handleClose}
+              ></button>
             </form>
           </Container>
         </Box>

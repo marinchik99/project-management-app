@@ -8,7 +8,7 @@ import Search from './Search';
 import AddBoardBtn from './AddBoardBtn';
 import BoardList from './BoardList';
 import { getBoards } from '../../store/reducers/boardsReducer';
-import ModalForm from '../generalComponents/ModalForm/ModalForm';
+import ModalForm from '../generalComponents/ModalForm';
 
 export default function BoardsPage() {
   const { isLoading, boardList, modal } = useAppSelector(({ boardsReducer }) => boardsReducer);
@@ -16,7 +16,7 @@ export default function BoardsPage() {
 
   useEffect(() => {
     dispatch(getBoards());
-  }, [dispatch, boardList]);
+  }, [dispatch]);
 
   return (
     <div className="container boards-page">
