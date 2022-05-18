@@ -9,7 +9,7 @@ import Modal from '@mui/material/Modal';
 
 import './ModalForm.scss';
 import { BoardBody } from '../../../.d';
-import { createBoard, setModalState } from '../../../store/reducers/boardsReducer';
+import { createBoard, getBoards, setModalState } from '../../../store/reducers/boardsReducer';
 import { Container } from '@mui/material';
 
 type Inputs = {
@@ -30,8 +30,8 @@ export default function ModalForm() {
 
   const onSubmit: SubmitHandler<Inputs> = (data: BoardBody) => {
     dispatch(createBoard(data));
-    console.log(data);
     dispatch(setModalState({ isOpen: false, type: null }));
+    setTimeout(() => dispatch(getBoards()), 0);
   };
 
   const handleClose = () => {

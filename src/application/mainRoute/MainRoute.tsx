@@ -1,22 +1,22 @@
 import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store';
+import { getBoards } from '../../store/reducers/boardsReducer';
 
-import './BoardsPage.scss';
+import './MainRoute.scss';
 
 import Preloader from '../generalComponents/preloader';
 import Search from './Search';
 import AddBoardBtn from './AddBoardBtn';
 import BoardList from './BoardList';
-import { getBoards } from '../../store/reducers/boardsReducer';
 import ModalForm from '../generalComponents/ModalForm';
 
-export default function BoardsPage() {
+export default function MainRoute() {
   const { isLoading, boardList, modal } = useAppSelector(({ boardsReducer }) => boardsReducer);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(getBoards());
-  }, [dispatch]);
+  }, [dispatch, JSON.stringify(boardList)]);
 
   return (
     <div className="container boards-page">

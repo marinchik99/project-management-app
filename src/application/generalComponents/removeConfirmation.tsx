@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAppDispatch } from '../../store';
 import { TRemoveConf } from '../../.d';
-import { deleteBoardById } from '../../store/reducers/boardsReducer';
+import { deleteBoardById, getBoards } from '../../store/reducers/boardsReducer';
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -40,6 +40,7 @@ export default function RemoveConfirmation(props: TRemoveConf) {
   const handleRemove = () => {
     dispatch(deleteBoardById(id as string));
     setIsModalOpen(false);
+    setTimeout(() => dispatch(getBoards()), 10);
   };
 
   return (
