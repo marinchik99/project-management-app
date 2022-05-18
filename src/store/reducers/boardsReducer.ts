@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AxiosResponse } from 'axios';
 import { Board, BoardBody, BoardList, ModalState } from '../../.d';
-import { boardAxios, axiosInstance } from '../../services/axiosInstance';
+import { axiosInstance } from '../../services/axiosInstance';
 
 export type BoardsState = {
   boardList: Board[];

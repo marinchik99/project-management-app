@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { Board } from '../../../.d';
-import RemoveConfirmation from '../../generalComponents/RemoveConfirmation';
+import RemoveConfirmation from '../../generalComponents/removeConfirmation';
 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';

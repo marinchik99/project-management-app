@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { Provider } from 'react-redux';
 import { store } from '../store';
-import RemoveConfirmation from '../application/generalComponents/RemoveConfirmation';
+import RemoveConfirmation from '../application/generalComponents/removeConfirmation';
 
 test('RemoveConfirmation component rendering', async () => {
   render(
