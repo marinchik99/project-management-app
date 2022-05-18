@@ -1,11 +1,18 @@
+import { EnhancedStore } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { store } from '../store';
+// import { store } from '../store';
 
-export const instance = axios.create({
+let store: EnhancedStore;
+
+export const injectStore = (_store: EnhancedStore) => {
+  store = _store;
+};
+
+export const axiosInstance = axios.create({
   baseURL: 'https://kanban-rest-marina-team.herokuapp.com/',
 });
 
-instance.interceptors.request.use(
+axiosInstance.interceptors.request.use(
   function (config) {
     return {
       ...config,
@@ -19,3 +26,12 @@ instance.interceptors.request.use(
     return Promise.reject(error);
   }
 );
+
+export const boardAxios = axios.create({
+  baseURL: 'https://kanban-rest-marina-team.herokuapp.com/',
+  timeout: 1000,
+  headers: {
+    Authorization: `Bearer ${store.getState().auth.token || localStorage.getItem('token') || ''}`,
+    'Content-Type': 'application/json',
+  },
+});
