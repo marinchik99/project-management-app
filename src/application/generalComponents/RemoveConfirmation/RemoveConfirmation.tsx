@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { useAppDispatch } from '../../store';
-import { TRemoveConf } from '../../.d';
-import { deleteBoardById, getBoards } from '../../store/reducers/boardsReducer';
+import { useAppDispatch } from '../../../store';
+import { TRemoveConf } from '../../../.d';
+import { deleteBoardById, getBoards } from '../../../store/reducers/boardsReducer';
+import './RemoveConfirmation.scss';
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import { ButtonGroup } from '@mui/material';
 
 export default function RemoveConfirmation(props: TRemoveConf) {
   const dispatch = useAppDispatch();
@@ -44,21 +46,30 @@ export default function RemoveConfirmation(props: TRemoveConf) {
   };
 
   return (
-    <div className="modal-confirmation">
-      <Button onClick={handleOpen}>Удалить</Button>
+    <div>
+      <Button variant="outlined" onClick={handleOpen}>
+        Удалить
+      </Button>
 
       <Modal
         open={isModalOpen}
         onClose={handleClose}
+        className="modal-confirmation"
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          <Typography id="modal-modal-description" gutterBottom sx={{ mt: 2 }}>
             Вы уверены, что хотите удалить эту доску?
           </Typography>
-          <Button onClick={handleRemove}>Да</Button>
-          <Button onClick={handleClose}>Отменить</Button>
+          <ButtonGroup>
+            <Button variant="contained" onClick={handleRemove}>
+              Да
+            </Button>
+            <Button variant="contained" onClick={handleClose}>
+              Нет
+            </Button>
+          </ButtonGroup>
         </Box>
       </Modal>
     </div>

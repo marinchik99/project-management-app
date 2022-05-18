@@ -9,6 +9,9 @@ type ThemeOptions = {
     secondary: {
       main: string;
     };
+    textColor: {
+      main: string;
+    };
     error: {
       main: string;
       light: string;
@@ -26,6 +29,9 @@ export const themeOptions: ThemeOptions = {
     },
     secondary: {
       main: '#c75b39',
+    },
+    textColor: {
+      main: '#000000',
     },
     error: {
       main: '#d1010b',

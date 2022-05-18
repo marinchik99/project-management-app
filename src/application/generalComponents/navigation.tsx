@@ -30,14 +30,6 @@ export default function Navigation() {
           Sign up
         </NavLink>
         <NavLink
-          data-testid="form-link"
-          to="/Main"
-          className="navbar__a"
-          style={({ isActive }) => (isActive ? { color: 'red' } : { color: 'black' })}
-        >
-          main
-        </NavLink>
-        <NavLink
           data-testid="modal-link"
           to="/Boards"
           className="navbar__a"
