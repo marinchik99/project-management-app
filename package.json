@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "11.9.0",
     "@emotion/styled": "11.8.1",
+    "@mui/lab": "5.0.0-alpha.81",
     "@mui/material": "5.6.4",
     "@reduxjs/toolkit": "1.8.1",
     "@testing-library/jest-dom": "5.16.4",
@@ -20,7 +21,7 @@
     "eslint-config-prettier": "8.5.0",
     "eslint-config-react": "1.1.7",
     "eslint-plugin-prettier": "4.0.0",
-    "framer-motion": "6.3.3",
+    "framer-motion": "^6.3.3",
     "husky": "7.0.4",
     "lint-staged": "12.4.1",
     "prettier": "2.6.2",
@@ -38,7 +39,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --coverage --watchAll",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -58,5 +59,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@mui/icons-material": "^5.6.2",
+    "react-redux": "^8.0.1",
+    "sass": "^1.51.0"
   }
 }
