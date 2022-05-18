@@ -93,6 +93,7 @@ export default function LoginPage() {
               render={({ field }) => (
                 <TextField
                   {...field}
+                  inputProps={{ 'data-testid': 'login' }}
                   margin="normal"
                   fullWidth
                   label="Введите логин"
@@ -114,6 +115,7 @@ export default function LoginPage() {
                   {...field}
                   margin="normal"
                   fullWidth
+                  inputProps={{ 'data-testid': 'password' }}
                   label="Введите пароль"
                   type="password"
                   error={!!errors.password}
@@ -122,6 +124,7 @@ export default function LoginPage() {
               )}
             />
             <LoadingButton
+              data-testid="submit"
               type="submit"
               fullWidth
               variant="contained"
