@@ -62,7 +62,7 @@
 }
 
 .welcome-page button:hover {
-  border-color: #ff8a65;
+  border-color: var(--secondary-color);
   color: var(--secondary-color);
 }
 
@@ -78,7 +78,7 @@
 }
 
 .authoriz-buttons > a:nth-child(2) > button:hover {
-  background: #ff8a65;
+  background: var(--secondary-color);
 }
 
 .desk-container {

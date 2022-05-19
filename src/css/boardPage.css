@@ -1,0 +1,76 @@
+.board-page {
+  padding: 0;
+  background: #f7f7f7;
+  max-height: 100%;
+}
+
+.board-container {
+  min-height: calc(100vh - 70px);
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.board-info {
+  height: 80px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.board-name {
+  text-align: center;
+  font-size: 2rem;
+  border-bottom: 1px solid var(--main-color);
+}
+
+.board-container .button-to-boards,
+.board-container .button-add-column {
+  margin-right: 20px;
+  color: black;
+  background: var(--main-color);
+}
+
+.board-container .button-to-boards:hover,
+.board-container .button-add-column:hover {
+  border-color: var(--secondary-color);
+  background: var(--secondary-color);
+}
+
+.work-container {
+  bottom: 75px;
+  top: 90px;
+  left: 0px;
+  right: 0px;
+  position: absolute;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  padding: 7px;
+  white-space: nowrap;
+}
+
+.list-container {
+  box-sizing: border-box;
+  display: inline-block;
+  white-space: nowrap;
+  align-self: baseline;
+  max-width: 250px;
+  width: 100%;
+  background: #b0bec57a;
+  margin: 0 10px;
+  padding: 10px;
+  border-radius: 5px;
+  overflow: auto;
+  max-height: 100%;
+  vertical-align: top;
+}
+
+.list-title {
+  padding: 5px;
+}
+
+.list-title:focus {
+  outline: 1px solid var(--main-color);
+}
