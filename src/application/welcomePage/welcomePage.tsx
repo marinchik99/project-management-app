@@ -11,17 +11,6 @@ export default function WelcomePage() {
     <section className="welcome-page">
       <Container maxWidth="xl" className="general-welcome">
         <Grid container spacing={1} justifyContent="center" alignItems="center">
-          <Grid item xs={3}></Grid>
-          <Grid item xs={9} className="authoriz-butt-cont">
-            <ButtonGroup className="authoriz-buttons">
-              <NavLink to="/Login" style={{ textDecoration: 'none' }}>
-                <Button variant="text">Log in</Button>
-              </NavLink>
-              <NavLink to="/Signup" style={{ textDecoration: 'none' }}>
-                <Button variant="contained">Sign up</Button>
-              </NavLink>
-            </ButtonGroup>
-          </Grid>
           <Grid item xs={6} className="general-text">
             <h1 className="general-name">Remboard</h1>
             <h2 className="general-desript">

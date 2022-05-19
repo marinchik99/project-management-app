@@ -1,3 +1,9 @@
 .modal-confirmation {
   text-align: center;
 }
+
+.remove-btn:hover {
+  color: white;
+  border-color: white !important;
+  background-color: var(--secondary-color) !important;
+}

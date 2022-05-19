@@ -52,33 +52,17 @@
   font-size: 1rem !important;
 }
 
-.authoriz-buttons {
-  margin: 20px;
-  align-self: center;
-}
-
 .welcome-page button {
   color: black;
 }
 
 .welcome-page button:hover {
-  border-color: #ff8a65;
+  border-color: var(--secondary-middle-color);
   color: var(--secondary-color);
 }
 
 .desk-text button {
   border-color: var(--main-color);
-}
-
-.authoriz-buttons > a:nth-child(2) > button{
-  background: var(--main-color);
-  color: black;
-  font-size: 0.95rem;
-  border-color:  var(--main-color);
-}
-
-.authoriz-buttons > a:nth-child(2) > button:hover {
-  background: #ff8a65;
 }
 
 .desk-container {
