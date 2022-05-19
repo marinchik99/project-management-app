@@ -2,8 +2,8 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { Provider } from 'react-redux';
-import { store } from '../store';
-import RemoveConfirmation from '../application/generalComponents/removeConfirmation';
+import { store } from '../../../store';
+import RemoveConfirmation from './RemoveConfirmation';
 
 test('RemoveConfirmation component rendering', async () => {
   render(
@@ -18,7 +18,7 @@ test('RemoveConfirmation component rendering', async () => {
   userEvent.click(openModalBtn);
 
   expect(await screen.findByText('Вы уверены, что хотите удалить эту доску?')).toBeInTheDocument();
-  const cancelBtn = await screen.findByText('Отменить');
+  const cancelBtn = await screen.findByText('Нет');
   expect(cancelBtn).toBeInTheDocument();
 
   userEvent.click(cancelBtn);

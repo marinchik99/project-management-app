@@ -1,0 +1,10 @@
+.board-card {
+
+  &__remove-btn {
+    justify-content: end;
+  }
+}
+
+.board-card > * {
+  text-decoration: none;
+}

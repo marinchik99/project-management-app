@@ -7,6 +7,7 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { useAppDispatch, useAppSelector } from '../../../store';
 import { setModalState } from '../../../store/reducers/boardsReducer';
 import { ModalState } from '../../../.d';
+import './AddBoardBtn.scss';
 
 export default function AddBoardBtn() {
   const dispatch = useAppDispatch();
@@ -21,10 +22,10 @@ export default function AddBoardBtn() {
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card className="add-board-card" sx={{ maxWidth: 350 }}>
       <CardActionArea onClick={handleCreateBoard} data-testid="addBoardBtn">
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h5" component="h5">
             Добавить доску
           </Typography>
           <AddCircleOutlineIcon />
