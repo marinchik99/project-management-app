@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Board } from '../../.d';
-import RemoveConfirmation from '../generalComponents/removeConfirmation';
+import { Board } from '../../../.d';
+import RemoveConfirmation from '../../generalComponents/RemoveConfirmation/RemoveConfirmation';
+import './BoardItem.scss';
 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -13,23 +14,26 @@ export default function BoardItem(props: Board) {
   const { id, title, description } = props;
 
   return (
-    <Card sx={{ maxWidth: 350 }}>
+    <Card className="board-card" sx={{ maxWidth: 350 }}>
       <Link to={`boards/${id}`}>
         <CardActionArea>
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography
+              gutterBottom
+              variant="h5"
+              component="h5"
+              color="text.primary"
+              className="board-card__title"
+            >
               {title}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" color="text.primary">
               {description}
             </Typography>
           </CardContent>
         </CardActionArea>
       </Link>
-      <CardActions>
-        {/* <Button size="small" color="primary" onClick={handleDelete}>
-          Delete
-        </Button> */}
+      <CardActions className="board-card__remove-btn">
         <RemoveConfirmation id={id} />
       </CardActions>
     </Card>

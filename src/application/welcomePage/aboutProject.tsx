@@ -38,7 +38,7 @@ export default function AboutProject() {
               могут располагаться в нужном для Вас порядке.
             </motion.p>
             <motion.div custom={1} variants={textAnimation}>
-              <NavLink to="/Main" style={{ textDecoration: 'none' }}>
+              <NavLink to="/Boards" style={{ textDecoration: 'none' }}>
                 <Button variant="outlined">Начать</Button>
               </NavLink>
             </motion.div>

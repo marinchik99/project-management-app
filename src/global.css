@@ -32,12 +32,25 @@ code {
     monospace;
 }
 
+button, input[type="submit"] {
+  cursor: pointer;
+}
+
 :root {
   --main-color: #b0bec5;
   --secondary-color: #c75b39;
+  --secondary-light-color: #ffbb93;
   --text-color: rgb(0, 0, 0);
 }
 
 main {
   flex-grow: 1;
+}
+
+.container {
+  box-sizing: border-box;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 40px;
 }
