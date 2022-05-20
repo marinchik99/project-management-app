@@ -104,6 +104,7 @@ export default function SignupPage() {
                   {...field}
                   margin="normal"
                   fullWidth
+                  inputProps={{ 'data-testid': 'name' }}
                   label="Введите имя"
                   autoFocus
                   error={!!errors.name}
@@ -127,6 +128,7 @@ export default function SignupPage() {
                   {...field}
                   margin="normal"
                   fullWidth
+                  inputProps={{ 'data-testid': 'loginS' }}
                   label="Введите логин"
                   error={!!errors.login}
                   helperText={errors.login?.message}
@@ -147,17 +149,26 @@ export default function SignupPage() {
                   fullWidth
                   label="Введите пароль"
                   type="password"
+                  inputProps={{ 'data-testid': 'passwordS' }}
                   error={!!errors.password}
                   helperText={errors.password?.message}
                 />
               )}
             />
             <FormControlLabel
-              control={<Checkbox checked={isAgree} color="default" onChange={checkboxChange} />}
+              control={
+                <Checkbox
+                  inputProps={{ role: 'checkbox' }}
+                  checked={isAgree}
+                  color="default"
+                  onChange={checkboxChange}
+                />
+              }
               label="Согласен с политикой безопасности"
             />
             <LoadingButton
               type="submit"
+              data-testid="submitS"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
