@@ -52,17 +52,12 @@
   font-size: 1rem !important;
 }
 
-.authoriz-buttons {
-  margin: 20px;
-  align-self: center;
-}
-
 .welcome-page button {
   color: black;
 }
 
 .welcome-page button:hover {
-  border-color: var(--secondary-color);
+  border-color: var(--secondary-middle-color);
   color: var(--secondary-color);
 }
 

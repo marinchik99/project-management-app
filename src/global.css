@@ -31,12 +31,33 @@ code {
     monospace;
 }
 
+button, input[type="submit"] {
+  cursor: pointer;
+}
+
 :root {
   --main-color: #b0bec5;
+  --main-light-color: #e2f1f8;
+  --main-dark-color: #afbdc4;
+  --main-darkest-color: #808d94;
+  --secondary-middle-color: #ff8a65;
   --secondary-color: #c75b39;
+  --secondary-light-color: #ffbb93;
   --text-color: rgb(0, 0, 0);
 }
 
 main {
+<<<<<<< HEAD
   min-height: calc(100vh - 70px);
+=======
+  flex-grow: 1;
+}
+
+.container {
+  box-sizing: border-box;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 40px;
+>>>>>>> 0323fe4743da9298cfebd7d7fa0f94ec443a40c7
 }

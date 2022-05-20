@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { useAppDispatch } from '../../store';
-import { TRemoveConf } from '../../.d';
-import { deleteBoardById } from '../../store/reducers/boardsReducer';
+import { useAppDispatch } from '../../../store';
+import { TRemoveConf } from '../../../.d';
+import { deleteBoardById, getBoards } from '../../../store/reducers/boardsReducer';
+import './RemoveConfirmation.scss';
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import { ButtonGroup } from '@mui/material';
 
 export default function RemoveConfirmation(props: TRemoveConf) {
   const dispatch = useAppDispatch();
@@ -40,24 +42,34 @@ export default function RemoveConfirmation(props: TRemoveConf) {
   const handleRemove = () => {
     dispatch(deleteBoardById(id as string));
     setIsModalOpen(false);
+    setTimeout(() => dispatch(getBoards()), 10);
   };
 
   return (
-    <div className="modal-form">
-      <Button onClick={handleOpen}>Удалить</Button>
+    <div id="modal-remove-confirm" className="modal modal-remove-confirm">
+      <Button className="remove-btn" variant="outlined" onClick={handleOpen}>
+        Удалить
+      </Button>
 
       <Modal
         open={isModalOpen}
         onClose={handleClose}
+        className="modal-confirmation"
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          <Typography id="modal-modal-description" gutterBottom sx={{ mt: 2 }}>
             Вы уверены, что хотите удалить эту доску?
           </Typography>
-          <Button onClick={handleRemove}>Да</Button>
-          <Button onClick={handleClose}>Отменить</Button>
+          <ButtonGroup>
+            <Button className="remove-btn" variant="contained" onClick={handleRemove}>
+              Да
+            </Button>
+            <Button variant="contained" onClick={handleClose}>
+              Нет
+            </Button>
+          </ButtonGroup>
         </Box>
       </Modal>
     </div>

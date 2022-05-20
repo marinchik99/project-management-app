@@ -3,15 +3,20 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import boardsReducer from './reducers/boardsReducer';
 import { userApi } from './services/usersApi';
 import authReducer from './reducers/authSlice';
+import { addInterceptors } from '../services/axiosInstance';
+import settingsReducer from './reducers/settingsReducer';
 
 export const store = configureStore({
   reducer: {
     boardsReducer,
+    settingsReducer,
     [userApi.reducerPath]: userApi.reducer,
     auth: authReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(userApi.middleware),
 });
+
+addInterceptors();
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { AxiosResponse } from 'axios';
 import { Board, BoardBody, BoardList, ModalState } from '../../.d';
+import { axiosInstance } from '../../services/axiosInstance';
 
-export const baseUrl = 'https://kanban-rest-marina-team.herokuapp.com/';
-
-type BoardsState = {
+export type BoardsState = {
   boardList: Board[];
   currentBoard: Board;
   search: string;
@@ -26,12 +26,8 @@ export const createBoard = createAsyncThunk(
   'boardsReducer/createBoard',
   async (boardBody: BoardBody, { rejectWithValue }) => {
     try {
-      await fetch(`${baseUrl}/boards`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(boardBody),
+      await axiosInstance.post(`boards`, {
+        ...boardBody,
       });
       return console.log('Board ' + boardBody.title + ' was created!');
     } catch (err) {
@@ -44,13 +40,8 @@ export const getBoards = createAsyncThunk(
   'boardsReducer/getBoards',
   async (_, { rejectWithValue }) => {
     try {
-      const response: Response = await fetch(`${baseUrl}/boards`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      return await response.json();
+      const response: AxiosResponse = await axiosInstance.get(`boards`);
+      return await response.data;
     } catch (err) {
       rejectWithValue((err as Error).message);
     }
@@ -61,13 +52,8 @@ export const getBoardById = createAsyncThunk(
   'boardsReducer/getBoardById',
   async (id: string, { rejectWithValue }) => {
     try {
-      const response: Response = await fetch(`${baseUrl}/boards/${id}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      return await response.json();
+      const response: AxiosResponse = await axiosInstance.get(`boards/${id}`);
+      return await response.data;
     } catch (err) {
       rejectWithValue((err as Error).message);
     }
@@ -78,9 +64,7 @@ export const deleteBoardById = createAsyncThunk(
   'boardsReducer/deleteBoardById',
   async (id: string, { rejectWithValue }) => {
     try {
-      await fetch(`${baseUrl}/boards/${id}`, {
-        method: 'DELETE',
-      });
+      await axiosInstance.delete(`boards/${id}`);
       return console.log('Board ' + id + ' was deleted!');
     } catch (err) {
       rejectWithValue((err as Error).message);
@@ -93,15 +77,9 @@ export const updateBoardById = createAsyncThunk(
   async (board: Board, { rejectWithValue }) => {
     try {
       const { id, title, description } = board;
-      await fetch(`${baseUrl}/boards/${id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          title,
-          description,
-        }),
+      await axiosInstance.put(`boards/${id}`, {
+        title,
+        description,
       });
       return console.log('Board ' + title + ' was updated!');
     } catch (err) {

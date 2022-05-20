@@ -1,7 +1,7 @@
 import React from 'react';
 import { ChangeEvent, useEffect, useState } from 'react';
 // import { useAppDispatch, useAppSelector } from '../../store/store';
-import '../../css/search.css';
+import './Search.scss';
 
 function Search() {
   // const { movieSearchValue } = useAppSelector(({ movieReducer }) => movieReducer);
@@ -27,7 +27,7 @@ function Search() {
       <input
         className="input-search"
         type="search"
-        placeholder="Search"
+        placeholder="Поиск"
         value={searchValue || ''}
         onChange={(item) => updateSearchValue(item)}
         // onKeyDown={handleKey}
@@ -36,7 +36,7 @@ function Search() {
         className="btn search-btn"
         // onClick={() => dispatch(updateMoviesSearchResult(searchValue))}
       >
-        Search
+        Поиск
       </button>
     </div>
   );
