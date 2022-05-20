@@ -57,7 +57,7 @@
 }
 
 .welcome-page button:hover {
-  border-color: var(--secondary-middle-color);
+  border-color: var(--secondary-color);
   color: var(--secondary-color);
 }
 

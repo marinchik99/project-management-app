@@ -5,7 +5,7 @@
 }
 
 .board-container {
-  min-height: calc(100vh - 70px);
+  min-height: calc(100vh - 150px);
   overflow-x: auto;
   overflow-y: hidden;
 }
@@ -14,25 +14,18 @@
   height: 80px;
 }
 
-.button-container {
-  display: flex;
-  justify-content: flex-end;
-}
-
 .board-name {
   text-align: center;
   font-size: 2rem;
-  border-bottom: 1px solid var(--main-color);
+  border-bottom: 1px solid black;
 }
 
-.board-container .button-to-boards,
 .board-container .button-add-column {
   margin-right: 20px;
   color: black;
-  background: var(--main-color);
+  border-color: var(--main-color);
 }
 
-.board-container .button-to-boards:hover,
 .board-container .button-add-column:hover {
   border-color: var(--secondary-color);
   background: var(--secondary-color);
@@ -40,14 +33,13 @@
 
 .work-container {
   bottom: 75px;
-  top: 90px;
+  top: 160px;
   left: 0px;
   right: 0px;
   position: absolute;
   overflow-x: auto;
   overflow-y: hidden;
-  max-width: 100%;
-  padding: 7px;
+  margin: 0 7px;
   white-space: nowrap;
 }
 
@@ -55,22 +47,49 @@
   box-sizing: border-box;
   display: inline-block;
   white-space: nowrap;
-  align-self: baseline;
-  max-width: 250px;
-  width: 100%;
-  background: #b0bec57a;
-  margin: 0 10px;
-  padding: 10px;
-  border-radius: 5px;
-  overflow: auto;
-  max-height: 100%;
+  width: 270px;
+  margin: 0 25px;
+  height: 100%;
   vertical-align: top;
 }
 
-.list-title {
-  padding: 5px;
+.list-block {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
 }
 
-.list-title:focus {
-  outline: 1px solid var(--main-color);
+.list-title {
+  margin: 0;
+  padding: 10px 5px;
+  text-align: center;
+  min-height: 25px;
+}
+
+.list {
+  overflow-y: auto;
+  min-height: 0px;
+}
+
+.list__item {
+  cursor: pointer;
+  background: #f7f7f7;
+  min-height: 20px;
+  margin: 10px;
+  padding: 8px;
+  border-radius: 3px;
+  box-shadow: 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.add-card {
+  cursor: pointer;
+  min-height: 40px;
+  max-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:rgb(68, 68, 68);
 }

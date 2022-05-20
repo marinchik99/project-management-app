@@ -47,9 +47,7 @@ button, input[type="submit"] {
 }
 
 main {
-<<<<<<< HEAD
   min-height: calc(100vh - 70px);
-=======
   flex-grow: 1;
 }
 
@@ -59,5 +57,4 @@ main {
   width: 100%;
   margin: 0 auto;
   padding: 0 40px;
->>>>>>> 0323fe4743da9298cfebd7d7fa0f94ec443a40c7
 }
