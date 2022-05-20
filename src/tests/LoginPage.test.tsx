@@ -6,10 +6,6 @@ import LoginPage from '../application/authorizationForms/LoginPage/LoginPage';
 import { store } from '../store';
 import fetchMock from 'jest-fetch-mock';
 
-// beforeEach((): void => {
-//   fetchMock.resetMocks();
-// });
-
 describe('Login page', () => {
   test('should render LoginPage', () => {
     render(
@@ -31,8 +27,8 @@ describe('Login page', () => {
       </MemoryRouter>
     );
 
-    const loginInput = screen.getByTestId('login');
-    const passwordInput = screen.getByTestId('password');
+    const loginInput = screen.getByTestId('loginL');
+    const passwordInput = screen.getByTestId('passwordL');
 
     expect(loginInput).toBeInTheDocument();
     expect(passwordInput).toBeInTheDocument();
@@ -46,9 +42,9 @@ describe('Login page', () => {
       </MemoryRouter>
     );
 
-    const loginInput = screen.getByTestId('login');
-    const passwordInput = screen.getByTestId('password');
-    const submit = screen.getByTestId('submit');
+    const loginInput = screen.getByTestId('loginL');
+    const passwordInput = screen.getByTestId('passwordL');
+    const submit = screen.getByTestId('submitL');
 
     fireEvent.change(loginInput, { target: { value: 'Саша' } });
     fireEvent.change(passwordInput, { target: { value: '12' } });
@@ -69,7 +65,7 @@ describe('Login page', () => {
       </MemoryRouter>
     );
 
-    const submit = screen.getByTestId('submit');
+    const submit = screen.getByTestId('submitL');
 
     fireEvent.click(submit);
 
@@ -77,7 +73,7 @@ describe('Login page', () => {
   });
 
   test('the form must show toast when wrong login', async () => {
-    fetchMock.mockReject(new Error('Internal Server Error'));
+    fetchMock.mockReject(new Error('Login internal Error'));
 
     render(
       <MemoryRouter>
@@ -87,12 +83,12 @@ describe('Login page', () => {
       </MemoryRouter>
     );
 
-    const loginInput = screen.getByTestId('login');
-    const passwordInput = screen.getByTestId('password');
-    const submit = screen.getByTestId('submit');
+    const loginInput = screen.getByTestId('loginL');
+    const passwordInput = screen.getByTestId('passwordL');
+    const submit = screen.getByTestId('submitL');
 
     await act(async () => {
-      fireEvent.change(loginInput, { target: { value: 'Alexander' } });
+      fireEvent.change(loginInput, { target: { value: 'Alexander1' } });
       fireEvent.change(passwordInput, { target: { value: '123456' } });
       fireEvent.click(submit);
     });

@@ -50,7 +50,7 @@ export default function LoginPage() {
   }, [isError]);
 
   const onSubmit = async (data: Partial<UserType>) => {
-    login(data);
+    await login(data);
   };
 
   const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
@@ -93,7 +93,7 @@ export default function LoginPage() {
               render={({ field }) => (
                 <TextField
                   {...field}
-                  inputProps={{ 'data-testid': 'login' }}
+                  inputProps={{ 'data-testid': 'loginL' }}
                   margin="normal"
                   fullWidth
                   label="Введите логин"
@@ -115,7 +115,7 @@ export default function LoginPage() {
                   {...field}
                   margin="normal"
                   fullWidth
-                  inputProps={{ 'data-testid': 'password' }}
+                  inputProps={{ 'data-testid': 'passwordL' }}
                   label="Введите пароль"
                   type="password"
                   error={!!errors.password}
@@ -124,7 +124,7 @@ export default function LoginPage() {
               )}
             />
             <LoadingButton
-              data-testid="submit"
+              data-testid="submitL"
               type="submit"
               fullWidth
               variant="contained"

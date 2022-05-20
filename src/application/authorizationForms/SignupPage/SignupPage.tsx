@@ -49,7 +49,6 @@ export default function SignupPage() {
   }, [data]);
 
   useEffect(() => {
-    console.log('it works');
     if (isError) {
       setOpen(true);
     }
@@ -60,7 +59,6 @@ export default function SignupPage() {
   };
 
   const checkboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log('checkbox handle');
     setAgree(e.target.checked);
   };
 
@@ -130,7 +128,7 @@ export default function SignupPage() {
                   {...field}
                   margin="normal"
                   fullWidth
-                  inputProps={{ 'data-testid': 'login' }}
+                  inputProps={{ 'data-testid': 'loginS' }}
                   label="Введите логин"
                   error={!!errors.login}
                   helperText={errors.login?.message}
@@ -151,7 +149,7 @@ export default function SignupPage() {
                   fullWidth
                   label="Введите пароль"
                   type="password"
-                  inputProps={{ 'data-testid': 'password' }}
+                  inputProps={{ 'data-testid': 'passwordS' }}
                   error={!!errors.password}
                   helperText={errors.password?.message}
                 />
@@ -170,7 +168,7 @@ export default function SignupPage() {
             />
             <LoadingButton
               type="submit"
-              data-testid="submit"
+              data-testid="submitS"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
