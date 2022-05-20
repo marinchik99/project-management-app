@@ -8,13 +8,14 @@ import MainRoute from './application/mainRoute/MainRoute';
 import SignupPage from './application/authorizationForms/SignupPage/SignupPage';
 import LoginPage from './application/authorizationForms/LoginPage/LoginPage';
 import { useAppSelector } from './store';
+import Header from './application/generalComponents/header';
 
 function App() {
   const token = useAppSelector((state) => state.auth.token);
 
   return (
     <div className="App">
-      {/* <Navigation /> */}
+      <Header />
       <Routes>
         <Route path="/" element={<WelcomePage />} />
         <Route path="/Login" element={token ? <Navigate to="/" /> : <LoginPage />} />

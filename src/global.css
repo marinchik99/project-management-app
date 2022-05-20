@@ -38,6 +38,10 @@ button, input[type="submit"] {
 
 :root {
   --main-color: #b0bec5;
+  --main-light-color: #e2f1f8;
+  --main-dark-color: #afbdc4;
+  --main-darkest-color: #808d94;
+  --secondary-middle-color: #ff8a65;
   --secondary-color: #c75b39;
   --secondary-light-color: #ffbb93;
   --text-color: rgb(0, 0, 0);

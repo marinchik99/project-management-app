@@ -1,0 +1,68 @@
+.header {
+  position: sticky;
+  z-index: 100;
+  top: 0;
+  display: flex;
+  align-items: center;
+  height: 80px;
+  background-color: var(--main-dark-color);
+  transition: all ease-in-out 0.3s;
+
+  a {
+    text-decoration: none;
+    color: var(--text-color);
+    transition: ease-in-out 0.2s;
+  }
+
+  button {
+    color: var(--text-color);
+    border-color: var(--main-darkest-color);
+    transition: ease-in-out 0.2s;
+  }
+  
+  button:hover {
+    color: var(--secondary-color);
+    border-color: var(--secondary-color);
+  }
+
+  .auth-login:hover > a {
+    color: var(--secondary-color);
+  }
+}
+
+.auth-buttons .auth-signup {
+  background-color: var(--main-darkest-color);
+}
+
+.auth-buttons .auth-signup:hover {
+  color: var(--text-color);
+  background: var(--secondary-middle-color);
+}
+
+.header--sticky {
+  height: 60px;
+  background-color: var(--main-darkest-color);
+
+  button {
+    color: var(--text-color);
+    border-color: var(--main-dark-color);
+  }
+  
+  button:hover {
+    color: var(--secondary-light-color);
+    border-color: var(--secondary-middle-color);
+  }
+
+  .auth-login:hover > a {
+    color: var(--secondary-light-color);
+  }
+
+  .auth-signup {
+    background-color: var(--main-dark-color);
+  }
+}
+
+.lang-toggle {
+  height: 36px;
+  margin-right: 50px;
+}
