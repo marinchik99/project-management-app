@@ -2,6 +2,7 @@
   padding: 0;
   background: #f7f7f7;
   max-height: 100%;
+  min-height: calc(100vh - 150px);
 }
 
 .board-container {
@@ -18,6 +19,7 @@
   text-align: center;
   font-size: 2rem;
   border-bottom: 1px solid black;
+  cursor: default;
 }
 
 .board-container .button-add-column {
@@ -26,9 +28,23 @@
   border-color: var(--main-color);
 }
 
-.board-container .button-add-column:hover {
+.list-block .list-input-buttons button {
+  color: black;
+  border-color: var(--main-darkest-color);
+  font-size: 0.7rem;
+}
+
+.list-block .list-input-buttons {
+  margin-top: 30px;
+  background: rgb(179, 179, 179);
+  position: absolute;
+}
+
+.board-container .button-add-column:hover,
+.list-block .list-input-buttons button:hover,
+.list-block .add-card:hover {
   border-color: var(--secondary-color);
-  background: var(--secondary-color);
+  color: var(--secondary-color);
 }
 
 .work-container {
@@ -62,11 +78,46 @@
   max-height: 100%;
 }
 
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 100%;
+  cursor: pointer;
+}
+
 .list-title {
-  margin: 0;
-  padding: 10px 5px;
   text-align: center;
   min-height: 25px;
+  width: 220px;
+}
+
+.list-title h3 {
+  margin: 0;
+  padding: 10px 5px;
+  max-width: 210px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list-input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.list-close {
+  margin-top: 10px;
+}
+
+.list-input {
+  height: 25px;
+  outline: none;
+  font-size: 1rem;
+  margin-bottom: 6px;
+  border-radius: 3px;
+  border: 1px solid var(--main-darkest-color)
 }
 
 .list {
@@ -84,7 +135,7 @@
   box-shadow: 0 2px rgba(0, 0, 0, 0.2);
 }
 
-.add-card {
+.list-block .add-card {
   cursor: pointer;
   min-height: 40px;
   max-height: 40px;
@@ -92,4 +143,5 @@
   align-items: center;
   justify-content: center;
   color:rgb(68, 68, 68);
+  font-size: 0.9rem !important;
 }

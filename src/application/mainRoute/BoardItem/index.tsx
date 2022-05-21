@@ -8,13 +8,22 @@ import './BoardItem.scss';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions } from '@mui/material';
+import { CardActionArea, CardActions } from '@mui/material';
+import { useAppDispatch } from '../../../store';
+import { setBoardId } from '../../../store/reducers/boardsReducer';
 
 export default function BoardItem(props: Board) {
   const { id, title, description } = props;
+  const dispatch = useAppDispatch();
 
   return (
-    <Card className="board-card" sx={{ maxWidth: 350 }}>
+    <Card
+      className="board-card"
+      sx={{ maxWidth: 350 }}
+      onClick={() => {
+        dispatch(setBoardId(id));
+      }}
+    >
       <Link to={`boards/${id}`}>
         <CardActionArea>
           <CardContent>
