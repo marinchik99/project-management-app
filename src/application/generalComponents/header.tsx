@@ -13,6 +13,7 @@ import { useAppDispatch, useAppSelector } from '../../store';
 import { setModalState } from '../../store/reducers/boardsReducer';
 import { setLanguage } from '../../store/reducers/settingsReducer';
 import '../../css/header.scss';
+import UserToolbar from './UserToolbar/UserToolbar';
 
 export default function Header() {
   const dispatch = useAppDispatch();
@@ -63,14 +64,7 @@ export default function Header() {
                 En
               </ToggleButton>
             </ToggleButtonGroup>
-            <ButtonGroup className="auth-buttons">
-              <Button variant="outlined" className="auth-login">
-                <NavLink to="/Login">Log in</NavLink>
-              </Button>
-              <Button variant="contained" className="auth-signup">
-                <NavLink to="/Signup">Sign up</NavLink>
-              </Button>
-            </ButtonGroup>
+            <UserToolbar />
           </Grid>
         </Grid>
       </Container>
