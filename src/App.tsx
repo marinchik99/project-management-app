@@ -12,7 +12,7 @@ import Header from './application/generalComponents/header';
 import { selectCurrentUser } from './store/reducers/authSlice';
 
 function App() {
-  const token = useAppSelector(selectCurrentUser);
+  const { token } = useAppSelector(selectCurrentUser);
 
   return (
     <div className="App">

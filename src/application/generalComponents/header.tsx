@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {
-  Button,
-  ButtonGroup,
-  Container,
-  Grid,
-  ToggleButton,
-  ToggleButtonGroup,
-} from '@mui/material';
+import { Box, Button, Container, Grid, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import { ModalState } from '../../.d';
 import { useAppDispatch, useAppSelector } from '../../store';
@@ -41,7 +34,13 @@ export default function Header() {
   return (
     <header className={scroll ? 'header header--sticky' : 'header'}>
       <Container maxWidth="xl">
-        <Grid container spacing={0} justifyContent="space-between" alignItems="center">
+        <Grid
+          container
+          flexWrap="wrap"
+          spacing={0}
+          justifyContent="space-between"
+          alignItems="center"
+        >
           <Grid item xs={3}>
             <NavLink to="/boards" style={{ textDecoration: 'none' }}>
               <Button variant="outlined" onClick={handleNewBoardClick}>
@@ -50,21 +49,23 @@ export default function Header() {
             </NavLink>
           </Grid>
           <Grid item xs={9} className="authoriz-butt-cont">
-            <ToggleButtonGroup
-              value={language}
-              exclusive
-              onChange={handleAlignment}
-              aria-label="language"
-              className="lang-toggle"
-            >
-              <ToggleButton value="ru" aria-label="ru">
-                Ru
-              </ToggleButton>
-              <ToggleButton value="en" aria-label="en">
-                En
-              </ToggleButton>
-            </ToggleButtonGroup>
-            <UserToolbar />
+            <Box sx={{ display: 'flex', justifyContent: 'end', alignItems: 'center' }}>
+              <ToggleButtonGroup
+                value={language}
+                exclusive
+                onChange={handleAlignment}
+                aria-label="language"
+                className="lang-toggle"
+              >
+                <ToggleButton value="ru" aria-label="ru">
+                  Ru
+                </ToggleButton>
+                <ToggleButton value="en" aria-label="en">
+                  En
+                </ToggleButton>
+              </ToggleButtonGroup>
+              <UserToolbar />
+            </Box>
           </Grid>
         </Grid>
       </Container>
