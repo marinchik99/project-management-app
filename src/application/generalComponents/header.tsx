@@ -7,10 +7,12 @@ import { setModalState } from '../../store/reducers/boardsReducer';
 import { setLanguage } from '../../store/reducers/settingsReducer';
 import '../../css/header.scss';
 import UserToolbar from './UserToolbar/UserToolbar';
+import { selectCurrentUser } from '../../store/reducers/authSlice';
 
 export default function Header() {
   const dispatch = useAppDispatch();
   const { language } = useAppSelector(({ settingsReducer }) => settingsReducer);
+  const { token } = useAppSelector(selectCurrentUser);
 
   const [scroll, setScroll] = useState(false);
   useEffect(() => {
@@ -42,11 +44,13 @@ export default function Header() {
           alignItems="center"
         >
           <Grid item xs={3}>
-            <NavLink to="/boards" style={{ textDecoration: 'none' }}>
-              <Button variant="outlined" onClick={handleNewBoardClick}>
-                Создать новую доску
-              </Button>
-            </NavLink>
+            {token && (
+              <NavLink to="/boards" style={{ textDecoration: 'none' }}>
+                <Button variant="outlined" onClick={handleNewBoardClick}>
+                  Создать новую доску
+                </Button>
+              </NavLink>
+            )}
           </Grid>
           <Grid item xs={9} className="authoriz-butt-cont">
             <Box sx={{ display: 'flex', justifyContent: 'end', alignItems: 'center' }}>
