@@ -9,21 +9,12 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { CardActionArea, CardActions } from '@mui/material';
-import { useAppDispatch } from '../../../store';
-import { setBoardId } from '../../../store/reducers/boardsReducer';
 
 export default function BoardItem(props: Board) {
   const { id, title, description } = props;
-  const dispatch = useAppDispatch();
 
   return (
-    <Card
-      className="board-card"
-      sx={{ maxWidth: 350 }}
-      onClick={() => {
-        dispatch(setBoardId(id));
-      }}
-    >
+    <Card className="board-card" sx={{ maxWidth: 350 }}>
       <Link to={`boards/${id}`}>
         <CardActionArea>
           <CardContent>

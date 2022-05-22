@@ -12,19 +12,15 @@ import Header from './application/generalComponents/header';
 
 function App() {
   const token = useAppSelector((state) => state.auth.token);
-  const { currentBoard } = useAppSelector(({ boardsReducer }) => boardsReducer);
 
   return (
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/" element={<WelcomePage />} />
+        <Route path="/" element={token ? <Navigate to="/Boards" /> : <WelcomePage />} />
         <Route path="/Login" element={token ? <Navigate to="/Boards" /> : <LoginPage />} />
         <Route path="/Signup" element={token ? <Navigate to="/Boards" /> : <SignupPage />} />
-        <Route
-          path={`/Boards/boards/${currentBoard.id}`}
-          element={!token ? <Navigate to="/" /> : <BoardPage />}
-        />
+        <Route path={`/Boards/boards/:id`} element={!token ? <Navigate to="/" /> : <BoardPage />} />
         <Route path="/Boards" element={!token ? <Navigate to="/" /> : <MainRoute />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>

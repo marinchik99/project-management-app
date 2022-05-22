@@ -23,6 +23,7 @@
 }
 
 .board-container .button-add-column {
+  margin-left: 35px;
   margin-right: 20px;
   color: black;
   border-color: var(--main-color);

@@ -99,9 +99,6 @@ export const boardsReducer = createSlice({
     setModalState: (state, { payload }: PayloadAction<ModalState>) => {
       state.modal = payload;
     },
-    setBoardId: (state, { payload }: PayloadAction<string>) => {
-      state.currentBoard.id = payload;
-    },
   },
   extraReducers: (builder) =>
     builder
@@ -127,5 +124,5 @@ export const boardsReducer = createSlice({
       }),
 });
 
-export const { setModalState, setBoardId } = boardsReducer.actions;
+export const { setModalState } = boardsReducer.actions;
 export default boardsReducer.reducer;

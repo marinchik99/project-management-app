@@ -1,20 +1,35 @@
-import { Container, Grid, Button, ButtonGroup } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import { Container, Grid, Button } from '@mui/material';
+import React, { useEffect } from 'react';
 import '../../css/boardPage.css';
 import AddIcon from '@mui/icons-material/Add';
 import Preloader from '../generalComponents/preloader';
 import { useAppDispatch, useAppSelector } from '../../store';
+import { getColumns, setModalState } from '../../store/reducers/columnsReducer';
 import { getBoardById } from '../../store/reducers/boardsReducer';
-import CloseIcon from '@mui/icons-material/Close';
+import ColumnList from './column';
+import { ModalState } from '../../.d';
+import ModalCreateColumn from '../generalComponents/ModalForm/modalCreateColumn';
+import { useParams } from 'react-router-dom';
 
 export default function BoardPage() {
   const { isLoading, currentBoard } = useAppSelector(({ boardsReducer }) => boardsReducer);
+  const { columnList, modalColumn } = useAppSelector(({ columnsReducer }) => columnsReducer);
   const dispatch = useAppDispatch();
-  const [changeTitle, setTitle] = useState(false);
+  const params = useParams();
 
   useEffect(() => {
-    dispatch(getBoardById(currentBoard.id));
-  }, [currentBoard.id, dispatch]);
+    dispatch(getColumns(params.id));
+    dispatch(getBoardById(params.id));
+  }, []);
+
+  const createColumn = () => {
+    const modalState: ModalState = {
+      isOpen: true,
+      type: 'column',
+    };
+
+    dispatch(setModalState(modalState));
+  };
 
   return (
     <section className="board-page">
@@ -35,43 +50,15 @@ export default function BoardPage() {
             <Grid item xs={3}></Grid>
           </Grid>
           <div className="work-container">
-            <div className="list-container">
-              <div className="list-block">
-                <div className="title-container">
-                  <div className="list-title">
-                    {!changeTitle ? (
-                      <h3 onClick={() => setTitle(true)}> Title </h3>
-                    ) : (
-                      <div className="list-input-container">
-                        <input className="list-input" type="text" />
-                        <ButtonGroup
-                          className="list-input-buttons"
-                          variant="outlined"
-                          size="small"
-                          aria-label="small button group"
-                        >
-                          <Button onClick={() => setTitle(false)}>Submit</Button>
-                          <Button onClick={() => setTitle(false)}>Cansel</Button>
-                        </ButtonGroup>
-                      </div>
-                    )}
-                  </div>
-                  <CloseIcon className="list-close" />
-                </div>
-                <div className="list">
-                  <div className="list__item">Карточка с содержимым</div>
-                </div>
-                <Button className="add-card">
-                  <AddIcon fontSize="small" />
-                  Добавить карточку
-                </Button>
-              </div>
-            </div>
-            <Button variant="outlined" className="button-add-column">
+            {columnList.map((column) => (
+              <ColumnList key={column.id} {...column} />
+            ))}
+            <Button variant="outlined" className="button-add-column" onClick={createColumn}>
               <AddIcon fontSize="small" />
               Добавить колонку
             </Button>
           </div>
+          {modalColumn.isOpen && modalColumn.type === 'column' && <ModalCreateColumn />}
         </Container>
       )}
     </section>
