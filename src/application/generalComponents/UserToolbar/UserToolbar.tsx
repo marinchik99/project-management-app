@@ -1,5 +1,6 @@
 import { Avatar, Button, ButtonGroup, Stack, ThemeProvider } from '@mui/material';
 import React from 'react';
+import { Trans } from 'react-i18next';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../store';
 import { logout, selectCurrentUser } from '../../../store/reducers/authSlice';
@@ -49,10 +50,14 @@ const UserToolbar = () => {
         {!token && (
           <ButtonGroup className="auth-buttons">
             <Button variant="outlined" className="auth-login">
-              <NavLink to="/Login">Log in</NavLink>
+              <NavLink to="/Login">
+                <Trans i18nKey="header.loginBtn">Войти</Trans>
+              </NavLink>
             </Button>
             <Button variant="contained" className="auth-signup">
-              <NavLink to="/Signup">Sign up</NavLink>
+              <NavLink to="/Signup">
+                <Trans i18nKey="header.signupBtn">Зарегистрироваться</Trans>
+              </NavLink>
             </Button>
           </ButtonGroup>
         )}
@@ -62,7 +67,7 @@ const UserToolbar = () => {
               <Avatar {...stringAvatar(login)} style={{ cursor: 'pointer' }} />
             </NavLink>
             <Button variant="outlined" onClick={onClick}>
-              Logout
+              <Trans i18nKey="header.logoutBtn">Выйти</Trans>
             </Button>
           </Stack>
         )}

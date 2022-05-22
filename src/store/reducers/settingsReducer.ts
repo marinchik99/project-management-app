@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import i18n from '../../services/i18n';
 
 type GlobalSettings = {
   language: string | null;
@@ -14,6 +15,7 @@ const settingsReducer = createSlice({
   reducers: {
     setLanguage: (state, { payload }: PayloadAction<string>) => {
       state.language = payload;
+      i18n.changeLanguage(payload);
     },
   },
 });

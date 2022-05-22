@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Avatar, Container, Grid } from '@mui/material';
+import { Trans } from 'react-i18next';
 
 export default function AboutTeam() {
   const animation = {
@@ -24,7 +25,9 @@ export default function AboutTeam() {
       viewport={{ amount: 0.2 }}
     >
       <Container maxWidth="xl" className="team-container">
-        <h3 className="team-title">О разработчиках</h3>
+        <h3 className="team-title">
+          <Trans i18nKey="welcomePage.aboutTeamTitle">О разработчиках</Trans>
+        </h3>
         <Grid container spacing={2} direction="column" className="team-block">
           <motion.section custom={1} variants={animation} data-testid="section-one">
             <Grid container item xs={6} className="team-card">
@@ -38,9 +41,15 @@ export default function AboutTeam() {
               </Grid>
               <Grid item xs={8} className="team-text">
                 <div className="team-main-text">
-                  <h3 className="team-name">Марина</h3>
+                  <h3 className="team-name">
+                    <Trans i18nKey="welcomePage.aboutTeam.marina.name">Марина</Trans>
+                  </h3>
                   <h4 className="developer">Team leader, frontend developer</h4>
-                  <p className="person-text">Структура приложения, роутинг, welcome-page.</p>
+                  <p className="person-text">
+                    <Trans i18nKey="welcomePage.aboutTeam.marina.done">
+                      Структура приложения, роутинг, страница приветсвия, страница доски.
+                    </Trans>
+                  </p>
                 </div>
                 <a
                   className="git-icon"
@@ -65,9 +74,15 @@ export default function AboutTeam() {
               </Grid>
               <Grid item xs={8} className="team-text">
                 <div className="team-main-text">
-                  <h3 className="team-name">Петр</h3>
+                  <h3 className="team-name">
+                    <Trans i18nKey="welcomePage.aboutTeam.petr.name">Петр</Trans>
+                  </h3>
                   <h4 className="developer">Frontend developer</h4>
-                  <p className="person-text">Здесь будет описание того, что сделали</p>
+                  <p className="person-text">
+                    <Trans i18nKey="welcomePage.aboutTeam.petr.done">
+                      Страница досок, шапку сайта, локализацию.
+                    </Trans>
+                  </p>
                 </div>
                 <a
                   className="git-icon"
@@ -92,9 +107,12 @@ export default function AboutTeam() {
               </Grid>
               <Grid item xs={8} className="team-text">
                 <div className="team-main-text">
-                  <h3 className="team-name">Сергей</h3>
+                  <h3 className="team-name">
+                    <Trans i18nKey="welcomePage.aboutTeam.sergey.name">Сергей</Trans>
+                  </h3>
                   <h4 className="developer">Frontend developer</h4>
-                  <p className="person-text">Здесь будет описание того, что сделали</p>
+                  <Trans i18nKey="welcomePage.aboutTeam.sergey.done">Авторизцию, задачи.</Trans>
+                  <p className="person-text"></p>
                 </div>
                 <a
                   className="git-icon"

@@ -6,10 +6,41 @@
     "signupBtn": "Sign up",
     "logoutBtn": "Logout"
   },
+
+  "loginPage": {
+    "title": "Log in to your account",
+    "loginLabel": "Enter your username",
+    "loginErrLength": "The minimum login length is 3 characters",
+    "loginErrSymbols": "The login can contain only Latin letters and numbers",
+    "passwordLabel": "Enter your password",
+    "passwordErrLength": "The minimum login length is 4 characters",
+    "fieldErrRequired": "Fill in the field",
+    "loginBtn": "Log in",
+    "signupLink": "Sign up",
+    "alert": "Invalid username or password!"
+  },
+
+  "signupPage": {
+    "title": "Log in",
+    "nameLabel": "Enter tour name",
+    "nameErrLength": "The minimum login length is 2 characters",
+    "nameErrSymbols": "The login can contain only Latin letters",
+    "loginLabel": "Enter your username",
+    "loginErrLength": "The minimum login length is 3 characters",
+    "loginErrSymbols": "The login can contain only Latin letters and numbers",
+    "passwordLabel": "Enter your password",
+    "passwordErrLength": "The minimum login length is 4 characters",
+    "fieldErrRequired": "Fill in the field",
+    "agreePolicy": "I agree with the security policy",
+    "signupBtn": "Sign up",
+    "loginLink": "Already have an account? Log in",
+    "alert": "An account with this username already exists."
+  },
+
   "welcomePage": {
     "generalDesript": "Helps to organize work effectively. Create and track tasks, also manage them and share an information with team members.",
-    "aboutProject1": "Start by creating boards in which you will place lists and task cards. They can be arranged in the order you need",
-    "aboutProject2": "Cards can be moved to another list, edited and deleted. Deleting a board automatically deletes the lists and cards linked to it.",
+    "aboutProjectPart1": "Start by creating boards in which you will place lists and task cards. They can be arranged in the order you need",
+    "aboutProjectPart2": "Cards can be moved to another list, edited and deleted. Deleting a board automatically deletes the lists and cards linked to it.",
     "aboutProjectBtn": "Start",
     "aboutCourseTitle": "About course",
     "aboutCourseDescription": "React conuse is designed for  RS School students who have passed RS School stage #2, as well as for those who have knowledge and practical experience in using the following technologies and tools:",
@@ -29,6 +60,7 @@
       }
     }
   },
+
   "boardsPage": {
     "title": "Boards",
     "addNewBoardBtn": "Add new board"
@@ -36,10 +68,11 @@
   "createBoardModal": {
     "title": "Create board",
     "titleLabel": "Board title",
+    "titleInputError": "*This field is mandatory",
     "descriptionLabel": "Board description"
   },
   "removeConfirmModal": {
-    "removeBtn": "Remove",
+    "removeBtn": "Delete",
     "text": "Are you sure you want to delete this board?",
     "yesBtn": "Yes",
     "noBtn": "No"

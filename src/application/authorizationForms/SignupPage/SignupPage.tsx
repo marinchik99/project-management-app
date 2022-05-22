@@ -22,6 +22,7 @@ import theme from '../../../utils/themeSettings';
 import { useRegisterMutation } from '../../../store/services/usersApi';
 import { UserType } from '../../../types/types';
 import { useNavigate } from 'react-router-dom';
+import { Trans, useTranslation } from 'react-i18next';
 
 export default function SignupPage() {
   const {
@@ -40,6 +41,7 @@ export default function SignupPage() {
   const [isAgree, setAgree] = useState(false);
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (!isError && data) {
@@ -85,18 +87,18 @@ export default function SignupPage() {
             <PersonIcon></PersonIcon>
           </Avatar>
           <Typography component="h1" variant="h5">
-            Регистрация
+            <Trans i18nKey="signupPage.title">Регистрация</Trans>
           </Typography>
           <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ mt: 1 }}>
             <Controller
               name="name"
               control={control}
               rules={{
-                required: { value: true, message: 'Заполните поле' },
-                minLength: { value: 2, message: 'Минимальная длина имени 2 символа' },
+                required: { value: true, message: t('signupPage.fieldErrRequired') },
+                minLength: { value: 2, message: t('signupPage.nameErrLength') },
                 pattern: {
                   value: /^[A-Za-z]+$/i,
-                  message: 'Имя может содержать только латинские буквы',
+                  message: t('signupPage.nameErrSymbols'),
                 },
               }}
               render={({ field }) => (
@@ -105,7 +107,7 @@ export default function SignupPage() {
                   margin="normal"
                   fullWidth
                   inputProps={{ 'data-testid': 'name' }}
-                  label="Введите имя"
+                  label={t('signupPage.nameLabel')}
                   autoFocus
                   error={!!errors.name}
                   helperText={errors.name?.message}
@@ -116,11 +118,11 @@ export default function SignupPage() {
               name="login"
               control={control}
               rules={{
-                required: { value: true, message: 'Заполните поле' },
-                minLength: { value: 3, message: 'Минимальная длина логина 3 символа' },
+                required: { value: true, message: t('signupPage.fieldErrRequired') },
+                minLength: { value: 3, message: t('signupPage.loginErrLength') },
                 pattern: {
                   value: /^[A-Za-z0-9]+$/i,
-                  message: 'Логин может содержать только латинские буквы и цифры',
+                  message: t('signupPage.loginErrSymbols'),
                 },
               }}
               render={({ field }) => (
@@ -129,7 +131,7 @@ export default function SignupPage() {
                   margin="normal"
                   fullWidth
                   inputProps={{ 'data-testid': 'loginS' }}
-                  label="Введите логин"
+                  label={t('signupPage.loginLabel')}
                   error={!!errors.login}
                   helperText={errors.login?.message}
                 />
@@ -139,15 +141,15 @@ export default function SignupPage() {
               name="password"
               control={control}
               rules={{
-                required: { value: true, message: 'Заполните поле' },
-                minLength: { value: 4, message: 'Минимальная длина пароля 4 символа' },
+                required: { value: true, message: t('signupPage.fieldErrRequired') },
+                minLength: { value: 4, message: t('signupPage.passwordErrLength') },
               }}
               render={({ field }) => (
                 <TextField
                   {...field}
                   margin="normal"
                   fullWidth
-                  label="Введите пароль"
+                  label={t('signupPage.passwordLabel')}
                   type="password"
                   inputProps={{ 'data-testid': 'passwordS' }}
                   error={!!errors.password}
@@ -164,7 +166,7 @@ export default function SignupPage() {
                   onChange={checkboxChange}
                 />
               }
-              label="Согласен с политикой безопасности"
+              label={t('signupPage.agreePolicy')}
             />
             <LoadingButton
               type="submit"
@@ -175,12 +177,12 @@ export default function SignupPage() {
               disabled={!isAgree}
               loading={isLoading}
             >
-              Зарегистрироваться
+              <Trans i18nKey="signupPage.signupBtn">Зарегистрироваться</Trans>
             </LoadingButton>
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link href="/Login" variant="body2">
-                  {'Уже есть аккаунт? Войти'}
+                  <Trans i18nKey="signupPage.loginLink">Уже есть аккаунт? Войти</Trans>
                 </Link>
               </Grid>
             </Grid>
@@ -199,7 +201,7 @@ export default function SignupPage() {
             variant="filled"
             color="error"
           >
-            Аккаунт с таким логином существует.
+            <Trans i18nKey="signupPage.alert">Аккаунт с таким логином существует.</Trans>
           </Alert>
         </Snackbar>
       </Container>

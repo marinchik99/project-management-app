@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Button, Container, Grid, ToggleButton, ToggleButtonGroup } from '@mui/material';
+import { Trans } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 import { ModalState } from '../../.d';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { setModalState } from '../../store/reducers/boardsReducer';
 import { setLanguage } from '../../store/reducers/settingsReducer';
+import { selectCurrentUser } from '../../store/reducers/authSlice';
+import { Box, Button, Container, Grid, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import '../../css/header.scss';
 import UserToolbar from './UserToolbar/UserToolbar';
-import { selectCurrentUser } from '../../store/reducers/authSlice';
 
 export default function Header() {
   const dispatch = useAppDispatch();
@@ -29,7 +30,7 @@ export default function Header() {
     dispatch(setModalState(modalState));
   };
 
-  const handleAlignment = (event: React.MouseEvent<HTMLElement>, newLang: string | null) => {
+  const handleLanguageChange = (event: React.MouseEvent<HTMLElement>, newLang: string | null) => {
     dispatch(setLanguage(newLang));
   };
 
@@ -43,26 +44,28 @@ export default function Header() {
           justifyContent="space-between"
           alignItems="center"
         >
-          <Grid item xs={3}>
+          <Grid item>
             {token && (
               <>
                 <NavLink to="/boards" style={{ marginRight: '20px' }}>
-                  <Button variant="outlined">Доски</Button>
+                  <Button variant="outlined">
+                    <Trans i18nKey="header.boardsBtn">Доски</Trans>
+                  </Button>
                 </NavLink>
                 <NavLink to="/boards">
                   <Button variant="outlined" onClick={handleNewBoardClick}>
-                    Создать новую доску
+                    <Trans i18nKey="header.createBoardBtn">Создать новую доску</Trans>
                   </Button>
                 </NavLink>
               </>
             )}
           </Grid>
-          <Grid item xs={9} className="authoriz-butt-cont">
+          <Grid item className="authoriz-butt-cont">
             <Box sx={{ display: 'flex', justifyContent: 'end', alignItems: 'center' }}>
               <ToggleButtonGroup
                 value={language}
                 exclusive
-                onChange={handleAlignment}
+                onChange={handleLanguageChange}
                 aria-label="language"
                 className="lang-toggle"
               >

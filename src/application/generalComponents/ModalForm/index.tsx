@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../store';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { Trans } from 'react-i18next';
+import { useAppDispatch, useAppSelector } from '../../../store';
+import { BoardBody } from '../../../.d';
+import { createBoard, getBoards, setModalState } from '../../../store/reducers/boardsReducer';
 
+import { Container } from '@mui/material';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
 import './ModalForm.scss';
-import { BoardBody } from '../../../.d';
-import { createBoard, getBoards, setModalState } from '../../../store/reducers/boardsReducer';
-import { Container } from '@mui/material';
 
 type Inputs = {
   title: string;
@@ -20,7 +21,6 @@ type Inputs = {
 export default function ModalForm() {
   const dispatch = useAppDispatch();
   const { modal } = useAppSelector(({ boardsReducer }) => boardsReducer);
-  // const [isModalOpen, setIsModalOpen] = useState(false);
 
   const {
     register,
@@ -61,21 +61,30 @@ export default function ModalForm() {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Создать доску
+            <Trans i18nKey="createBoardModal.title">Создать доску</Trans>
           </Typography>
           <Container id="modal-modal-description" sx={{ mt: 2 }}>
             <form className="form form--board" onSubmit={handleSubmit(onSubmit)}>
-              <label htmlFor="form-title-input">Заголовок доски</label>
+              <label htmlFor="form-title-input">
+                <Trans i18nKey="createBoardModal.titleLabel">Заголовок доски</Trans>
+              </label>
               <input
                 id="form-title-input"
                 className="form__input-text"
                 {...register('title', { required: true })}
               />
               {errors.description && (
-                <span className="form__error-text">*Это поле обязательно для заполнения</span>
+                <span className="form__error-text">
+                  <Trans i18nKey="createBoardModal.titleInputError">
+                    *Это поле обязательно для заполнения
+                  </Trans>
+                </span>
               )}
 
-              <label htmlFor="form-description-input">Описание</label>
+              <label htmlFor="form-description-input">
+                <Trans i18nKey="createBoardModal.descriptionLabel">Описание</Trans>
+              </label>
+
               <textarea
                 id="form-description-input"
                 className="form__textarea"

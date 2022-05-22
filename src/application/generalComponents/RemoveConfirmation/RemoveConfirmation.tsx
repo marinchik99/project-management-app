@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Trans } from 'react-i18next';
 import { useAppDispatch } from '../../../store';
 import { TRemoveConf } from '../../../.d';
 import { deleteBoardById, getBoards } from '../../../store/reducers/boardsReducer';
@@ -48,7 +49,7 @@ export default function RemoveConfirmation(props: TRemoveConf) {
   return (
     <div id="modal-remove-confirm" className="modal modal-remove-confirm">
       <Button className="remove-btn" variant="outlined" onClick={handleOpen}>
-        Удалить
+        <Trans i18nKey="removeConfirmModal.removeBtn">Удалить</Trans>
       </Button>
 
       <Modal
@@ -60,14 +61,16 @@ export default function RemoveConfirmation(props: TRemoveConf) {
       >
         <Box sx={style}>
           <Typography id="modal-modal-description" gutterBottom sx={{ mt: 2 }}>
-            Вы уверены, что хотите удалить эту доску?
+            <Trans i18nKey="removeConfirmModal.text">
+              Вы уверены, что хотите удалить эту доску?
+            </Trans>
           </Typography>
           <ButtonGroup>
             <Button className="remove-btn" variant="contained" onClick={handleRemove}>
-              Да
+              <Trans i18nKey="removeConfirmModal.yesBtn">Да</Trans>
             </Button>
             <Button variant="contained" onClick={handleClose}>
-              Нет
+              <Trans i18nKey="removeConfirmModal.noBtn">Нет</Trans>
             </Button>
           </ButtonGroup>
         </Box>

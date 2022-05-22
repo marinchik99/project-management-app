@@ -23,6 +23,7 @@ import { useNavigate } from 'react-router-dom';
 import ModalCreateTask from '../../generalComponents/ModalCreateTask/ModalCreateTask';
 import { useAppDispatch } from '../../../store';
 import { getUsers } from '../../../store/reducers/usersReducer';
+import { Trans, useTranslation } from 'react-i18next';
 
 export default function LoginPage() {
   const {
@@ -38,6 +39,7 @@ export default function LoginPage() {
 
   const [login, { data, isError, isLoading }] = useLoginMutation();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const dispatch = useAppDispatch();
 
@@ -81,18 +83,18 @@ export default function LoginPage() {
             <PersonIcon></PersonIcon>
           </Avatar>
           <Typography component="h1" variant="h5">
-            Войти в аккаунт
+            <Trans i18nKey="loginPage.title">Войти в аккаунт</Trans>
           </Typography>
           <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ mt: 1 }}>
             <Controller
               name="login"
               control={control}
               rules={{
-                required: { value: true, message: 'Заполните поле' },
-                minLength: { value: 3, message: 'Минимальная длина логина 3 символа' },
+                required: { value: true, message: t('loginPage.fieldErrRequired') },
+                minLength: { value: 3, message: t('loginPage.loginErrLength') },
                 pattern: {
                   value: /^[A-Za-z0-9]+$/i,
-                  message: 'Логин может содержать только латинские буквы и цифры',
+                  message: t('loginPage.loginErrSymbols'),
                 },
               }}
               render={({ field }) => (
@@ -101,7 +103,7 @@ export default function LoginPage() {
                   inputProps={{ 'data-testid': 'loginL' }}
                   margin="normal"
                   fullWidth
-                  label="Введите логин"
+                  label={t('loginPage.loginLabel')}
                   autoFocus
                   error={!!errors.login}
                   helperText={errors.login?.message}
@@ -112,8 +114,8 @@ export default function LoginPage() {
               name="password"
               control={control}
               rules={{
-                required: { value: true, message: 'Заполните поле' },
-                minLength: { value: 4, message: 'Минимальная длина пароля 4 символа' },
+                required: { value: true, message: t('loginPage.fieldErrRequired') },
+                minLength: { value: 4, message: t('loginPage.passwordErrLength') },
               }}
               render={({ field }) => (
                 <TextField
@@ -121,7 +123,7 @@ export default function LoginPage() {
                   margin="normal"
                   fullWidth
                   inputProps={{ 'data-testid': 'passwordL' }}
-                  label="Введите пароль"
+                  label={t('loginPage.passwordLabel')}
                   type="password"
                   error={!!errors.password}
                   helperText={errors.password?.message}
@@ -136,12 +138,12 @@ export default function LoginPage() {
               sx={{ mt: 3, mb: 2 }}
               loading={isLoading}
             >
-              Войти
+              <Trans i18nKey="loginPage.loginBtn">Войти</Trans>
             </LoadingButton>
             <Grid container>
               <Grid item>
                 <Link href="/Signup" variant="body2">
-                  {'Зарегистрироваться'}
+                  <Trans i18nKey="loginPage.signupLink">Зарегистрироваться</Trans>
                 </Link>
               </Grid>
             </Grid>
@@ -160,7 +162,7 @@ export default function LoginPage() {
             variant="filled"
             color="error"
           >
-            Неверный логин или пароль!
+            <Trans i18nKey="loginPage.alert">Неверный логин или пароль!</Trans>
           </Alert>
         </Snackbar>
       </Container>
