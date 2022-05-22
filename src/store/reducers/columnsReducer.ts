@@ -15,7 +15,10 @@ export type ColumnBody = Omit<Column, 'id'>;
 
 interface IState {
   currentBoard: Board;
-  columnBody: ColumnBody;
+  columnBody?: ColumnBody;
+  id?: string;
+  title?: string;
+  order?: number;
 }
 
 export type ColumnsState = {
@@ -23,6 +26,7 @@ export type ColumnsState = {
   currentColumn: Column;
   isLoading: boolean;
   modalColumn: ModalState;
+  modalDeleteColumn: ModalState;
 };
 
 const initialState: ColumnsState = {
@@ -34,6 +38,10 @@ const initialState: ColumnsState = {
   },
   isLoading: false,
   modalColumn: {
+    isOpen: false,
+    type: null,
+  },
+  modalDeleteColumn: {
     isOpen: false,
     type: null,
   },
@@ -65,11 +73,13 @@ export const getColumns = createAsyncThunk(
   }
 );
 
-export const getBoardById = createAsyncThunk(
-  'boardsReducer/getBoardById',
-  async (id: string, { rejectWithValue }) => {
+export const getColumnById = createAsyncThunk<unknown, IState>(
+  'columnsReducer/getColumnById',
+  async ({ currentBoard, id }, { rejectWithValue }) => {
     try {
-      const response: AxiosResponse = await axiosInstance.get(`boards/${id}`);
+      const response: AxiosResponse = await axiosInstance.get(
+        `boards/${currentBoard.id}/columns/${id}`
+      );
       return await response.data;
     } catch (err) {
       rejectWithValue((err as Error).message);
@@ -77,11 +87,11 @@ export const getBoardById = createAsyncThunk(
   }
 );
 
-export const deleteBoardById = createAsyncThunk(
-  'boardsReducer/deleteBoardById',
-  async (id: string, { rejectWithValue }) => {
+export const deleteColumnById = createAsyncThunk<unknown, IState>(
+  'columnsReducer/deleteColumnById',
+  async ({ currentBoard, id }, { rejectWithValue }) => {
     try {
-      await axiosInstance.delete(`boards/${id}`);
+      await axiosInstance.delete(`boards/${currentBoard.id}/columns/${id}`);
       return console.log('Board ' + id + ' was deleted!');
     } catch (err) {
       rejectWithValue((err as Error).message);
@@ -89,21 +99,20 @@ export const deleteBoardById = createAsyncThunk(
   }
 );
 
-// export const updateBoardById = createAsyncThunk(
-//   'boardsReducer/updateBoardById',
-//   async (board: Board, { rejectWithValue }) => {
-//     try {
-//       const { id, title, description } = board;
-//       await axiosInstance.put(`boards/${id}`, {
-//         title,
-//         description,
-//       });
-//       return console.log('Board ' + title + ' was updated!');
-//     } catch (err) {
-//       rejectWithValue((err as Error).message);
-//     }
-//   }
-// );
+export const updateColumnById = createAsyncThunk<unknown, IState>(
+  'columnsReducer/updateColumnById',
+  async ({ currentBoard, id, columnBody, order }, { rejectWithValue }) => {
+    try {
+      await axiosInstance.put(`boards/${currentBoard.id}/columns/${id}`, {
+        ...columnBody,
+        order,
+      });
+      return console.log('Board ' + columnBody.title + ' was updated!');
+    } catch (err) {
+      rejectWithValue((err as Error).message);
+    }
+  }
+);
 
 export const columnsReducer = createSlice({
   name: 'columnsReducer',
@@ -111,6 +120,9 @@ export const columnsReducer = createSlice({
   reducers: {
     setModalState: (state, { payload }: PayloadAction<ModalState>) => {
       state.modalColumn = payload;
+    },
+    setModalDeleteState: (state, { payload }: PayloadAction<ModalState>) => {
+      state.modalDeleteColumn = payload;
     },
   },
   extraReducers: (builder) =>
@@ -137,5 +149,5 @@ export const columnsReducer = createSlice({
   // }),
 });
 
-export const { setModalState } = columnsReducer.actions;
+export const { setModalState, setModalDeleteState } = columnsReducer.actions;
 export default columnsReducer.reducer;

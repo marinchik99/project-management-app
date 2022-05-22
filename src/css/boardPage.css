@@ -29,7 +29,8 @@
   border-color: var(--main-color);
 }
 
-.list-block .list-input-buttons button {
+.list-block .list-input-buttons button,
+.list-block .list-close {
   color: black;
   border-color: var(--main-darkest-color);
   font-size: 0.7rem;
@@ -43,7 +44,8 @@
 
 .board-container .button-add-column:hover,
 .list-block .list-input-buttons button:hover,
-.list-block .add-card:hover {
+.list-block .add-card:hover,
+.list-block .list-close:hover {
   border-color: var(--secondary-color);
   color: var(--secondary-color);
 }
@@ -108,8 +110,13 @@
   margin-top: 10px;
 }
 
-.list-close {
-  margin-top: 10px;
+.list-block .list-close {
+  min-width: 25px !important;
+  padding: 0;
+}
+
+.list-block .list-close span {
+  width: 25px;
 }
 
 .list-input {
