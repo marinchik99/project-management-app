@@ -1,0 +1,11 @@
+{
+  "header": {
+    "createBoardBtn": "Create new board",
+    "loginBtn": "Log in",
+    "signupBtn": "Sign up",
+    "logoutBtn": "Logout"
+  },
+  "welcomePage": {
+    "about": ""
+  }
+}

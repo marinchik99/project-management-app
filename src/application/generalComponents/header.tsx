@@ -45,11 +45,16 @@ export default function Header() {
         >
           <Grid item xs={3}>
             {token && (
-              <NavLink to="/boards" style={{ textDecoration: 'none' }}>
-                <Button variant="outlined" onClick={handleNewBoardClick}>
-                  Создать новую доску
-                </Button>
-              </NavLink>
+              <>
+                <NavLink to="/boards" style={{ marginRight: '20px' }}>
+                  <Button variant="outlined">Доски</Button>
+                </NavLink>
+                <NavLink to="/boards">
+                  <Button variant="outlined" onClick={handleNewBoardClick}>
+                    Создать новую доску
+                  </Button>
+                </NavLink>
+              </>
             )}
           </Grid>
           <Grid item xs={9} className="authoriz-butt-cont">

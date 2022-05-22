@@ -25,7 +25,7 @@ export default function MainRoute() {
     <ThemeProvider theme={theme}>
       <main className="boards-page-wrapper">
         <div className="container boards-page">
-          <Search />
+          {/* <Search /> */}
           <h1 className="boards-page__title page-title">Доски</h1>
           {isLoading ? (
             <Preloader />
