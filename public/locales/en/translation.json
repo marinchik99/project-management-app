@@ -1,11 +1,52 @@
 {
   "header": {
+    "boardsBtn": "Boards",
     "createBoardBtn": "Create new board",
     "loginBtn": "Log in",
     "signupBtn": "Sign up",
     "logoutBtn": "Logout"
   },
   "welcomePage": {
-    "about": ""
+    "generalDesript": "Helps to organize work effectively. Create and track tasks, also manage them and share an information with team members.",
+    "aboutProject1": "Start by creating boards in which you will place lists and task cards. They can be arranged in the order you need",
+    "aboutProject2": "Cards can be moved to another list, edited and deleted. Deleting a board automatically deletes the lists and cards linked to it.",
+    "aboutProjectBtn": "Start",
+    "aboutCourseTitle": "About course",
+    "aboutCourseDescription": "React conuse is designed for  RS School students who have passed RS School stage #2, as well as for those who have knowledge and practical experience in using the following technologies and tools:",
+    "aboutTeamTitle": "About developers",
+    "aboutTeam" : {
+      "marina": {
+        "name": "Marina",
+        "done": "App structure, Routing, Welcome page, Board page."
+      },
+      "petr": {
+        "name": "Petr",
+        "done": "Boards page, Header, Localisation."
+      },
+      "sergey": {
+        "name": "Sergey",
+        "done": "Authorization, Tasks."
+      }
+    }
+  },
+  "boardsPage": {
+    "title": "Boards",
+    "addNewBoardBtn": "Add new board"
+  },
+  "createBoardModal": {
+    "title": "Create board",
+    "titleLabel": "Board title",
+    "descriptionLabel": "Board description"
+  },
+  "removeConfirmModal": {
+    "removeBtn": "Remove",
+    "text": "Are you sure you want to delete this board?",
+    "yesBtn": "Yes",
+    "noBtn": "No"
+  },
+  "footer": {
+    "marinaName": "Marina",
+    "petrName": "Petr",
+    "sergeyName": "Sergey"
   }
 }
