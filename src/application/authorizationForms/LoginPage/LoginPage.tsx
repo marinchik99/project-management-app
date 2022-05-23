@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import './LoginPage.scss';
 import { useForm, Controller } from 'react-hook-form';
 import { ThemeProvider } from '@mui/material/styles';
 import {
   Alert,
   Avatar,
   Box,
+  Button,
   Container,
   CssBaseline,
   Grid,
@@ -20,6 +20,7 @@ import theme from '../../../utils/themeSettings';
 import { UserType } from '../../../types/types';
 import { useLoginMutation } from '../../../store/services/usersApi';
 import { useNavigate } from 'react-router-dom';
+import ModalCreateTask from '../../generalComponents/ModalCreateTask/ModalCreateTask';
 
 export default function LoginPage() {
   const {
@@ -36,6 +37,12 @@ export default function LoginPage() {
   const [login, { data, isError, isLoading }] = useLoginMutation();
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+
+  /// for example
+  const [openModal, setOpenModal] = useState(false);
+  const handleOpenModal = () => setOpenModal(true);
+  const handleCloseModal = () => setOpenModal(false);
+  /// delete after implementaion
 
   useEffect(() => {
     if (!isError && data) {
@@ -158,6 +165,10 @@ export default function LoginPage() {
             Неверный логин или пароль!
           </Alert>
         </Snackbar>
+        <Button variant="contained" onClick={() => setOpenModal(true)}>
+          Create Task
+        </Button>
+        <ModalCreateTask open={openModal} handleClose={handleCloseModal} />
       </Container>
     </ThemeProvider>
   );
