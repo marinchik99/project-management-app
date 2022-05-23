@@ -9,9 +9,10 @@ import SignupPage from './application/authorizationForms/SignupPage/SignupPage';
 import LoginPage from './application/authorizationForms/LoginPage/LoginPage';
 import { useAppSelector } from './store';
 import Header from './application/generalComponents/header';
+import { selectCurrentUser } from './store/reducers/authSlice';
 
 function App() {
-  const token = useAppSelector((state) => state.auth.token);
+  const { token } = useAppSelector(selectCurrentUser);
 
   return (
     <div className="App">

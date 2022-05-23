@@ -12,10 +12,22 @@ const authInitialState: AuthState = {
   token: localStorage.getItem('token'),
 };
 
+const defaultState: AuthState = {
+  login: null,
+  token: null,
+};
+
 const slice = createSlice({
   name: 'auth',
   initialState: authInitialState,
-  reducers: {},
+  reducers: {
+    logout: (state) => {
+      state.token = defaultState.token;
+      state.login = defaultState.login;
+      localStorage.removeItem('token');
+      localStorage.removeItem('login');
+    },
+  },
   extraReducers: (builder) => {
     builder.addMatcher(userApi.endpoints.login.matchFulfilled, (state, { payload }) => {
       state.token = payload.token;
@@ -28,4 +40,10 @@ const slice = createSlice({
 
 export default slice.reducer;
 
-export const selectCurrentUser = (state: RootState) => state.auth.token;
+export const selectCurrentUser = (state: RootState) => {
+  return {
+    token: state.auth.token,
+    login: state.auth.login,
+  };
+};
+export const { logout } = slice.actions;
