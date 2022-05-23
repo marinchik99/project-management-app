@@ -4,7 +4,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { store } from '../store';
 import BoardPage from '../application/boardPage/boardPage';
-import ModalCreateColumn from '../application/generalComponents/ModalForm/ModalCreateColumn';
+import ModalCreateColumn from '../application/generalComponents/ModalForm/modalCreateColumn';
 import { Column } from '../store/reducers/columnsReducer';
 import ColumnList from '../application/boardPage/column';
 import BoardItem from '../application/mainRoute/BoardItem';

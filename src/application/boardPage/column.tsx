@@ -23,7 +23,10 @@ export default function ColumnList(props: Column) {
   const dispatch = useAppDispatch();
   const { id, title, order } = props;
   const [changeTitle, setTitle] = useState(false);
-  const { modalDeleteColumn } = useAppSelector(({ columnsReducer }) => columnsReducer);
+  const [changeUpdateTitle, setUpdateTitle] = useState(title);
+  const { modalDeleteColumn, currentColumn } = useAppSelector(
+    ({ columnsReducer }) => columnsReducer
+  );
   const { currentBoard } = useAppSelector(({ boardsReducer }) => boardsReducer);
 
   const { register, handleSubmit } = useForm<Input>();
@@ -40,6 +43,7 @@ export default function ColumnList(props: Column) {
   const updateColumn: SubmitHandler<Input> = (columnBody: ColumnBody) => {
     dispatch(updateColumnById({ currentBoard, id, columnBody, order }));
     setTitle(false);
+    setUpdateTitle(columnBody.title);
     setTimeout(() => dispatch(getColumnById({ currentBoard, id })), 100);
   };
 
@@ -49,7 +53,7 @@ export default function ColumnList(props: Column) {
         <div className="title-container">
           <div className="list-title">
             {!changeTitle ? (
-              <h3 onClick={() => setTitle(true)}> {title} </h3>
+              <h3 onClick={() => setTitle(true)}> {changeUpdateTitle} </h3>
             ) : (
               <div className="list-input-container">
                 <input className="list-input" type="text" {...register('title')} />
