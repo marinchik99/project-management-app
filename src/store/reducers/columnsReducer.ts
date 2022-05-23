@@ -27,6 +27,7 @@ export type ColumnsState = {
   isLoading: boolean;
   modalColumn: ModalState;
   modalDeleteColumn: ModalState;
+  isRender: boolean;
 };
 
 const initialState: ColumnsState = {
@@ -37,6 +38,7 @@ const initialState: ColumnsState = {
     order: 0,
   },
   isLoading: false,
+  isRender: false,
   modalColumn: {
     isOpen: false,
     type: null,
@@ -124,6 +126,9 @@ export const columnsReducer = createSlice({
     setModalDeleteState: (state, { payload }: PayloadAction<ModalState>) => {
       state.modalDeleteColumn = payload;
     },
+    setRender: (state, { payload }: PayloadAction<boolean>) => {
+      state.isRender = payload;
+    },
   },
   extraReducers: (builder) =>
     builder
@@ -137,17 +142,7 @@ export const columnsReducer = createSlice({
       .addCase(getColumns['rejected'], (_, action) => {
         console.log(action.payload as string);
       }),
-  // .addCase(getBoardById['fulfilled'], (state, { payload }: PayloadAction<Column>) => {
-  //   state.currentBoard = payload;
-  //   state.isLoading = false;
-  // })
-  // .addCase(getBoardById['pending'], (state) => {
-  //   state.isLoading = true;
-  // })
-  // .addCase(getBoardById['rejected'], (_, action) => {
-  //   console.log(action.payload as string);
-  // }),
 });
 
-export const { setModalState, setModalDeleteState } = columnsReducer.actions;
+export const { setModalState, setModalDeleteState, setRender } = columnsReducer.actions;
 export default columnsReducer.reducer;

@@ -53,7 +53,12 @@ export default function BoardPage() {
             {columnList.map((column) => (
               <ColumnList key={column.id} {...column} />
             ))}
-            <Button variant="outlined" className="button-add-column" onClick={createColumn}>
+            <Button
+              variant="outlined"
+              className="button-add-column"
+              onClick={createColumn}
+              data-testid="button-add-column"
+            >
               <AddIcon fontSize="small" />
               Добавить колонку
             </Button>

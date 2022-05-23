@@ -14,7 +14,7 @@ export default function BoardItem(props: Board) {
   const { id, title, description } = props;
 
   return (
-    <Card className="board-card" sx={{ maxWidth: 350 }}>
+    <Card className="board-card" data-testid="board-card" sx={{ maxWidth: 350 }}>
       <Link to={`boards/${id}`}>
         <CardActionArea>
           <CardContent>

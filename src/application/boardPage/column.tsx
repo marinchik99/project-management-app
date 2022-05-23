@@ -65,7 +65,7 @@ export default function ColumnList(props: Column) {
               </div>
             )}
           </div>
-          <Button className="list-close" onClick={deleteColumn}>
+          <Button className="list-close" data-testid="delete-column" onClick={deleteColumn}>
             <DeleteIcon fontSize="small" />
           </Button>
         </div>
