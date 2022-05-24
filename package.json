@@ -18,6 +18,7 @@
     "@typescript-eslint/eslint-plugin": "5.22.0",
     "@typescript-eslint/parser": "5.22.0",
     "axios": "0.27.2",
+    "enzyme": "^3.11.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-config-react": "1.1.7",
     "eslint-plugin-prettier": "4.0.0",
@@ -67,8 +68,9 @@
     ]
   },
   "devDependencies": {
-    "@mui/icons-material": "5.6.2",
-    "react-redux": "8.0.1",
-    "sass": "1.51.0"
+    "@mui/icons-material": "^5.6.2",
+    "@types/enzyme": "^3.10.12",
+    "react-redux": "^8.0.1",
+    "sass": "^1.51.0"
   }
 }

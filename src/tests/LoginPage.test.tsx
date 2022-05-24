@@ -5,9 +5,33 @@ import { MemoryRouter } from 'react-router-dom';
 import LoginPage from '../application/authorizationForms/LoginPage/LoginPage';
 import { store } from '../store';
 import fetchMock from 'jest-fetch-mock';
+import { I18nextProvider } from 'react-i18next';
+import i18n from '../services/i18n';
+import { mount } from 'enzyme';
+
+import { initI18n } from '../utils/i18nTestUtils';
+
+beforeAll(() => {
+  initI18n();
+});
+
+jest.mock('react-i18next', () => ({
+  // this mock makes sure any components using the translate hook can use it without a warning being shown
+  useTranslation: () => {
+    return {
+      t: (str: string) => str,
+      i18n: {
+        changeLanguage: () => new Promise(() => {}),
+      },
+    };
+  },
+}));
 
 describe('Login page', () => {
   test('should render LoginPage', () => {
+    // const mounted = mount(<LoginPage />);
+    // expect(mounted.contains(<div>description.part2</div>)).toBe(true);
+
     render(
       <MemoryRouter>
         <Provider store={store}>
@@ -42,6 +66,16 @@ describe('Login page', () => {
       </MemoryRouter>
     );
 
+    // const enzymeWrapper = mount(
+    //   <MemoryRouter>
+    //     <Provider store={store}>
+    //       <I18nextProvider i18n={i18n}>
+    //         <LoginPage />
+    //       </I18nextProvider>
+    //     </Provider>
+    //   </MemoryRouter>
+    // );
+
     const loginInput = screen.getByTestId('loginL');
     const passwordInput = screen.getByTestId('passwordL');
     const submit = screen.getByTestId('submitL');
@@ -68,6 +102,8 @@ describe('Login page', () => {
     const submit = screen.getByTestId('submitL');
 
     fireEvent.click(submit);
+
+    screen.debug();
 
     expect(await screen.findAllByText(/Заполните поле/i)).toHaveLength(2);
   });
