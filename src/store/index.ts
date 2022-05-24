@@ -5,6 +5,7 @@ import { userApi } from './services/usersApi';
 import authReducer from './reducers/authSlice';
 import { addInterceptors } from '../services/axiosInstance';
 import settingsReducer from './reducers/settingsReducer';
+import usersReducer from './reducers/usersReducer';
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     settingsReducer,
     [userApi.reducerPath]: userApi.reducer,
     auth: authReducer,
+    usersReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(userApi.middleware),
 });

@@ -18,6 +18,8 @@ import theme from '../../../utils/themeSettings';
 type Props = {
   open: boolean;
   handleClose: () => void;
+  boardID: string;
+  columnID: string;
 };
 
 const style = {
@@ -34,7 +36,7 @@ const style = {
   p: 2,
 };
 
-export default function ModalCreateTask({ open, handleClose }: Props) {
+export default function ModalCreateTask({ open, handleClose, boardID, columnID }: Props) {
   const {
     control,
     handleSubmit,

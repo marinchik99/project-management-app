@@ -21,6 +21,8 @@ import { UserType } from '../../../types/types';
 import { useLoginMutation } from '../../../store/services/usersApi';
 import { useNavigate } from 'react-router-dom';
 import ModalCreateTask from '../../generalComponents/ModalCreateTask/ModalCreateTask';
+import { useAppDispatch } from '../../../store';
+import { getUsers } from '../../../store/reducers/usersReducer';
 
 export default function LoginPage() {
   const {
@@ -37,6 +39,7 @@ export default function LoginPage() {
   const [login, { data, isError, isLoading }] = useLoginMutation();
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const dispatch = useAppDispatch();
 
   /// for example
   const [openModal, setOpenModal] = useState(false);
@@ -58,6 +61,7 @@ export default function LoginPage() {
 
   const onSubmit = async (data: Partial<UserType>) => {
     await login(data);
+    dispatch(getUsers());
   };
 
   const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
@@ -168,7 +172,12 @@ export default function LoginPage() {
         <Button variant="contained" onClick={() => setOpenModal(true)}>
           Create Task
         </Button>
-        <ModalCreateTask open={openModal} handleClose={handleCloseModal} />
+        <ModalCreateTask
+          boardID="sadsad"
+          columnID="sadsad"
+          open={openModal}
+          handleClose={handleCloseModal}
+        />
       </Container>
     </ThemeProvider>
   );
