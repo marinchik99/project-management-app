@@ -40,5 +40,10 @@ const slice = createSlice({
 
 export default slice.reducer;
 
-export const selectCurrentUser = (state: RootState) => state.auth.token;
+export const selectCurrentUser = (state: RootState) => {
+  return {
+    token: state.auth.token,
+    login: state.auth.login,
+  };
+};
 export const { logout } = slice.actions;

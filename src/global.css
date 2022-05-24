@@ -21,10 +21,9 @@ body {
 }
 
 .App {
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: calc(100vh - 70px);
 }
 
 code {
@@ -48,6 +47,7 @@ button, input[type="submit"] {
 }
 
 main {
+  min-height: calc(100vh - 70px);
   flex-grow: 1;
 }
 

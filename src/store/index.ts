@@ -5,12 +5,14 @@ import { userApi } from './services/usersApi';
 import authReducer from './reducers/authSlice';
 import { addInterceptors } from '../services/axiosInstance';
 import settingsReducer from './reducers/settingsReducer';
+import columnsReducer from './reducers/columnsReducer';
 import usersReducer from './reducers/usersReducer';
 
 export const store = configureStore({
   reducer: {
     boardsReducer,
     settingsReducer,
+    columnsReducer,
     [userApi.reducerPath]: userApi.reducer,
     auth: authReducer,
     usersReducer,

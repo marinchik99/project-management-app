@@ -57,12 +57,23 @@
 }
 
 .welcome-page button:hover {
-  border-color: var(--secondary-middle-color);
+  border-color: var(--secondary-color);
   color: var(--secondary-color);
 }
 
 .desk-text button {
   border-color: var(--main-color);
+}
+
+.authoriz-buttons > a:nth-child(2) > button{
+  background: var(--main-color);
+  color: black;
+  font-size: 0.95rem;
+  border-color:  var(--main-color);
+}
+
+.authoriz-buttons > a:nth-child(2) > button:hover {
+  background: var(--secondary-color);
 }
 
 .desk-container {
