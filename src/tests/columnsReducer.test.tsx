@@ -3,54 +3,62 @@ import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { Provider } from 'react-redux';
 import { store } from '../store';
-import reducer, { BoardsState, setModalState } from '../store/reducers/boardsReducer';
+import reducer, { ColumnsState, setModalState } from '../store/reducers/columnsReducer';
 
-const initialState: BoardsState = {
-  boardList: [],
-  currentBoard: {
-    description: '',
+const initial: ColumnsState = {
+  columnList: [],
+  currentColumn: {
     id: '',
     title: '',
+    order: 0,
   },
-  search: '',
   isLoading: false,
-  modal: {
+  isRender: false,
+  modalColumn: {
+    isOpen: false,
+    type: null,
+  },
+  modalDeleteColumn: {
     isOpen: false,
     type: null,
   },
 };
 
-describe('Board Reducer tests', () => {
+describe('Column Reducer tests', () => {
   it('should return the initial state', () => {
     expect(
       reducer(undefined, {
         type: undefined,
       })
-    ).toEqual(initialState);
+    ).toEqual(initial);
   });
   it('check modal state shanging', () => {
-    const previousState = initialState;
+    const previousState = initial;
 
     expect(
       reducer(
         previousState,
         setModalState({
           isOpen: true,
-          type: 'board',
+          type: 'column',
         })
       )
     ).toEqual({
-      boardList: [],
-      currentBoard: {
-        description: '',
+      columnList: [],
+      currentColumn: {
         id: '',
         title: '',
+        order: 0,
       },
-      search: '',
       isLoading: false,
-      modal: {
+      isRender: false,
+      modalColumn: {
         isOpen: true,
-        type: 'board',
+        type: 'column',
+      },
+      modalDeleteColumn: {
+        isOpen: false,
+        type: null,
       },
     });
   });

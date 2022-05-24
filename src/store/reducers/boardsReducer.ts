@@ -13,7 +13,11 @@ export type BoardsState = {
 
 const initialState: BoardsState = {
   boardList: [],
-  currentBoard: null,
+  currentBoard: {
+    id: '',
+    title: '',
+    description: '',
+  },
   search: '',
   isLoading: false,
   modal: {

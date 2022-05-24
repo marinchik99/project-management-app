@@ -36,7 +36,7 @@
 
 .auth-buttons .auth-signup:hover {
   color: var(--text-color);
-  background: var(--secondary-middle-color);
+  background: var(--secondary-color);
 }
 
 .header--sticky {
@@ -49,8 +49,8 @@
   }
   
   button:hover {
-    color: var(--secondary-light-color);
-    border-color: var(--secondary-middle-color);
+    color: var(--secondary-color);
+    border-color: var(--secondary-color);
   }
 
   .auth-login:hover > a {
