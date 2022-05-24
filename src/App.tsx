@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Footer from './application/generalComponents/footer';
 import NotFound from './application/notFound';
@@ -7,12 +7,20 @@ import WelcomePage from './application/welcomePage/welcomePage';
 import MainRoute from './application/mainRoute/MainRoute';
 import SignupPage from './application/authorizationForms/SignupPage/SignupPage';
 import LoginPage from './application/authorizationForms/LoginPage/LoginPage';
-import { useAppSelector } from './store';
+import { useAppDispatch, useAppSelector } from './store';
 import Header from './application/generalComponents/header';
+import { getUsers } from './store/reducers/usersReducer';
 import { selectCurrentUser } from './store/reducers/authSlice';
 
 function App() {
   const { token } = useAppSelector(selectCurrentUser);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (token) {
+      dispatch(getUsers());
+    }
+  }, []);
 
   return (
     <div className="App">
