@@ -12,6 +12,8 @@ import {
 } from '@mui/material';
 import React, { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
+import { useAppDispatch } from '../../../store';
+import { createTask } from '../../../store/reducers/tasksReducers';
 import { TaskType } from '../../../types/types';
 import theme from '../../../utils/themeSettings';
 
@@ -36,7 +38,7 @@ const style = {
   p: 2,
 };
 
-export default function ModalCreateTask({ open, handleClose, boardID, columnID }: Props) {
+export default function ModalCreateTask({ open, handleClose, boardId, columnId }: Props) {
   const {
     control,
     handleSubmit,
@@ -48,9 +50,12 @@ export default function ModalCreateTask({ open, handleClose, boardID, columnID }
       description: '',
     },
   });
+  const dispatch = useAppDispatch();
 
   const onSubmit = async (data: Pick<TaskType, 'title' | 'description'>) => {
-    console.log(data);
+    const { title, description } = data;
+    const userId = 
+    await dispatch(createTask({ boardId, columnId, title, description }));
   };
 
   useEffect(() => {
