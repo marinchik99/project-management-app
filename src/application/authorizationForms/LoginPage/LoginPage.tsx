@@ -41,11 +41,11 @@ export default function LoginPage() {
   const [open, setOpen] = useState(false);
   const dispatch = useAppDispatch();
 
-  /// for example
-  const [openModal, setOpenModal] = useState(false);
-  const handleOpenModal = () => setOpenModal(true);
-  const handleCloseModal = () => setOpenModal(false);
-  /// delete after implementaion
+  // /// for example
+  // const [openModal, setOpenModal] = useState(false);
+  // const handleOpenModal = () => setOpenModal(true);
+  // const handleCloseModal = () => setOpenModal(false);
+  // /// delete after implementaion
 
   useEffect(() => {
     if (!isError && data) {
@@ -169,15 +169,15 @@ export default function LoginPage() {
             Неверный логин или пароль!
           </Alert>
         </Snackbar>
-        <Button variant="contained" onClick={() => setOpenModal(true)}>
+        {/* <Button variant="contained" onClick={() => setOpenModal(true)}>
           Create Task
-        </Button>
-        <ModalCreateTask
+        </Button> */}
+        {/* <ModalCreateTask
           boardID="sadsad"
           columnID="sadsad"
           open={openModal}
           handleClose={handleCloseModal}
-        />
+        /> */}
       </Container>
     </ThemeProvider>
   );
