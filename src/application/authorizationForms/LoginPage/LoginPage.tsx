@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import './LoginPage.scss';
 import { useForm, Controller } from 'react-hook-form';
 import { ThemeProvider } from '@mui/material/styles';
 import {
   Alert,
   Avatar,
   Box,
+  Button,
   Container,
   CssBaseline,
   Grid,
@@ -20,6 +20,9 @@ import theme from '../../../utils/themeSettings';
 import { UserType } from '../../../types/types';
 import { useLoginMutation } from '../../../store/services/usersApi';
 import { useNavigate } from 'react-router-dom';
+import ModalCreateTask from '../../generalComponents/ModalCreateTask/ModalCreateTask';
+import { useAppDispatch } from '../../../store';
+import { getUsers } from '../../../store/reducers/usersReducer';
 
 export default function LoginPage() {
   const {
@@ -36,6 +39,13 @@ export default function LoginPage() {
   const [login, { data, isError, isLoading }] = useLoginMutation();
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const dispatch = useAppDispatch();
+
+  // /// for example
+  // const [openModal, setOpenModal] = useState(false);
+  // const handleOpenModal = () => setOpenModal(true);
+  // const handleCloseModal = () => setOpenModal(false);
+  // /// delete after implementaion
 
   useEffect(() => {
     if (!isError && data) {
@@ -51,6 +61,7 @@ export default function LoginPage() {
 
   const onSubmit = async (data: Partial<UserType>) => {
     await login(data);
+    dispatch(getUsers());
   };
 
   const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
@@ -158,6 +169,15 @@ export default function LoginPage() {
             Неверный логин или пароль!
           </Alert>
         </Snackbar>
+        {/* <Button variant="contained" onClick={() => setOpenModal(true)}>
+          Create Task
+        </Button> */}
+        {/* <ModalCreateTask
+          boardID="sadsad"
+          columnID="sadsad"
+          open={openModal}
+          handleClose={handleCloseModal}
+        /> */}
       </Container>
     </ThemeProvider>
   );
