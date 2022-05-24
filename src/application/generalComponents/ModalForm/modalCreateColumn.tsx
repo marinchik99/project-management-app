@@ -73,17 +73,6 @@ export default function ModalCreateColumn() {
                 <span className="form__error-text">*Это поле обязательно для заполнения</span>
               )}
 
-              <label htmlFor="form-description-input">Расположение</label>
-              <input
-                id="form-title-input"
-                type="number"
-                className="form__input-text"
-                {...register('order', { required: true, valueAsNumber: true })}
-              />
-              {errors.order && (
-                <span className="form__error-text">*Это поле обязательно для заполнения</span>
-              )}
-
               <input data-testid="form-submit-btn" className="form__btn" type="submit" />
               <button
                 data-testid="form-close-btn"

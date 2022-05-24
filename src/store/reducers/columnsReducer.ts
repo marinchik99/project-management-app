@@ -94,7 +94,7 @@ export const deleteColumnById = createAsyncThunk<unknown, IState>(
   async ({ currentBoard, id }, { rejectWithValue }) => {
     try {
       await axiosInstance.delete(`boards/${currentBoard.id}/columns/${id}`);
-      return console.log('Board ' + id + ' was deleted!');
+      return console.log('Column ' + id + ' was deleted!');
     } catch (err) {
       rejectWithValue((err as Error).message);
     }
@@ -109,7 +109,7 @@ export const updateColumnById = createAsyncThunk<unknown, IState>(
         ...columnBody,
         order,
       });
-      return console.log('Board ' + columnBody.title + ' was updated!');
+      return console.log('Column ' + columnBody.title + ' was updated!');
     } catch (err) {
       rejectWithValue((err as Error).message);
     }

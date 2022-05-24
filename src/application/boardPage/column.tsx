@@ -24,9 +24,7 @@ export default function ColumnList(props: Column) {
   const { id, title, order } = props;
   const [changeTitle, setTitle] = useState(false);
   const [changeUpdateTitle, setUpdateTitle] = useState(title);
-  const { modalDeleteColumn, currentColumn } = useAppSelector(
-    ({ columnsReducer }) => columnsReducer
-  );
+  const { modalDeleteColumn } = useAppSelector(({ columnsReducer }) => columnsReducer);
   const { currentBoard } = useAppSelector(({ boardsReducer }) => boardsReducer);
 
   const { register, handleSubmit } = useForm<Input>();
