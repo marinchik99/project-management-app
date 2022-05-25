@@ -11,6 +11,7 @@ import { useAppDispatch, useAppSelector } from './store';
 import Header from './application/generalComponents/header';
 import { getUsers } from './store/reducers/usersReducer';
 import { selectCurrentUser } from './store/reducers/authSlice';
+import { getUsers } from './store/reducers/usersReducer';
 
 function App() {
   const { token } = useAppSelector(selectCurrentUser);
