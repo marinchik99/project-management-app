@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { ButtonGroup } from '@mui/material';
 import { useParams } from 'react-router-dom';
+import { Trans } from 'react-i18next';
 
 export default function DeleteColumnConfirmation(props: TRemoveConf) {
   const dispatch = useAppDispatch();
@@ -56,14 +57,16 @@ export default function DeleteColumnConfirmation(props: TRemoveConf) {
       >
         <Box sx={style}>
           <Typography id="modal-modal-description" gutterBottom sx={{ mt: 2 }}>
-            Вы уверены, что хотите удалить колонку?
+            <Trans i18nKey="removeConfirmModalColumn.text">
+              Вы уверены, что хотите удалить колонку?
+            </Trans>
           </Typography>
           <ButtonGroup className="modal-delete-buttons">
             <Button className="remove-btn" variant="contained" onClick={handleRemove}>
-              Да
+              <Trans i18nKey="removeConfirmModalColumn.yesBtn">Да</Trans>
             </Button>
             <Button variant="contained" onClick={handleClose}>
-              Нет
+              <Trans i18nKey="removeConfirmModalColumn.noBtn">Нет</Trans>
             </Button>
           </ButtonGroup>
         </Box>

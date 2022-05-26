@@ -65,15 +65,46 @@
     "title": "Доски",
     "addNewBoardBtn": "Добавить доску"
   },
+
+  "boardPage": {
+    "addColumnBtn": "Добавить колонку",
+    "column": {
+      "editTitleSubmit": "Принять",
+      "editTitleCancel": "Отменить",
+      "addTaskBtn": "Добавить задачу"
+    }
+  },
+  
   "createBoardModal": {
     "title": "Создать доску",
     "titleLabel": "Заголовок доски",
     "titleInputError": "*Это поле обязательно для заполнения",
     "descriptionLabel": "Описание доски"
   },
+
+  "createColumnModal": {
+    "title": "Создать колонку",
+    "titleLabel": "Заголовок колонки",
+    "titleInputError": "*Это поле обязательно для заполнения"
+  },
+
+  "createTaskModal": {
+    "title": "Создание задачи",
+    "titleLabel": "Заголовок",
+    "titleInputError": "*Заполните поле",
+    "descriptionLabel": "Описание задачи",
+    "applyBtn": "Создать",
+    "closeBtn": "Закрыть"
+  },
+
   "removeConfirmModal": {
     "removeBtn": "Удалить",
     "text": "Вы уверены, что хотите удалить эту доску?",
+    "yesBtn": "Да",
+    "noBtn": "Нет"
+  },
+  "removeConfirmModalColumn": {
+    "text": "Вы уверены, что хотите удалить колонку?",
     "yesBtn": "Да",
     "noBtn": "Нет"
   },

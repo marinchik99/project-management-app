@@ -65,15 +65,46 @@
     "title": "Boards",
     "addNewBoardBtn": "Add new board"
   },
+  
+  "boardPage": {
+    "addColumnBtn": "Add new column",
+    "column": {
+      "editTitleSubmit": "Submit",
+      "editTitleCancel": "Cansel",
+      "addTaskBtn": "Add Task"
+    }
+  },
+  
   "createBoardModal": {
     "title": "Create board",
     "titleLabel": "Board title",
     "titleInputError": "*This field is mandatory",
     "descriptionLabel": "Board description"
   },
+
+  "createColumnModal": {
+    "title": "Create column",
+    "titleLabel": "Column title",
+    "titleInputError": "*This field is mandatory"
+  },
+
+  "createTaskModal": {
+    "title": "Create task",
+    "titleLabel": "Task title",
+    "titleInputError": "*Fill this field",
+    "descriptionLabel": "Task description",
+    "applyBtn": "Create",
+    "closeBtn": "Close"
+  },
+
   "removeConfirmModal": {
     "removeBtn": "Delete",
     "text": "Are you sure you want to delete this board?",
+    "yesBtn": "Yes",
+    "noBtn": "No"
+  },
+  "removeConfirmModalColumn": {
+    "text": "Are you sure you want to delete this column?",
     "yesBtn": "Yes",
     "noBtn": "No"
   },

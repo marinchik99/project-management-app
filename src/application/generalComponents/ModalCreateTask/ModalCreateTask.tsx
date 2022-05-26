@@ -16,6 +16,7 @@ import { useAppDispatch, useAppSelector } from '../../../store';
 import { selectCurrentUser } from '../../../store/reducers/authSlice';
 import { createTask } from '../../../store/reducers/tasksReducers';
 import { selectUsers } from '../../../store/reducers/usersReducer';
+import { Trans, useTranslation } from 'react-i18next';
 import { TaskType } from '../../../types/types';
 import theme from '../../../utils/themeSettings';
 
@@ -52,6 +53,7 @@ export default function ModalCreateTask({ open, handleClose, boardId, columnId }
       description: '',
     },
   });
+  const { t } = useTranslation();
 
   const dispatch = useAppDispatch();
   const { users } = useAppSelector(selectUsers);
@@ -77,7 +79,7 @@ export default function ModalCreateTask({ open, handleClose, boardId, columnId }
         <Box sx={style}>
           <Container component="div">
             <Typography component="h1" variant="h5" align="center">
-              Создание задачи
+              <Trans i18nKey="createTaskModal.title">Создание задачи</Trans>
             </Typography>
             <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ my: 2 }}>
               <Controller
@@ -92,7 +94,7 @@ export default function ModalCreateTask({ open, handleClose, boardId, columnId }
                     inputProps={{ 'data-testid': 'taskTitleC' }}
                     margin="normal"
                     fullWidth
-                    label="Заголовок"
+                    label={t('createTaskModal.titleLabel')}
                     autoFocus
                     error={!!errors.title}
                     helperText={errors.title?.message}
@@ -111,7 +113,7 @@ export default function ModalCreateTask({ open, handleClose, boardId, columnId }
                     inputProps={{ 'data-testid': 'taskDescC' }}
                     margin="normal"
                     fullWidth
-                    label="Описание задачи"
+                    label={t('createTaskModal.descriptionLabel')}
                     autoFocus
                     multiline
                     minRows={4}
@@ -123,9 +125,11 @@ export default function ModalCreateTask({ open, handleClose, boardId, columnId }
               />
               <ButtonGroup fullWidth variant="contained">
                 <LoadingButton data-testid="submitC" type="submit" fullWidth variant="contained">
-                  Создать
+                  <Trans i18nKey="createTaskModal.applyBtn">Создать</Trans>
                 </LoadingButton>
-                <Button onClick={handleClose}>Закрыть</Button>
+                <Button onClick={handleClose}>
+                  <Trans i18nKey="createTaskModal.closeBtn">Закрыть</Trans>
+                </Button>
               </ButtonGroup>
             </Box>
           </Container>

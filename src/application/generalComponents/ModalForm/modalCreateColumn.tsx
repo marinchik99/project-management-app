@@ -9,6 +9,7 @@ import { getColumns, createColumn, setModalState } from '../../../store/reducers
 import { Container } from '@mui/material';
 import { ColumnBody } from '../../../store/reducers/columnsReducer';
 import { useParams } from 'react-router-dom';
+import { Trans } from 'react-i18next';
 
 type Inputs = {
   title: string;
@@ -59,18 +60,24 @@ export default function ModalCreateColumn() {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Создать колонку
+            <Trans i18nKey="createColumnModal.title">Создать колонку</Trans>
           </Typography>
           <Container id="modal-modal-description" sx={{ mt: 2 }}>
             <form className="form form--board" onSubmit={handleSubmit(onSubmit)}>
-              <label htmlFor="form-title-input">Заголовок колонки</label>
+              <label htmlFor="form-title-input">
+                <Trans i18nKey="createColumnModal.titleLabel">Заголовок колонки</Trans>
+              </label>
               <input
                 id="form-title-input"
                 className="form__input-text"
                 {...register('title', { required: true })}
               />
               {errors.title && (
-                <span className="form__error-text">*Это поле обязательно для заполнения</span>
+                <span className="form__error-text">
+                  <Trans i18nKey="createColumnModal.titleInputError">
+                    *Это поле обязательно для заполнения
+                  </Trans>
+                </span>
               )}
 
               <input data-testid="form-submit-btn" className="form__btn" type="submit" />
