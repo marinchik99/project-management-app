@@ -12,6 +12,7 @@ import {
 } from '@mui/material';
 import React, { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
+import { Navigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../store';
 import { selectCurrentUser } from '../../../store/reducers/authSlice';
 import { createTask } from '../../../store/reducers/tasksReducers';
@@ -61,11 +62,9 @@ export default function ModalCreateTask({ open, handleClose, boardId, columnId }
     const { title, description } = data;
     const userId = users.filter((user) => user.login === login)[0].id;
     if (userId) {
-      const result = await dispatch(
-        createTask({ boardId, columnId, title, description, userId })
-      ).unwrap();
-      console.log(result);
+      await dispatch(createTask({ boardId, columnId, title, description, userId })).unwrap();
     }
+    handleClose();
   };
 
   useEffect(() => {
