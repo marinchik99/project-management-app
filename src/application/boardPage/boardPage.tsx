@@ -10,6 +10,7 @@ import ColumnList from './column';
 import { ModalState } from '../../.d';
 import ModalCreateColumn from '../generalComponents/ModalForm/modalCreateColumn';
 import { useParams } from 'react-router-dom';
+import { getAllTasks } from '../../store/reducers/tasksReducers';
 
 export default function BoardPage() {
   const { isLoading, currentBoard } = useAppSelector(({ boardsReducer }) => boardsReducer);
@@ -21,6 +22,12 @@ export default function BoardPage() {
     dispatch(getColumns(params.id));
     dispatch(getBoardById(params.id));
   }, []);
+
+  useEffect(() => {
+    if (columnList.length && currentBoard.id) {
+      dispatch(getAllTasks({ boardId: currentBoard.id }));
+    }
+  }, [columnList.length, currentBoard.id]);
 
   const createColumn = () => {
     const modalState: ModalState = {

@@ -7,6 +7,7 @@ import { addInterceptors } from '../services/axiosInstance';
 import settingsReducer from './reducers/settingsReducer';
 import columnsReducer from './reducers/columnsReducer';
 import usersReducer from './reducers/usersReducer';
+import tasksReducer from './reducers/tasksReducers';
 
 export const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ export const store = configureStore({
     [userApi.reducerPath]: userApi.reducer,
     auth: authReducer,
     usersReducer,
+    tasksReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(userApi.middleware),
 });

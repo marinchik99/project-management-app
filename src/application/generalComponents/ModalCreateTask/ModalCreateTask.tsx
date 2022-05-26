@@ -61,7 +61,9 @@ export default function ModalCreateTask({ open, handleClose, boardId, columnId }
     const { title, description } = data;
     const userId = users.filter((user) => user.login === login)[0].id;
     if (userId) {
-      const result = await dispatch(createTask({ boardId, columnId, title, description, userId }));
+      const result = await dispatch(
+        createTask({ boardId, columnId, title, description, userId })
+      ).unwrap();
       console.log(result);
     }
   };
