@@ -11,6 +11,7 @@ import { useAppDispatch, useAppSelector } from './store';
 import Header from './application/generalComponents/header';
 import { selectCurrentUser } from './store/reducers/authSlice';
 import { getUsers } from './store/reducers/usersReducer';
+import EditProfile from './application/generalComponents/EditProfile/editProfile';
 
 function App() {
   const { token } = useAppSelector(selectCurrentUser);
@@ -31,6 +32,7 @@ function App() {
         <Route path="/Signup" element={token ? <Navigate to="/Boards" /> : <SignupPage />} />
         <Route path={`/Boards/boards/:id`} element={!token ? <Navigate to="/" /> : <BoardPage />} />
         <Route path="/Boards" element={!token ? <Navigate to="/" /> : <MainRoute />} />
+        <Route path="/Edit" element={!token ? <Navigate to="/" /> : <EditProfile />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
       <Footer />
