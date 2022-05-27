@@ -177,3 +177,9 @@ export const tasksReducer = createSlice({
 });
 
 export default tasksReducer.reducer;
+export const selectAllTasks = (state: RootState) => {
+  return {
+    tasks: state.tasksReducer.tasks,
+    isLoading: state.tasksReducer.isLoading,
+  };
+};

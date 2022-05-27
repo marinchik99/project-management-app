@@ -14,6 +14,7 @@ import { ModalState } from '../../.d';
 import DeleteColumnConfirmation from '../../application/generalComponents/RemoveConfirmation/modalDeleteColumn';
 import ModalCreateTask from '../generalComponents/ModalCreateTask/ModalCreateTask';
 import TaskPreview from './TaskPreview';
+import { selectAllTasks } from '../../store/reducers/tasksReducers';
 
 type Input = {
   id: string;
@@ -28,6 +29,7 @@ export default function ColumnList(props: Column) {
   const [changeUpdateTitle, setUpdateTitle] = useState(title);
   const { modalDeleteColumn } = useAppSelector(({ columnsReducer }) => columnsReducer);
   const { currentBoard } = useAppSelector(({ boardsReducer }) => boardsReducer);
+  const { tasks } = useAppSelector(selectAllTasks);
 
   const [openModal, setOpenModal] = useState(false);
   const handleOpenModal = () => setOpenModal(true);
@@ -50,6 +52,10 @@ export default function ColumnList(props: Column) {
     setUpdateTitle(columnBody.title);
     setTimeout(() => dispatch(getColumnById({ currentBoard, id })), 100);
   };
+
+  const columnTask = tasks.length
+    ? tasks.filter((column) => column.columnId === props.id)[0]
+    : null;
 
   return (
     <div className="list-container">
@@ -78,13 +84,12 @@ export default function ColumnList(props: Column) {
           </Button>
         </div>
         <div className="list">
-          <TaskPreview />
-          <TaskPreview />
-          <TaskPreview />
-          <TaskPreview />
-          <TaskPreview />
-          <TaskPreview />
-          <TaskPreview />
+          {columnTask &&
+            columnTask.colTasks?.map((task) => {
+              return (
+                <TaskPreview key={task.id} title={task.title} description={task.description} />
+              );
+            })}
         </div>
         <Button className="add-card" onClick={handleOpenModal}>
           <AddIcon fontSize="small" />
