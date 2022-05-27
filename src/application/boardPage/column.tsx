@@ -13,6 +13,7 @@ import {
 import { ModalState } from '../../.d';
 import DeleteColumnConfirmation from '../../application/generalComponents/RemoveConfirmation/modalDeleteColumn';
 import ModalCreateTask from '../generalComponents/ModalCreateTask/ModalCreateTask';
+import TaskPreview from './TaskPreview';
 
 type Input = {
   id: string;
@@ -77,7 +78,13 @@ export default function ColumnList(props: Column) {
           </Button>
         </div>
         <div className="list">
-          <div className="list__item">Карточка с содержимым</div>
+          <TaskPreview />
+          <TaskPreview />
+          <TaskPreview />
+          <TaskPreview />
+          <TaskPreview />
+          <TaskPreview />
+          <TaskPreview />
         </div>
         <Button className="add-card" onClick={handleOpenModal}>
           <AddIcon fontSize="small" />
