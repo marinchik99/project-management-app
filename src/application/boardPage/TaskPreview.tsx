@@ -13,7 +13,7 @@ import theme from '../../utils/themeSettings';
 export default function TaskPreview() {
   return (
     <ThemeProvider theme={theme}>
-      <Card sx={{ maxWidth: 400 }}>
+      <Card sx={{ maxWidth: 400, mb: 2 }}>
         <CardActionArea>
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
