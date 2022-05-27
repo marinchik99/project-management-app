@@ -132,6 +132,7 @@
 .list {
   overflow-y: auto;
   min-height: 0px;
+  padding-right: 10px;
 }
 
 .list__item {

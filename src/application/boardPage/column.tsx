@@ -87,7 +87,12 @@ export default function ColumnList(props: Column) {
           {columnTask &&
             columnTask.colTasks?.map((task) => {
               return (
-                <TaskPreview key={task.id} title={task.title} description={task.description} />
+                <TaskPreview
+                  key={task.id}
+                  title={task.title}
+                  description={task.description}
+                  userId={task.userId}
+                />
               );
             })}
         </div>
