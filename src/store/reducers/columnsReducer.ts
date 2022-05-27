@@ -4,9 +4,9 @@ import { Board, ModalState } from '../../.d';
 import { axiosInstance } from '../../services/axiosInstance';
 
 export interface Column {
-  id: string;
-  title: string;
-  order: number;
+  id?: string;
+  title?: string;
+  order?: number;
 }
 
 type ColumnList = Column[];
@@ -14,11 +14,13 @@ type ColumnList = Column[];
 export type ColumnBody = Omit<Column, 'id'>;
 
 interface IState {
-  currentBoard: Board;
+  currentBoard?: Board;
   columnBody?: ColumnBody;
   id?: string;
   title?: string;
   order?: number;
+  currentColumn?: Column;
+  column?: Column;
 }
 
 export type ColumnsState = {
@@ -103,11 +105,10 @@ export const deleteColumnById = createAsyncThunk<unknown, IState>(
 
 export const updateColumnById = createAsyncThunk<unknown, IState>(
   'columnsReducer/updateColumnById',
-  async ({ currentBoard, id, columnBody, order }, { rejectWithValue }) => {
+  async ({ currentBoard, id, columnBody }, { rejectWithValue }) => {
     try {
       await axiosInstance.put(`boards/${currentBoard.id}/columns/${id}`, {
         ...columnBody,
-        order,
       });
       return console.log('Column ' + columnBody.title + ' was updated!');
     } catch (err) {
@@ -126,8 +127,8 @@ export const columnsReducer = createSlice({
     setModalDeleteState: (state, { payload }: PayloadAction<ModalState>) => {
       state.modalDeleteColumn = payload;
     },
-    setRender: (state, { payload }: PayloadAction<boolean>) => {
-      state.isRender = payload;
+    setRender: (state, { payload }: PayloadAction<Column>) => {
+      state.currentColumn = payload;
     },
   },
   extraReducers: (builder) =>
@@ -140,6 +141,16 @@ export const columnsReducer = createSlice({
         state.isLoading = true;
       })
       .addCase(getColumns['rejected'], (_, action) => {
+        console.log(action.payload as string);
+      })
+      .addCase(getColumnById['fulfilled'], (state, { payload }: PayloadAction<IState>) => {
+        state.currentColumn = payload;
+        state.isLoading = false;
+      })
+      .addCase(getColumnById['pending'], (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getColumnById['rejected'], (_, action) => {
         console.log(action.payload as string);
       }),
 });

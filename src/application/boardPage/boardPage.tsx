@@ -1,10 +1,10 @@
 import { Container, Grid, Button } from '@mui/material';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../css/boardPage.css';
 import AddIcon from '@mui/icons-material/Add';
 import Preloader from '../generalComponents/preloader';
 import { useAppDispatch, useAppSelector } from '../../store';
-import { getColumns, setModalState } from '../../store/reducers/columnsReducer';
+import { Column, getColumns, setModalState } from '../../store/reducers/columnsReducer';
 import { getBoardById } from '../../store/reducers/boardsReducer';
 import ColumnList from './column';
 import { ModalState } from '../../.d';
@@ -31,6 +31,8 @@ export default function BoardPage() {
     dispatch(setModalState(modalState));
   };
 
+  const sortColumn = (a: Column, b: Column) => a.order - b.order;
+
   return (
     <section className="board-page">
       {isLoading ? (
@@ -50,7 +52,7 @@ export default function BoardPage() {
             <Grid item xs={3}></Grid>
           </Grid>
           <div className="work-container">
-            {columnList.map((column) => (
+            {[...columnList].sort(sortColumn).map((column) => (
               <ColumnList key={column.id} {...column} />
             ))}
             <Button

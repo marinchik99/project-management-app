@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Button, ButtonGroup } from '@mui/material';
@@ -9,9 +9,12 @@ import {
   setModalDeleteState,
   getColumnById,
   updateColumnById,
+  setRender,
+  getColumns,
 } from '../../store/reducers/columnsReducer';
 import { ModalState } from '../../.d';
 import DeleteColumnConfirmation from '../../application/generalComponents/RemoveConfirmation/modalDeleteColumn';
+import { useDrag, useDrop } from 'react-dnd';
 
 type Input = {
   id: string;
@@ -22,12 +25,17 @@ type Input = {
 export default function ColumnList(props: Column) {
   const dispatch = useAppDispatch();
   const { id, title, order } = props;
+  console.log(props);
   const [changeTitle, setTitle] = useState(false);
+  const [current, setCurrentColumn] = useState(null);
   const [changeUpdateTitle, setUpdateTitle] = useState(title);
-  const { modalDeleteColumn } = useAppSelector(({ columnsReducer }) => columnsReducer);
+  const { modalDeleteColumn, columnList, currentColumn } = useAppSelector(
+    ({ columnsReducer }) => columnsReducer
+  );
   const { currentBoard } = useAppSelector(({ boardsReducer }) => boardsReducer);
-
+  const [cards, setCards] = useState(columnList);
   const { register, handleSubmit } = useForm<Input>();
+  let cur: Column = null;
 
   const deleteColumn = () => {
     const modalDeleteState: ModalState = {
@@ -38,16 +46,66 @@ export default function ColumnList(props: Column) {
     dispatch(setModalDeleteState(modalDeleteState));
   };
 
-  const updateColumn: SubmitHandler<Input> = (columnBody: ColumnBody) => {
-    dispatch(updateColumnById({ currentBoard, id, columnBody, order }));
+  const updateColumn: SubmitHandler<Input> = (columnTitle: ColumnBody) => {
+    const columnBody = { title: columnTitle.title, order: order };
+    dispatch(updateColumnById({ currentBoard, id, columnBody }));
     setTitle(false);
     setUpdateTitle(columnBody.title);
     setTimeout(() => dispatch(getColumnById({ currentBoard, id })), 100);
   };
 
+  const dragColumn = (props: Column) => {
+    console.log(props);
+    setCurrentColumn(props);
+    dispatch(setRender(props));
+    cur = props;
+    console.log(cur);
+    console.log(current);
+    console.log(currentColumn);
+  };
+
+  const [{ isDragging }, drag] = useDrag(() => ({
+    type: 'column',
+    //end: () => dragColumn(props),
+    collect: (monitor) => ({
+      isDragging: !!monitor.isDragging(),
+    }),
+  }));
+
+  const [{ isOver }, drop] = useDrop(() => ({
+    accept: 'column',
+    drop: (item: Column) => addColumn(props),
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver(),
+    }),
+  }));
+
+  const addColumn = (column: Column) => {
+    setCards(
+      cards.map((item) => {
+        if (item.id == column.id) {
+          const columnBody = { title: item.title, order: currentColumn.order };
+          dispatch(updateColumnById({ currentBoard, id, columnBody }));
+          return { ...item, order: currentColumn.order };
+        }
+        if (item.id == currentColumn.id) {
+          const columnBody = { title: column.title, order: column.order };
+          dispatch(updateColumnById({ currentBoard, id, columnBody }));
+          return { ...item, order: column.order };
+        }
+        return item;
+      })
+    );
+  };
+
   return (
-    <div className="list-container">
-      <div className="list-block">
+    <div className="list-container" ref={drop}>
+      <div
+        className="list-block"
+        ref={drag}
+        onDragStart={() => dragColumn(props)}
+        style={{ border: isDragging ? '5px solid pink' : '0px' }}
+      >
         <div className="title-container">
           <div className="list-title">
             {!changeTitle ? (
