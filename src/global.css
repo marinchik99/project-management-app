@@ -58,3 +58,27 @@ main {
   margin: 0 auto;
   padding: 0 40px;
 }
+
+::-webkit-scrollbar {
+  cursor: pointer;
+  width: 10px;
+  height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  cursor: pointer !important;
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 5px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #898989; 
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #666565; 
+}

@@ -12,7 +12,6 @@ import {
 } from '@mui/material';
 import React, { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { Navigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../store';
 import { selectCurrentUser } from '../../../store/reducers/authSlice';
 import { createTask } from '../../../store/reducers/tasksReducers';

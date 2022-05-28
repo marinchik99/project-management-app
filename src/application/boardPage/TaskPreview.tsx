@@ -24,7 +24,9 @@ export default function TaskPreview(props: Partial<TaskType>) {
   const { id, boardId, columnId, userId } = props;
 
   const onClick = () => {
-    dispatch(deleteTask({ id, boardId, columnId }));
+    if (id && boardId && columnId) {
+      dispatch(deleteTask({ id, boardId, columnId }));
+    }
   };
 
   const userName = users && users.length ? users.filter((user) => user.id === userId)[0].login : '';
