@@ -12,7 +12,7 @@ const task = {
   userId: '01234',
   description: 'Some text',
   title: 'Some title',
-}
+};
 
 describe('Header TaskPreview', () => {
   test('should render TaskPreview', () => {
