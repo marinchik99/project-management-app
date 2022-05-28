@@ -39,7 +39,9 @@ const UserToolbar = () => {
         )}
         {token && (
           <Stack direction="row" spacing={2}>
-            <Avatar {...stringAvatar(login)} />
+            <NavLink to="/Edit">
+              <Avatar {...stringAvatar(login)} style={{ cursor: 'pointer' }} />
+            </NavLink>
             <Button variant="outlined" onClick={onClick}>
               Logout
             </Button>

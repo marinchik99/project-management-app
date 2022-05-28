@@ -9,10 +9,11 @@ export type BoardList = Array<Board>
 export type BoardBody = Omit<Board, 'id'>;
 
 export type TRemoveConf = {
-  id: string,
+  id?: string,
+  userId?: string,
 }
 
 export interface ModalState {
   isOpen: boolean;
-  type: 'board' | 'column' | 'task';
+  type: 'user' | 'board' | 'column' | 'task';
 }

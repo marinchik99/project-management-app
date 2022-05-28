@@ -2,16 +2,29 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AxiosResponse } from 'axios';
 import { axiosInstance } from '../../services/axiosInstance';
 import { UserType } from '../../types/types';
+import { ModalState } from '../../.d';
 
 export type UsersState = {
   users: Pick<UserType, 'id' | 'name' | 'login'>[];
   isLoading: boolean;
+  modalDeleteUser: ModalState;
 };
 
 const initialState: UsersState = {
   users: [],
   isLoading: false,
+  modalDeleteUser: {
+    isOpen: false,
+    type: null,
+  },
 };
+
+export interface IUserBody {
+  id?: string;
+  name: string;
+  login: string;
+  password: string;
+}
 
 export const getUsers = createAsyncThunk(
   'usersReducer/getUsers',
@@ -25,10 +38,43 @@ export const getUsers = createAsyncThunk(
   }
 );
 
+export const deleteUserById = createAsyncThunk(
+  'usersReducer/deleteUserById',
+  async (id: string, { rejectWithValue }) => {
+    try {
+      await axiosInstance.delete(`users/${id}`);
+      return console.log('User ' + id + ' was deleted!');
+    } catch (err) {
+      rejectWithValue((err as Error).message);
+    }
+  }
+);
+
+export const updateUserById = createAsyncThunk(
+  'usersReducer/updateUserById',
+  async (user: IUserBody, { rejectWithValue }) => {
+    try {
+      const { id, name, login, password } = user;
+      await axiosInstance.put(`users/${id}`, {
+        name,
+        login,
+        password,
+      });
+      return console.log('User ' + id + ' was updated!');
+    } catch (err) {
+      rejectWithValue((err as Error).message);
+    }
+  }
+);
+
 export const usersReducer = createSlice({
-  name: 'boardsReducer',
+  name: 'usersReducer',
   initialState,
-  reducers: {},
+  reducers: {
+    setModalDeleteState: (state, { payload }: PayloadAction<ModalState>) => {
+      state.modalDeleteUser = payload;
+    },
+  },
   extraReducers: (builder) =>
     builder
       .addCase(
@@ -46,4 +92,5 @@ export const usersReducer = createSlice({
       }),
 });
 
+export const { setModalDeleteState } = usersReducer.actions;
 export default usersReducer.reducer;
