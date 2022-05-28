@@ -29,7 +29,8 @@ export default function TaskPreview(props: Partial<TaskType>) {
     }
   };
 
-  const userName = users && users.length ? users.filter((user) => user.id === userId)[0].login : '';
+  const userName =
+    users && users.length ? users.filter((user) => user.id === userId)[0].login : 'Anonymous';
 
   return (
     <ThemeProvider theme={theme}>

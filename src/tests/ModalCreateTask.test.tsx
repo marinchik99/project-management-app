@@ -21,7 +21,7 @@ describe('Header ModalCreateTask', () => {
         </Provider>
       </MemoryRouter>
     );
-    screen.debug();
+
     expect(screen.getAllByText(/Создание задачи/i)).toHaveLength(1);
   });
 
@@ -40,7 +40,7 @@ describe('Header ModalCreateTask', () => {
         </Provider>
       </MemoryRouter>
     );
-    screen.debug();
+
     expect(screen.queryByText(/Создание задачи/i)).not.toBeInTheDocument();
   });
 });
