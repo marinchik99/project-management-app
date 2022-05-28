@@ -86,14 +86,7 @@ export default function ColumnList(props: Column) {
         <div className="list">
           {columnTask &&
             columnTask.colTasks?.map((task) => {
-              return (
-                <TaskPreview
-                  key={task.id}
-                  title={task.title}
-                  description={task.description}
-                  userId={task.userId}
-                />
-              );
+              return <TaskPreview key={task.id} {...task} />;
             })}
         </div>
         <Button className="add-card" onClick={handleOpenModal}>

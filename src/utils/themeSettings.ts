@@ -5,6 +5,7 @@ type ThemeOptions = {
     type: string;
     primary: {
       main: string;
+      light: string;
     };
     secondary: {
       main: string;
@@ -26,6 +27,7 @@ export const themeOptions: ThemeOptions = {
     type: 'light',
     primary: {
       main: '#b0bec5',
+      light: '#eaf3f7',
     },
     secondary: {
       main: '#c75b39',

@@ -99,13 +99,11 @@ export const getTask = createAsyncThunk(
 
 export const deleteTask = createAsyncThunk(
   'boardsReducer/deleteTask',
-  async (task: Pick<TaskType, 'id' | 'columnId' | 'boardId'>, { rejectWithValue }) => {
+  async (task: Pick<TaskType, 'id' | 'columnId' | 'boardId'>, { rejectWithValue, dispatch }) => {
     try {
       const { boardId, columnId, id } = task;
-      const response: AxiosResponse = await axiosInstance.delete(
-        `boards/${boardId}/columns/${columnId}/tasks/${id}`
-      );
-      console.log(JSON.stringify(response));
+      await axiosInstance.delete(`boards/${boardId}/columns/${columnId}/tasks/${id}`);
+      dispatch(getAllTasks({ boardId, columnId }));
     } catch (err) {
       rejectWithValue((err as Error).message);
     }
