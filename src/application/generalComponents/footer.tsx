@@ -1,5 +1,6 @@
-import { Container, Grid } from '@mui/material';
 import React from 'react';
+import { Trans } from 'react-i18next';
+import { Container, Grid } from '@mui/material';
 import '../../css/footer.css';
 
 export default function Footer() {
@@ -23,7 +24,7 @@ export default function Footer() {
               target="_blank"
               rel="noreferrer"
             >
-              Марина
+              <Trans i18nKey="footer.marinaName">Марина</Trans>
             </a>
             <a
               className="git-acc"
@@ -31,7 +32,7 @@ export default function Footer() {
               target="_blank"
               rel="noreferrer"
             >
-              Петр
+              <Trans i18nKey="footer.petrName">Пётр</Trans>
             </a>
             <a
               className="git-acc"
@@ -39,7 +40,7 @@ export default function Footer() {
               target="_blank"
               rel="noreferrer"
             >
-              Сергей
+              <Trans i18nKey="footer.sergeyName">Сергей</Trans>
             </a>
           </Grid>
           <Grid item xs={2}>

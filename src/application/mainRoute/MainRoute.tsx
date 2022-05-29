@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Trans } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { getBoards } from '../../store/reducers/boardsReducer';
 
@@ -6,7 +7,6 @@ import './MainRoute.scss';
 
 import Preloader from '../generalComponents/preloader';
 import Search from './Search';
-import AddBoardBtn from './AddBoardBtn';
 import BoardList from './BoardList';
 import ModalForm from '../generalComponents/ModalForm';
 import theme from '../../utils/themeSettings';
@@ -25,8 +25,10 @@ export default function MainRoute() {
     <ThemeProvider theme={theme}>
       <main className="boards-page-wrapper">
         <div className="container boards-page">
-          <Search />
-          <h1 className="boards-page__title page-title">Доски</h1>
+          {/* <Search /> */}
+          <h1 className="boards-page__title page-title">
+            <Trans i18nKey="boardsPage.title">Доски</Trans>
+          </h1>
           {isLoading ? (
             <Preloader />
           ) : (

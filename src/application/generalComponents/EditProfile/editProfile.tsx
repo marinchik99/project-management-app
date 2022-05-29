@@ -14,6 +14,7 @@ import { ModalState } from '../../../.d';
 import { selectCurrentUser } from '../../../store/reducers/authSlice';
 import DeleteUserConfirmation from './modalDeleteUser';
 import { useNavigate } from 'react-router-dom';
+import { Trans, useTranslation } from 'react-i18next';
 
 type Inputs = {
   name: string;
@@ -27,6 +28,7 @@ export default function EditProfile() {
   const { login } = useAppSelector(selectCurrentUser);
   const [id, setId] = useState(null);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     users.map((item) => {
@@ -73,47 +75,55 @@ export default function EditProfile() {
             <PersonIcon></PersonIcon>
           </Avatar>
           <Typography component="h1" variant="h5">
-            Редактировать профиль
+            <Trans i18nKey="editProfile.title">Редактировать профиль</Trans>
           </Typography>
           <Container sx={{ mt: 2 }}>
             <form className="form form-edit" onSubmit={handleSubmit(onSubmit)}>
               <input
-                placeholder="Имя пользователя"
+                placeholder={t('editProfile.namePlaceholder')}
                 id="form-title-input"
                 className="form__input-text"
                 {...register('name', { required: true, pattern: /^[A-Za-z]+$/i, minLength: 2 })}
               />
               {errors.name && (
                 <span className="form__error-text">
-                  Имя должно содержать латинские буквы и длина не менее 2 символов
+                  <Trans i18nKey="editProfile.inputNameError">
+                    Имя должно содержать латинские буквы и длина не менее 2 символов
+                  </Trans>
                 </span>
               )}
               <input
                 id="form-title-input"
-                placeholder="Логин"
+                placeholder={t('editProfile.loginPlaceholder')}
                 className="form__input-text"
                 {...register('login', { required: true, pattern: /^[A-Za-z0-9]+$/i, minLength: 3 })}
               />
               {errors.login && (
                 <span className="form__error-text">
-                  Логин должен содержать латинские буквы и цифры и длина не менее 3 символов
+                  <Trans i18nKey="editProfile.inputLoginError">
+                    Логин должен содержать латинские буквы и цифры и длина не менее 3 символов
+                  </Trans>
                 </span>
               )}
               <input
                 id="form-title-input"
-                placeholder="Пароль"
+                placeholder={t('editProfile.passwordPlaceholer')}
                 className="form__input-text"
                 {...register('password', { required: true, minLength: 4 })}
               />
               {errors.password && (
-                <span className="form__error-text">Минимальная длина пароля - 4 символа</span>
+                <span className="form__error-text">
+                  <Trans i18nKey=".editProfile.inputPasswordError">
+                    Минимальная длина пароля - 4 символа
+                  </Trans>
+                </span>
               )}
               <div className="edit-buttons">
                 <Button variant="outlined" className="edit-button save" type="submit">
-                  Сохранить
+                  <Trans i18nKey="saveBtn">Сохранить</Trans>
                 </Button>
                 <Button variant="outlined" className="edit-button delete" onClick={deleteUser}>
-                  Удалить
+                  <Trans i18nKey="deleteBtn">Удалить</Trans>
                 </Button>
               </div>
               {modalDeleteUser.isOpen && <DeleteUserConfirmation id={id} />}

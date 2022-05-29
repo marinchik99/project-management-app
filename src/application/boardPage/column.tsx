@@ -15,6 +15,7 @@ import DeleteColumnConfirmation from '../../application/generalComponents/Remove
 import ModalCreateTask from '../generalComponents/ModalCreateTask/ModalCreateTask';
 import TaskPreview from './TaskPreview';
 import { selectAllTasks } from '../../store/reducers/tasksReducers';
+import { Trans } from 'react-i18next';
 
 type Input = {
   id: string;
@@ -73,8 +74,12 @@ export default function ColumnList(props: Column) {
                   size="small"
                   aria-label="small button group"
                 >
-                  <Button onClick={handleSubmit(updateColumn)}>Submit</Button>
-                  <Button onClick={() => setTitle(false)}>Cansel</Button>
+                  <Button onClick={handleSubmit(updateColumn)}>
+                    <Trans i18nKey="boardPage.column.editTitleSubmit">Принять</Trans>
+                  </Button>
+                  <Button onClick={() => setTitle(false)}>
+                    <Trans i18nKey="boardPage.column.editTitleCancel">Отменить</Trans>
+                  </Button>
                 </ButtonGroup>
               </div>
             )}
@@ -91,7 +96,7 @@ export default function ColumnList(props: Column) {
         </div>
         <Button className="add-card" onClick={handleOpenModal}>
           <AddIcon fontSize="small" />
-          Добавить карточку
+          <Trans i18nKey="boardPage.column.addTaskBtn">Добавить карточку</Trans>
         </Button>
       </div>
       {modalDeleteColumn.isOpen && modalDeleteColumn.type === 'column' && (

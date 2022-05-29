@@ -1,4 +1,5 @@
 import React from 'react';
+import { Trans } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Button, Container, Grid } from '@mui/material';
 import { NavLink } from 'react-router-dom';
@@ -34,12 +35,16 @@ export default function AboutProject() {
         >
           <Grid item xs={5} className="desk-text">
             <motion.p custom={1} variants={textAnimation}>
-              Начните с создания досок, в которые будете помещать списки и карточки с заданиями. Они
-              могут располагаться в нужном для Вас порядке.
+              <Trans i18nKey="welcomePage.aboutProjectPart1">
+                Начните с создания досок, в которые будете помещать списки и карточки с заданиями.
+                Они могут располагаться в нужном для Вас порядке.
+              </Trans>
             </motion.p>
             <motion.div custom={1} variants={textAnimation}>
-              <NavLink to="/Login" style={{ textDecoration: 'none' }}>
-                <Button variant="outlined">Начать</Button>
+              <NavLink to="/Boards" style={{ textDecoration: 'none' }}>
+                <Button variant="outlined">
+                  <Trans i18nKey="welcomePage.aboutProjectBtn">Начать</Trans>
+                </Button>
               </NavLink>
             </motion.div>
           </Grid>
@@ -57,8 +62,10 @@ export default function AboutProject() {
         <Grid container spacing={1} justifyContent="center" alignItems="center">
           <Grid item xs={5} className="desk-text">
             <motion.p custom={2} variants={textAnimation}>
-              Карточки можно переносить в другой список, редактировать и удалять. Удаление доски
-              автоматически удаляет привязанные к ней списки и каточки.
+              <Trans i18nKey="welcomePage.aboutProjectPart2">
+                Карточки можно переносить в другой список, редактировать и удалять. Удаление доски
+                автоматически удаляет привязанные к ней списки и каточки.
+              </Trans>
             </motion.p>
           </Grid>
           <Grid item xs={5} className="desk-text">

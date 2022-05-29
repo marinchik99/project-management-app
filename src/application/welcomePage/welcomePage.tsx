@@ -1,10 +1,10 @@
 import React from 'react';
-import '../../css/welcome.css';
-import { Button, ButtonGroup, Container, Grid } from '@mui/material';
-import { NavLink } from 'react-router-dom';
+import { Trans } from 'react-i18next';
+import { Container, Grid } from '@mui/material';
 import AboutTeam from './aboutTeam';
 import AboutProject from './aboutProject';
 import AboutCourse from './aboutCourse';
+import '../../css/welcome.css';
 
 export default function WelcomePage() {
   return (
@@ -14,8 +14,10 @@ export default function WelcomePage() {
           <Grid item xs={6} className="general-text">
             <h1 className="general-name">Remboard</h1>
             <h2 className="general-desript">
-              Помогает эффективно организовать работу. Создавайте и отслеживайте задачи, а также
-              управляйте ими и делитесь информацией с участниками команды.
+              <Trans i18nKey="welcomePage.generalDesript">
+                Помогает эффективно организовать работу. Создавайте и отслеживайте задачи, а также
+                управляйте ими и делитесь информацией с участниками команды.
+              </Trans>
             </h2>
           </Grid>
           <Grid item xs={6}>

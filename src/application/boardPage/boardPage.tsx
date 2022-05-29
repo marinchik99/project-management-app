@@ -11,6 +11,7 @@ import { ModalState } from '../../.d';
 import ModalCreateColumn from '../generalComponents/ModalForm/modalCreateColumn';
 import { useParams } from 'react-router-dom';
 import { getAllTasks } from '../../store/reducers/tasksReducers';
+import { Trans } from 'react-i18next';
 
 export default function BoardPage() {
   const { isLoading, currentBoard } = useAppSelector(({ boardsReducer }) => boardsReducer);
@@ -67,7 +68,7 @@ export default function BoardPage() {
               data-testid="button-add-column"
             >
               <AddIcon fontSize="small" />
-              Добавить колонку
+              <Trans i18nKey="boardPage.addColumnBtn">Добавить колонку</Trans>
             </Button>
           </div>
           {modalColumn.isOpen && modalColumn.type === 'column' && <ModalCreateColumn />}

@@ -6,6 +6,7 @@ import SignupPage from '../application/authorizationForms/SignupPage/SignupPage'
 import { store } from '../store';
 import fetchMock from 'jest-fetch-mock';
 import { userApi } from '../store/services/usersApi';
+// import '../services/i18n';
 
 beforeEach((): void => {
   fetchMock.resetMocks();
@@ -25,6 +26,7 @@ describe('Signup page', () => {
       </MemoryRouter>
     );
 
+    screen.debug();
     expect(screen.getByText(/Регистрация/i)).toBeInTheDocument();
     expect(screen.getByText(/согласен/i)).toBeInTheDocument();
 

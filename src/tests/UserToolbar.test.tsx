@@ -15,6 +15,7 @@ describe('Header UserToolbar', () => {
       </MemoryRouter>
     );
 
-    expect(screen.getAllByText(/Log in/i)).toHaveLength(1);
+    screen.debug();
+    expect(screen.getAllByText(/войти/i)).toHaveLength(1);
   });
 });

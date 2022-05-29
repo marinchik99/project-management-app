@@ -1,12 +1,13 @@
 import React from 'react';
+import { Trans } from 'react-i18next';
+import { useAppDispatch, useAppSelector } from '../../../store';
+import { setModalState } from '../../../store/reducers/boardsReducer';
+import { ModalState } from '../../../.d';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import { useAppDispatch, useAppSelector } from '../../../store';
-import { setModalState } from '../../../store/reducers/boardsReducer';
-import { ModalState } from '../../../.d';
 import './AddBoardBtn.scss';
 
 export default function AddBoardBtn() {
@@ -26,7 +27,7 @@ export default function AddBoardBtn() {
       <CardActionArea onClick={handleCreateBoard} data-testid="addBoardBtn">
         <CardContent>
           <Typography gutterBottom variant="h5" component="h5">
-            Добавить доску
+            <Trans i18nKey="boardsPage.addNewBoardBtn">Добавить доску</Trans>
           </Typography>
           <AddCircleOutlineIcon />
         </CardContent>

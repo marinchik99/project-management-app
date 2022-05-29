@@ -9,6 +9,6 @@ test('notFound component', () => {
       <NotFound />
     </MemoryRouter>
   );
-  const linkElement = screen.getByText(/404 Not Found/i);
+  const linkElement = screen.getByText(/такая страница не найдена/i);
   expect(linkElement).toBeInTheDocument();
 });

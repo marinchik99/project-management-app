@@ -1,12 +1,15 @@
 import React from 'react';
-import '../../css/welcome.css';
+import { Trans } from 'react-i18next';
 import { Container, Tooltip } from '@mui/material';
+import '../../css/welcome.css';
 
 export default function AboutCourse() {
   return (
     <section className="cource">
       <Container maxWidth="xl" className="course-container">
-        <h3 className="course-title">О курсе</h3>
+        <h3 className="course-title">
+          <Trans i18nKey="welcomePage.aboutCourseTitle">О курсе</Trans>
+        </h3>
         <a
           href="https://rs.school/js"
           target="_blank"
@@ -16,9 +19,11 @@ export default function AboutCourse() {
           <Tooltip title="Перейти по ссылке">
             <div className="course-block">
               <p className="course-text">
-                Курс React предназначен для студентов RS School, которые прошли RS School stage #2,
-                а также для тех, кто имеет знания и практический опыт использования следующих
-                технологий и инструментов:
+                <Trans i18nKey="welcomePage.aboutCourseDescription">
+                  Курс React предназначен для студентов RS School, которые прошли RS School stage
+                  #2, а также для тех, кто имеет знания и практический опыт использования следующих
+                  технологий и инструментов:
+                </Trans>
               </p>
               <div className="course-list">
                 <li>JavaScript</li>

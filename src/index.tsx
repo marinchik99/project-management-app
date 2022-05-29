@@ -8,6 +8,8 @@ import reportWebVitals from './reportWebVitals';
 import { store } from './store';
 import { injectStore } from './services/axiosInstance';
 
+import './services/i18n';
+
 injectStore(store);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
