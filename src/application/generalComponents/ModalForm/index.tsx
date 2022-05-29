@@ -73,7 +73,7 @@ export default function ModalForm() {
                 className="form__input-text"
                 {...register('title', { required: true })}
               />
-              {errors.description && (
+              {errors.title && (
                 <span className="form__error-text">
                   <Trans i18nKey="createBoardModal.titleInputError">
                     *Это поле обязательно для заполнения
@@ -89,8 +89,16 @@ export default function ModalForm() {
                 id="form-description-input"
                 className="form__textarea"
                 rows={5}
-                {...register('description')}
+                {...register('description', { required: true })}
               />
+
+              {errors.description && (
+                <span className="form__error-text">
+                  <Trans i18nKey="createBoardModal.titleInputError">
+                    *Это поле обязательно для заполнения
+                  </Trans>
+                </span>
+              )}
 
               <Button
                 variant="contained"
