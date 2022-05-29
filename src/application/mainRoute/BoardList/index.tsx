@@ -10,7 +10,9 @@ export default function BoardList() {
   return (
     <div className="board-list-container">
       <AddBoardBtn />
-      {boardList.length && boardList.map((board) => <BoardItem key={board.id} {...board} />)}
+      {boardList.map((board) => (
+        <BoardItem key={board.id} {...board} />
+      ))}
     </div>
   );
 }
