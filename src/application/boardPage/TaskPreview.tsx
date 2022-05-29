@@ -11,6 +11,7 @@ import {
   Typography,
 } from '@mui/material';
 import React from 'react';
+import { Trans } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { deleteTask } from '../../store/reducers/tasksReducers';
 import { selectUsers } from '../../store/reducers/usersReducer';
@@ -58,7 +59,7 @@ export default function TaskPreview(props: Partial<TaskType>) {
         </CardActionArea>
         <CardActions>
           <Button size="small" color="secondary" onClick={onClick}>
-            Удалить
+            <Trans i18nKey="deleteBtn">Удалить</Trans>
           </Button>
         </CardActions>
       </Card>

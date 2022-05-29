@@ -1,15 +1,16 @@
 import React from 'react';
-import { useAppDispatch, useAppSelector } from '../../../store';
+import { useParams } from 'react-router-dom';
+import { Trans } from 'react-i18next';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
-import './ModalForm.scss';
-import { getColumns, createColumn, setModalState } from '../../../store/reducers/columnsReducer';
 import { Container } from '@mui/material';
+import Button from '@mui/material/Button';
+import Modal from '@mui/material/Modal';
+import { useAppDispatch, useAppSelector } from '../../../store';
+import { getColumns, createColumn, setModalState } from '../../../store/reducers/columnsReducer';
 import { ColumnBody } from '../../../store/reducers/columnsReducer';
-import { useParams } from 'react-router-dom';
-import { Trans } from 'react-i18next';
+import './ModalForm.scss';
 
 type Inputs = {
   title: string;
@@ -80,7 +81,14 @@ export default function ModalCreateColumn() {
                 </span>
               )}
 
-              <input data-testid="form-submit-btn" className="form__btn" type="submit" />
+              <Button
+                variant="contained"
+                className="form__btn save"
+                data-testid="form-submit-btn"
+                type="submit"
+              >
+                <Trans i18nKey="createBtn">Создать</Trans>
+              </Button>
               <button
                 data-testid="form-close-btn"
                 className="form__btn-close"

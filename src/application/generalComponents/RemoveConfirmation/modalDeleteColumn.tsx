@@ -57,16 +57,16 @@ export default function DeleteColumnConfirmation(props: TRemoveConf) {
       >
         <Box sx={style}>
           <Typography id="modal-modal-description" gutterBottom sx={{ mt: 2 }}>
-            <Trans i18nKey="removeConfirmModalColumn.text">
+            <Trans i18nKey="removeConfirmModal.columnText">
               Вы уверены, что хотите удалить колонку?
             </Trans>
           </Typography>
           <ButtonGroup className="modal-delete-buttons">
             <Button className="remove-btn" variant="contained" onClick={handleRemove}>
-              <Trans i18nKey="removeConfirmModalColumn.yesBtn">Да</Trans>
+              <Trans i18nKey="yesBtn">Да</Trans>
             </Button>
             <Button variant="contained" onClick={handleClose}>
-              <Trans i18nKey="removeConfirmModalColumn.noBtn">Нет</Trans>
+              <Trans i18nKey="noBtn">Нет</Trans>
             </Button>
           </ButtonGroup>
         </Box>

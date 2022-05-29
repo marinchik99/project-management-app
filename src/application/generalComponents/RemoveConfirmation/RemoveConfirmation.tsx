@@ -49,7 +49,7 @@ export default function RemoveConfirmation(props: TRemoveConf) {
   return (
     <div id="modal-remove-confirm" className="modal modal-remove-confirm">
       <Button className="remove-btn" variant="outlined" onClick={handleOpen}>
-        <Trans i18nKey="removeConfirmModal.removeBtn">Удалить</Trans>
+        <Trans i18nKey="deleteBtn">Удалить</Trans>
       </Button>
 
       <Modal
@@ -61,16 +61,16 @@ export default function RemoveConfirmation(props: TRemoveConf) {
       >
         <Box sx={style}>
           <Typography id="modal-modal-description" gutterBottom sx={{ mt: 2 }}>
-            <Trans i18nKey="removeConfirmModal.text">
+            <Trans i18nKey="removeConfirmModal.boardText">
               Вы уверены, что хотите удалить эту доску?
             </Trans>
           </Typography>
           <ButtonGroup>
             <Button className="remove-btn" variant="contained" onClick={handleRemove}>
-              <Trans i18nKey="removeConfirmModal.yesBtn">Да</Trans>
+              <Trans i18nKey="yesBtn">Да</Trans>
             </Button>
             <Button variant="contained" onClick={handleClose}>
-              <Trans i18nKey="removeConfirmModal.noBtn">Нет</Trans>
+              <Trans i18nKey="noBtn">Нет</Trans>
             </Button>
           </ButtonGroup>
         </Box>

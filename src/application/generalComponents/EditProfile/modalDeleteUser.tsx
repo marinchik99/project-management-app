@@ -9,6 +9,7 @@ import Modal from '@mui/material/Modal';
 import { ButtonGroup } from '@mui/material';
 import { TRemoveConf } from '../../../.d';
 import { logout } from '../../../store/reducers/authSlice';
+import { Trans } from 'react-i18next';
 
 export default function DeleteUserConfirmation(props: TRemoveConf) {
   const dispatch = useAppDispatch();
@@ -50,14 +51,16 @@ export default function DeleteUserConfirmation(props: TRemoveConf) {
       >
         <Box sx={style}>
           <Typography id="modal-modal-description" gutterBottom sx={{ mt: 2 }}>
-            Вы уверены, что хотите удалить полользователя?
+            <Trans i18nKey="removeConfirmModal.userText">
+              Вы уверены, что хотите удалить полользователя?
+            </Trans>
           </Typography>
           <ButtonGroup className="modal-delete-buttons">
             <Button className="remove-btn" variant="contained" onClick={handleRemove}>
-              Да
+              <Trans i18nKey="yesBtn">Да</Trans>
             </Button>
             <Button variant="contained" onClick={handleClose}>
-              Нет
+              <Trans i18nKey="noBtn">Нет</Trans>
             </Button>
           </ButtonGroup>
         </Box>

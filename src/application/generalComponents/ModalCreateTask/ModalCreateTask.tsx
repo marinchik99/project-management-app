@@ -125,10 +125,10 @@ export default function ModalCreateTask({ open, handleClose, boardId, columnId }
               />
               <ButtonGroup fullWidth variant="contained">
                 <LoadingButton data-testid="submitC" type="submit" fullWidth variant="contained">
-                  <Trans i18nKey="createTaskModal.applyBtn">Создать</Trans>
+                  <Trans i18nKey="createBtn">Создать</Trans>
                 </LoadingButton>
                 <Button onClick={handleClose}>
-                  <Trans i18nKey="createTaskModal.closeBtn">Закрыть</Trans>
+                  <Trans i18nKey="closeBtn">Закрыть</Trans>
                 </Button>
               </ButtonGroup>
             </Box>

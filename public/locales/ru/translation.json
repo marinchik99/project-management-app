@@ -93,21 +93,38 @@
     "titleLabel": "Заголовок",
     "titleInputError": "*Заполните поле",
     "descriptionLabel": "Описание задачи",
-    "applyBtn": "Создать",
-    "closeBtn": "Закрыть"
+    "applyBtn": "Создать"
+  },
+  
+  "editProfile": {
+    "title": "Редактировать профиль",
+    "namePlaceholder": "Имя пользователя",
+    "inputNameError": "Имя должно содержать латинские буквы и длина не менее 2 символов",
+    "loginPlaceholder": "Логин",
+    "inputLoginError": "Логин должен содержать латинские буквы и цифры и длина не менее 3 символов",
+    "passwordPlaceholer": "Пароль",
+    "inputPasswordError": "Минимальная длина пароля - 4 символа"
+  },
+  
+  "removeConfirmModal": {
+    "boardText": "Вы уверены, что хотите удалить эту доску?",
+    "columnText": "Вы уверены, что хотите удалить колонку?",
+    "userText": "Вы уверены, что хотите удалить полользователя?"
+  },
+  
+  "saveBtn": "Сохранить",
+  "createBtn": "Создать",
+  "closeBtn": "Закрыть",
+  "deleteBtn": "Удалить",
+  "yesBtn": "Да",
+  "noBtn": "Нет",
+
+  "404page": {
+    "mainText": "Такая страница не найдена",
+    "redirectText": "Перейти на",
+    "redirectLink": "Главную"
   },
 
-  "removeConfirmModal": {
-    "removeBtn": "Удалить",
-    "text": "Вы уверены, что хотите удалить эту доску?",
-    "yesBtn": "Да",
-    "noBtn": "Нет"
-  },
-  "removeConfirmModalColumn": {
-    "text": "Вы уверены, что хотите удалить колонку?",
-    "yesBtn": "Да",
-    "noBtn": "Нет"
-  },
   "footer": {
     "marinaName": "Марина",
     "petrName": "Пётр",

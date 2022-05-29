@@ -92,7 +92,14 @@ export default function ModalForm() {
                 {...register('description')}
               />
 
-              <input data-testid="form-submit-btn" className="form__btn" type="submit" />
+              <Button
+                variant="contained"
+                className="form__btn save"
+                data-testid="form-submit-btn"
+                type="submit"
+              >
+                <Trans i18nKey="saveBtn">Сохранить</Trans>
+              </Button>
               <button
                 data-testid="form-close-btn"
                 className="form__btn-close"
