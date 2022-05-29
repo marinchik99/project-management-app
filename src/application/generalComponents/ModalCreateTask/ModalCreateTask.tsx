@@ -12,14 +12,18 @@ import {
 } from '@mui/material';
 import React, { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
+import { useAppDispatch, useAppSelector } from '../../../store';
+import { selectCurrentUser } from '../../../store/reducers/authSlice';
+import { createTask } from '../../../store/reducers/tasksReducers';
+import { selectUsers } from '../../../store/reducers/usersReducer';
 import { TaskType } from '../../../types/types';
 import theme from '../../../utils/themeSettings';
 
 type Props = {
   open: boolean;
   handleClose: () => void;
-  boardID: string;
-  columnID: string;
+  boardId: string;
+  columnId: string;
 };
 
 const style = {
@@ -36,7 +40,7 @@ const style = {
   p: 2,
 };
 
-export default function ModalCreateTask({ open, handleClose, boardID, columnID }: Props) {
+export default function ModalCreateTask({ open, handleClose, boardId, columnId }: Props) {
   const {
     control,
     handleSubmit,
@@ -49,8 +53,17 @@ export default function ModalCreateTask({ open, handleClose, boardID, columnID }
     },
   });
 
+  const dispatch = useAppDispatch();
+  const { users } = useAppSelector(selectUsers);
+  const { login } = useAppSelector(selectCurrentUser);
+
   const onSubmit = async (data: Pick<TaskType, 'title' | 'description'>) => {
-    console.log(data);
+    const { title, description } = data;
+    const userId = users.filter((user) => user.login === login)[0].id;
+    if (userId) {
+      await dispatch(createTask({ boardId, columnId, title, description, userId })).unwrap();
+    }
+    handleClose();
   };
 
   useEffect(() => {

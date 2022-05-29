@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AxiosResponse } from 'axios';
+import { RootState } from '../index';
 import { axiosInstance } from '../../services/axiosInstance';
 import { UserType } from '../../types/types';
 import { ModalState } from '../../.d';
@@ -94,3 +95,9 @@ export const usersReducer = createSlice({
 
 export const { setModalDeleteState } = usersReducer.actions;
 export default usersReducer.reducer;
+
+export const selectUsers = (state: RootState) => {
+  return {
+    users: state.usersReducer.users,
+  };
+};

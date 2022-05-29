@@ -12,6 +12,9 @@ import {
 } from '../../store/reducers/columnsReducer';
 import { ModalState } from '../../.d';
 import DeleteColumnConfirmation from '../../application/generalComponents/RemoveConfirmation/modalDeleteColumn';
+import ModalCreateTask from '../generalComponents/ModalCreateTask/ModalCreateTask';
+import TaskPreview from './TaskPreview';
+import { selectAllTasks } from '../../store/reducers/tasksReducers';
 
 type Input = {
   id: string;
@@ -26,6 +29,11 @@ export default function ColumnList(props: Column) {
   const [changeUpdateTitle, setUpdateTitle] = useState(title);
   const { modalDeleteColumn } = useAppSelector(({ columnsReducer }) => columnsReducer);
   const { currentBoard } = useAppSelector(({ boardsReducer }) => boardsReducer);
+  const { tasks } = useAppSelector(selectAllTasks);
+
+  const [openModal, setOpenModal] = useState(false);
+  const handleOpenModal = () => setOpenModal(true);
+  const handleCloseModal = () => setOpenModal(false);
 
   const { register, handleSubmit } = useForm<Input>();
 
@@ -44,6 +52,10 @@ export default function ColumnList(props: Column) {
     setUpdateTitle(columnBody.title);
     setTimeout(() => dispatch(getColumnById({ currentBoard, id })), 100);
   };
+
+  const columnTask = tasks.length
+    ? tasks.filter((column) => column.columnId === props.id)[0]
+    : null;
 
   return (
     <div className="list-container">
@@ -72,9 +84,12 @@ export default function ColumnList(props: Column) {
           </Button>
         </div>
         <div className="list">
-          <div className="list__item">Карточка с содержимым</div>
+          {columnTask &&
+            columnTask.colTasks?.map((task) => {
+              return <TaskPreview key={task.id} {...task} />;
+            })}
         </div>
-        <Button className="add-card">
+        <Button className="add-card" onClick={handleOpenModal}>
           <AddIcon fontSize="small" />
           Добавить карточку
         </Button>
@@ -82,6 +97,12 @@ export default function ColumnList(props: Column) {
       {modalDeleteColumn.isOpen && modalDeleteColumn.type === 'column' && (
         <DeleteColumnConfirmation id={id} />
       )}
+      <ModalCreateTask
+        boardId={currentBoard.id}
+        columnId={id}
+        open={openModal}
+        handleClose={handleCloseModal}
+      />
     </div>
   );
 }
