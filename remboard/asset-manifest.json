@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/project-management-app/remboard/static/css/main.ef3eaa71.css",
-    "main.js": "/project-management-app/remboard/static/js/main.24218601.js",
+    "main.css": "/project-management-app/remboard/static/css/main.efc1b80f.css",
+    "main.js": "/project-management-app/remboard/static/js/main.e0df526e.js",
     "static/js/787.6ccdce3c.chunk.js": "/project-management-app/remboard/static/js/787.6ccdce3c.chunk.js",
     "static/media/not-found.jpg": "/project-management-app/remboard/static/media/not-found.57c881460273f83ef637.jpg",
     "static/media/avatar-marina.JPG": "/project-management-app/remboard/static/media/avatar-marina.2837a3dee6bd4f569756.JPG",
@@ -12,12 +12,12 @@
     "static/media/team1.png": "/project-management-app/remboard/static/media/team1.ee35a76690dd0cccd5ff.png",
     "index.html": "/project-management-app/remboard/index.html",
     "static/media/getFetch.cjs": "/project-management-app/remboard/static/media/getFetch.c780682470504fffbd04.cjs",
-    "main.ef3eaa71.css.map": "/project-management-app/remboard/static/css/main.ef3eaa71.css.map",
-    "main.24218601.js.map": "/project-management-app/remboard/static/js/main.24218601.js.map",
+    "main.efc1b80f.css.map": "/project-management-app/remboard/static/css/main.efc1b80f.css.map",
+    "main.e0df526e.js.map": "/project-management-app/remboard/static/js/main.e0df526e.js.map",
     "787.6ccdce3c.chunk.js.map": "/project-management-app/remboard/static/js/787.6ccdce3c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ef3eaa71.css",
-    "static/js/main.24218601.js"
+    "static/css/main.efc1b80f.css",
+    "static/js/main.e0df526e.js"
   ]
 }
