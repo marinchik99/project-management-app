@@ -101,7 +101,7 @@ export default function AboutTeam() {
                 <Avatar
                   alt="Sergey"
                   className="avatar"
-                  //src={}
+                  src={require('../../assets/welcome/avatar-sergey.jpg')}
                   sx={{ width: 150, height: 150 }}
                 />
               </Grid>

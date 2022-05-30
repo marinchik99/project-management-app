@@ -40,7 +40,7 @@ export default function BoardPage() {
   };
 
   return (
-    <section className="board-page">
+    <main className="board-page">
       {isLoading ? (
         <Preloader />
       ) : (
@@ -74,6 +74,6 @@ export default function BoardPage() {
           {modalColumn.isOpen && modalColumn.type === 'column' && <ModalCreateColumn />}
         </Container>
       )}
-    </section>
+    </main>
   );
 }
