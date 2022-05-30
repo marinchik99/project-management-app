@@ -5,7 +5,13 @@ import {
   ButtonGroup,
   Container,
   CssBaseline,
+  FormControl,
+  FormHelperText,
+  InputLabel,
+  MenuItem,
   Modal,
+  NativeSelect,
+  Select,
   TextField,
   ThemeProvider,
   Typography,
@@ -51,6 +57,7 @@ export default function ModalCreateTask({ open, handleClose, boardId, columnId }
     defaultValues: {
       title: '',
       description: '',
+      userId: '',
     },
   });
   const { t } = useTranslation();
@@ -59,9 +66,9 @@ export default function ModalCreateTask({ open, handleClose, boardId, columnId }
   const { users } = useAppSelector(selectUsers);
   const { login } = useAppSelector(selectCurrentUser);
 
-  const onSubmit = async (data: Pick<TaskType, 'title' | 'description'>) => {
-    const { title, description } = data;
-    const userId = users.filter((user) => user.login === login)[0].id;
+  const onSubmit = async (data: Pick<TaskType, 'title' | 'description' | 'userId'>) => {
+    const { title, description, userId } = data;
+    // const userId = users.filter((user) => user.login === login)[0].id;
     if (userId) {
       await dispatch(createTask({ boardId, columnId, title, description, userId })).unwrap();
     }
@@ -82,6 +89,28 @@ export default function ModalCreateTask({ open, handleClose, boardId, columnId }
               <Trans i18nKey="createTaskModal.title">Создание задачи</Trans>
             </Typography>
             <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ my: 2 }}>
+              <Controller
+                name="userId"
+                control={control}
+                rules={{
+                  required: { value: true, message: 'Укажите исполнителя' },
+                }}
+                render={({ field }) => (
+                  <FormControl fullWidth variant="outlined" error={!!errors.userId}>
+                    <InputLabel id="native-select">Исполнитель</InputLabel>
+                    <Select {...field} fullWidth labelId="native-select" label="Исполнитель">
+                      {users.map((user) => {
+                        return (
+                          <MenuItem key={user.id} value={user.id}>
+                            {`${user.name} aka ${user.login}`}
+                          </MenuItem>
+                        );
+                      })}
+                    </Select>
+                    <FormHelperText>{!!errors.userId ? errors.userId?.message : ''}</FormHelperText>
+                  </FormControl>
+                )}
+              />
               <Controller
                 name="title"
                 control={control}
