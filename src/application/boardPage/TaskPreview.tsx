@@ -16,21 +16,20 @@ import { useAppSelector } from '../../store';
 import { selectUsers } from '../../store/reducers/usersReducer';
 import { TaskType } from '../../types/types';
 import theme from '../../utils/themeSettings';
+import ModalEditTask from '../generalComponents/ModalEditTask/ModalEditTask';
 import RemoveTaskConfirmation from '../generalComponents/RemoveConfirmation/RemoveTaskConfirmation';
 import { stringAvatar } from '../generalComponents/UserToolbar/UserToolbar';
 
 export default function TaskPreview(props: Partial<TaskType>) {
   const { users } = useAppSelector(selectUsers);
-  const { id, boardId, columnId, userId } = props;
+  const { id, boardId, columnId, userId, order, title, description } = props;
   const [open, setOpen] = useState(false);
+  const [openEdit, setOpenEdit] = useState(false);
 
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
+  const handleClose = () => setOpen(false);
+  const handleOpen = () => setOpen(true);
+  const handleCloseEdit = () => setOpenEdit(false);
+  const handleOpenEdit = () => setOpenEdit(true);
 
   const userName =
     users && users.length ? users.filter((user) => user.id === userId)[0].login : 'Anonymous';
@@ -38,7 +37,7 @@ export default function TaskPreview(props: Partial<TaskType>) {
   return (
     <ThemeProvider theme={theme}>
       <Card sx={{ maxWidth: 345, mb: 2 }}>
-        <CardActionArea>
+        <CardActionArea onClick={handleOpenEdit}>
           <CardContent sx={{ bgcolor: 'primary.light' }}>
             <Typography gutterBottom variant="h6" component="div" sx={{ mb: 0 }}>
               {props.title}
@@ -66,6 +65,19 @@ export default function TaskPreview(props: Partial<TaskType>) {
         </CardActions>
       </Card>
       <RemoveTaskConfirmation {...{ id, boardId, columnId, open, handleClose }} />
+      {openEdit && (
+        <ModalEditTask
+          boardId={boardId}
+          id={id}
+          order={order}
+          columnId={columnId}
+          title={title}
+          description={description}
+          open={openEdit}
+          userId={userId}
+          handleClose={handleCloseEdit}
+        />
+      )}
     </ThemeProvider>
   );
 }

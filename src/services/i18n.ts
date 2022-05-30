@@ -119,6 +119,13 @@ i18n
             descriptionLabel: 'Task description',
           },
 
+          editTaskModal: {
+            title: 'Edit task',
+            titleLabel: 'Task title',
+            titleInputError: '*Fill this field',
+            descriptionLabel: 'Task description',
+          },
+
           editProfile: {
             title: 'Edit profile',
             namePlaceholder: 'User name',
@@ -139,6 +146,7 @@ i18n
 
           saveBtn: 'Save',
           createBtn: 'Create',
+          editBtn: 'Edit',
           closeBtn: 'Close',
           deleteBtn: 'Delete',
           yesBtn: 'Yes',
@@ -260,6 +268,14 @@ i18n
             applyBtn: 'Создать',
           },
 
+          editTaskModal: {
+            title: 'Редактирование задачи',
+            titleLabel: 'Заголовок',
+            titleInputError: '*Заполните поле',
+            descriptionLabel: 'Описание задачи',
+            applyBtn: 'Создать',
+          },
+
           editProfile: {
             title: 'Редактировать профиль',
             namePlaceholder: 'Имя пользователя',
@@ -280,6 +296,7 @@ i18n
 
           saveBtn: 'Сохранить',
           createBtn: 'Создать',
+          editBtn: 'Редактировать',
           closeBtn: 'Закрыть',
           deleteBtn: 'Удалить',
           yesBtn: 'Да',
