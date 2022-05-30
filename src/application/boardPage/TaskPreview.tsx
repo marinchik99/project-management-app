@@ -12,8 +12,7 @@ import {
 } from '@mui/material';
 import React, { useState } from 'react';
 import { Trans } from 'react-i18next';
-import { useAppDispatch, useAppSelector } from '../../store';
-import { deleteTask } from '../../store/reducers/tasksReducers';
+import { useAppSelector } from '../../store';
 import { selectUsers } from '../../store/reducers/usersReducer';
 import { TaskType } from '../../types/types';
 import theme from '../../utils/themeSettings';
@@ -21,15 +20,16 @@ import RemoveTaskConfirmation from '../generalComponents/RemoveConfirmation/Remo
 import { stringAvatar } from '../generalComponents/UserToolbar/UserToolbar';
 
 export default function TaskPreview(props: Partial<TaskType>) {
-  const dispatch = useAppDispatch();
   const { users } = useAppSelector(selectUsers);
   const { id, boardId, columnId, userId } = props;
-  // const { open, setOpen } = useState(false);
+  const [open, setOpen] = useState(false);
 
-  const onClick = () => {
-    // if (id && boardId && columnId) {
-    //   dispatch(deleteTask({ id, boardId, columnId }));
-    // }
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
   };
 
   const userName =
@@ -60,12 +60,12 @@ export default function TaskPreview(props: Partial<TaskType>) {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="secondary" onClick={onClick}>
+          <Button size="small" color="secondary" onClick={handleOpen}>
             <Trans i18nKey="deleteBtn">Удалить</Trans>
           </Button>
         </CardActions>
       </Card>
-      <RemoveTaskConfirmation />
+      <RemoveTaskConfirmation {...{ id, boardId, columnId, open, handleClose }} />
     </ThemeProvider>
   );
 }

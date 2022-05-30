@@ -13,11 +13,14 @@ import { ButtonGroup } from '@mui/material';
 import { TaskType } from '../../../types/types';
 import { deleteTask } from '../../../store/reducers/tasksReducers';
 
-export default function RemoveTaskConfirmation(props: Partial<TaskType & { open: boolean }>) {
+export default function RemoveTaskConfirmation({
+  open,
+  id,
+  boardId,
+  columnId,
+  handleClose,
+}: Partial<TaskType & { open: boolean; handleClose: () => void }>) {
   const dispatch = useAppDispatch();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const { id, boardId, columnId } = props;
 
   const style = {
     position: 'absolute' as const,
@@ -33,24 +36,16 @@ export default function RemoveTaskConfirmation(props: Partial<TaskType & { open:
     pb: 3,
   };
 
-  const handleOpen = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleClose = () => {
-    setIsModalOpen(false);
-  };
-
   const handleRemove = () => {
     if (id && boardId && columnId) {
       dispatch(deleteTask({ id, boardId, columnId }));
     }
-    setIsModalOpen(false);
+    handleClose();
   };
 
   return (
     <Modal
-      open={isModalOpen}
+      open={open}
       onClose={handleClose}
       className="modal-confirmation"
       aria-labelledby="modal-modal-title"
