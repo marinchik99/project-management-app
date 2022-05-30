@@ -5,12 +5,7 @@ import { Button, ButtonGroup } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Column, ColumnBody } from '../../store/reducers/columnsReducer';
-import {
-  setModalDeleteState,
-  getColumnById,
-  updateColumnById,
-} from '../../store/reducers/columnsReducer';
-import { ModalState } from '../../.d';
+import { getColumnById, updateColumnById } from '../../store/reducers/columnsReducer';
 import DeleteColumnConfirmation from '../../application/generalComponents/RemoveConfirmation/modalDeleteColumn';
 import ModalCreateTask from '../generalComponents/ModalCreateTask/ModalCreateTask';
 import TaskPreview from './TaskPreview';
@@ -28,23 +23,22 @@ export default function ColumnList(props: Column) {
   const { id, title, order } = props;
   const [changeTitle, setTitle] = useState(false);
   const [changeUpdateTitle, setUpdateTitle] = useState(title);
-  const { modalDeleteColumn } = useAppSelector(({ columnsReducer }) => columnsReducer);
   const { currentBoard } = useAppSelector(({ boardsReducer }) => boardsReducer);
   const { tasks } = useAppSelector(selectAllTasks);
 
   const [openModal, setOpenModal] = useState(false);
   const handleOpenModal = () => setOpenModal(true);
   const handleCloseModal = () => setOpenModal(false);
+  const [open, setOpen] = useState(false);
 
   const { register, handleSubmit } = useForm<Input>();
 
-  const deleteColumn = () => {
-    const modalDeleteState: ModalState = {
-      isOpen: true,
-      type: 'column',
-    };
+  const handleClose = () => {
+    setOpen(false);
+  };
 
-    dispatch(setModalDeleteState(modalDeleteState));
+  const handleOpen = () => {
+    setOpen(true);
   };
 
   const updateColumn: SubmitHandler<Input> = (columnBody: ColumnBody) => {
@@ -84,7 +78,7 @@ export default function ColumnList(props: Column) {
               </div>
             )}
           </div>
-          <Button className="list-close" data-testid="delete-column" onClick={deleteColumn}>
+          <Button className="list-close" data-testid="delete-column" onClick={handleOpen}>
             <DeleteIcon fontSize="small" />
           </Button>
         </div>
@@ -99,9 +93,7 @@ export default function ColumnList(props: Column) {
           <Trans i18nKey="boardPage.column.addTaskBtn">Добавить карточку</Trans>
         </Button>
       </div>
-      {modalDeleteColumn.isOpen && modalDeleteColumn.type === 'column' && (
-        <DeleteColumnConfirmation id={id} />
-      )}
+      <DeleteColumnConfirmation {...{ id, handleClose, open }} />
       <ModalCreateTask
         boardId={currentBoard.id}
         columnId={id}

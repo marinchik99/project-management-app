@@ -33,7 +33,6 @@ export const createBoard = createAsyncThunk(
       await axiosInstance.post(`boards`, {
         ...boardBody,
       });
-      return console.log('Board ' + boardBody.title + ' was created!');
     } catch (err) {
       rejectWithValue((err as Error).message);
     }
@@ -69,7 +68,6 @@ export const deleteBoardById = createAsyncThunk(
   async (id: string, { rejectWithValue }) => {
     try {
       await axiosInstance.delete(`boards/${id}`);
-      return console.log('Board ' + id + ' was deleted!');
     } catch (err) {
       rejectWithValue((err as Error).message);
     }
@@ -85,7 +83,6 @@ export const updateBoardById = createAsyncThunk(
         title,
         description,
       });
-      return console.log('Board ' + title + ' was updated!');
     } catch (err) {
       rejectWithValue((err as Error).message);
     }
@@ -110,7 +107,7 @@ export const boardsReducer = createSlice({
         state.isLoading = true;
       })
       .addCase(getBoards['rejected'], (_, action) => {
-        console.log(action.payload as string);
+        //console.log(action.payload as string);
       })
       .addCase(getBoardById['fulfilled'], (state, { payload }: PayloadAction<Board>) => {
         state.currentBoard = payload;
@@ -120,7 +117,7 @@ export const boardsReducer = createSlice({
         state.isLoading = true;
       })
       .addCase(getBoardById['rejected'], (_, action) => {
-        console.log(action.payload as string);
+        //console.log(action.payload as string);
       }),
 });
 

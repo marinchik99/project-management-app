@@ -56,7 +56,6 @@ export const createColumn = createAsyncThunk<unknown, IState>(
       await axiosInstance.post(`boards/${currentBoard.id}/columns`, {
         ...columnBody,
       });
-      return console.log('Column ' + columnBody.title + ' was created!');
     } catch (err) {
       rejectWithValue((err as Error).message);
     }
@@ -94,7 +93,6 @@ export const deleteColumnById = createAsyncThunk<unknown, IState>(
   async ({ currentBoard, id }, { rejectWithValue }) => {
     try {
       await axiosInstance.delete(`boards/${currentBoard.id}/columns/${id}`);
-      return console.log('Column ' + id + ' was deleted!');
     } catch (err) {
       rejectWithValue((err as Error).message);
     }
@@ -109,7 +107,6 @@ export const updateColumnById = createAsyncThunk<unknown, IState>(
         ...columnBody,
         order,
       });
-      return console.log('Column ' + columnBody.title + ' was updated!');
     } catch (err) {
       rejectWithValue((err as Error).message);
     }
@@ -140,7 +137,7 @@ export const columnsReducer = createSlice({
         state.isLoading = true;
       })
       .addCase(getColumns['rejected'], (_, action) => {
-        console.log(action.payload as string);
+        //console.log(action.payload as string);
       }),
 });
 

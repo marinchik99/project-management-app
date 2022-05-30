@@ -148,7 +148,7 @@ export const tasksReducer = createSlice({
         state.isLoading = true;
       })
       .addCase(getTasks['rejected'], (_, action) => {
-        console.error(action.payload as string);
+        //console.error(action.payload as string);
       })
       .addCase(getAllTasks['fulfilled'], (state, { payload }: PayloadAction<ColTasksType[]>) => {
         state.tasks = payload;
@@ -158,7 +158,7 @@ export const tasksReducer = createSlice({
         state.isLoading = true;
       })
       .addCase(getAllTasks['rejected'], (_, action) => {
-        console.error(action.payload as string);
+        //console.error(action.payload as string);
       })
       .addCase(createTask['fulfilled'], (state) => {
         state.isLoading = false;

@@ -11,6 +11,7 @@ export type BoardBody = Omit<Board, 'id'>;
 export type TRemoveConf = {
   id?: string,
   userId?: string,
+  handleClose?: () => void,
 }
 
 export interface ModalState {
