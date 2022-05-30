@@ -119,6 +119,14 @@ i18n
             descriptionLabel: 'Task description',
           },
 
+          editTaskModal: {
+            title: 'Edit task',
+            titleLabel: 'Task title',
+            titleInputError: '*Fill this field',
+            descriptionLabel: 'Task description',
+            executor: 'Performer',
+          },
+
           editProfile: {
             title: 'Edit profile',
             namePlaceholder: 'User name',
@@ -134,10 +142,12 @@ i18n
           removeConfirmModal: {
             boardText: 'Are you sure you want to delete this board?',
             columnText: 'Are you sure you want to delete this column?',
+            deleteTask: 'Are you sure you want to delete this task?',
           },
 
           saveBtn: 'Save',
           createBtn: 'Create',
+          editBtn: 'Edit',
           closeBtn: 'Close',
           deleteBtn: 'Delete',
           yesBtn: 'Yes',
@@ -259,6 +269,15 @@ i18n
             applyBtn: 'Создать',
           },
 
+          editTaskModal: {
+            title: 'Редактирование задачи',
+            titleLabel: 'Заголовок',
+            titleInputError: '*Заполните поле',
+            descriptionLabel: 'Описание задачи',
+            applyBtn: 'Создать',
+            executor: 'Исполнитель',
+          },
+
           editProfile: {
             title: 'Редактировать профиль',
             namePlaceholder: 'Имя пользователя',
@@ -274,10 +293,12 @@ i18n
             boardText: 'Вы уверены, что хотите удалить эту доску?',
             columnText: 'Вы уверены, что хотите удалить колонку?',
             userText: 'Вы уверены, что хотите удалить полользователя?',
+            deleteTask: 'Вы уверены, что хотите удалить эту задачу?',
           },
 
           saveBtn: 'Сохранить',
           createBtn: 'Создать',
+          editBtn: 'Редактировать',
           closeBtn: 'Закрыть',
           deleteBtn: 'Удалить',
           yesBtn: 'Да',

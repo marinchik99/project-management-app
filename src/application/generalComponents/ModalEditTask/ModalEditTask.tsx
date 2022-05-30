@@ -20,7 +20,7 @@ import React, { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useAppDispatch, useAppSelector } from '../../../store';
 import { selectCurrentUser } from '../../../store/reducers/authSlice';
-import { createTask } from '../../../store/reducers/tasksReducers';
+import { createTask, updateTask } from '../../../store/reducers/tasksReducers';
 import { selectUsers } from '../../../store/reducers/usersReducer';
 import { Trans, useTranslation } from 'react-i18next';
 import { TaskType } from '../../../types/types';
@@ -31,6 +31,11 @@ type Props = {
   handleClose: () => void;
   boardId: string;
   columnId: string;
+  id: string;
+  order: number;
+  title: string;
+  description: string;
+  userId: string;
 };
 
 const style = {
@@ -47,7 +52,17 @@ const style = {
   p: 2,
 };
 
-export default function ModalCreateTask({ open, handleClose, boardId, columnId }: Props) {
+export default function ModalEditTask({
+  open,
+  handleClose,
+  boardId,
+  columnId,
+  id,
+  order,
+  title,
+  description,
+  userId,
+}: Props) {
   const {
     control,
     handleSubmit,
@@ -55,9 +70,9 @@ export default function ModalCreateTask({ open, handleClose, boardId, columnId }
     reset,
   } = useForm({
     defaultValues: {
-      title: '',
-      description: '',
-      userId: '',
+      title: title || '',
+      description: description || '',
+      userId: userId || '',
     },
   });
   const { t } = useTranslation();
@@ -68,9 +83,13 @@ export default function ModalCreateTask({ open, handleClose, boardId, columnId }
 
   const onSubmit = async (data: Pick<TaskType, 'title' | 'description' | 'userId'>) => {
     const { title, description, userId } = data;
-    // const userId = users.filter((user) => user.login === login)[0].id;
     if (userId) {
-      await dispatch(createTask({ boardId, columnId, title, description, userId })).unwrap();
+      await dispatch(
+        updateTask({
+          task: { boardId, columnId, id },
+          newTask: { title, description, userId, boardId, columnId, order },
+        })
+      );
     }
     handleClose();
   };
@@ -86,7 +105,7 @@ export default function ModalCreateTask({ open, handleClose, boardId, columnId }
         <Box sx={style}>
           <Container component="div">
             <Typography component="h1" variant="h5" align="center">
-              <Trans i18nKey="createTaskModal.title">Создание задачи</Trans>
+              <Trans i18nKey="editTaskModal.title">Редактирование задачи</Trans>
             </Typography>
             <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ my: 2 }}>
               <Controller
@@ -127,6 +146,7 @@ export default function ModalCreateTask({ open, handleClose, boardId, columnId }
                     fullWidth
                     label={t('createTaskModal.titleLabel')}
                     autoFocus
+                    // defaultValue={title}
                     error={!!errors.title}
                     helperText={errors.title?.message}
                   />
@@ -147,6 +167,7 @@ export default function ModalCreateTask({ open, handleClose, boardId, columnId }
                     label={t('createTaskModal.descriptionLabel')}
                     autoFocus
                     multiline
+                    // defaultValue={description}
                     minRows={4}
                     sx={{ mb: 4 }}
                     error={!!errors.description}
@@ -156,7 +177,7 @@ export default function ModalCreateTask({ open, handleClose, boardId, columnId }
               />
               <ButtonGroup fullWidth variant="contained">
                 <LoadingButton data-testid="submitC" type="submit" fullWidth variant="contained">
-                  <Trans i18nKey="createBtn">Создать</Trans>
+                  <Trans i18nKey="editBtn">Редактировать</Trans>
                 </LoadingButton>
                 <Button onClick={handleClose}>
                   <Trans i18nKey="closeBtn">Закрыть</Trans>

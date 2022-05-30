@@ -53,7 +53,7 @@ export default function RemoveTaskConfirmation({
     >
       <Box sx={style}>
         <Typography id="modal-modal-description" gutterBottom sx={{ mt: 2 }}>
-          <Trans i18nKey="removeConfirmModal.boardText">
+          <Trans i18nKey="removeConfirmModal.deleteTask">
             Вы уверены, что хотите удалить эту задачу?
           </Trans>
         </Typography>

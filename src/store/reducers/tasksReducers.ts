@@ -120,7 +120,7 @@ export const updateTask = createAsyncThunk(
       task: Pick<TaskType, 'id' | 'columnId' | 'boardId'>;
       newTask: Omit<TaskType, 'id' | 'files'>;
     },
-    { rejectWithValue }
+    { rejectWithValue, dispatch }
   ) => {
     try {
       const { boardId, columnId, id } = task;
@@ -128,7 +128,9 @@ export const updateTask = createAsyncThunk(
         `boards/${boardId}/columns/${columnId}/tasks/${id}`,
         newTask
       );
-      return await response.data;
+      const result = await response.data;
+      dispatch(getAllTasks({ boardId, columnId }));
+      return result;
     } catch (err) {
       rejectWithValue((err as Error).message);
     }
