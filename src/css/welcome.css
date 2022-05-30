@@ -1,0 +1,449 @@
+.welcome-page {
+  padding: 0;
+  background: #f7f7f7;
+}
+
+.project,
+.team {
+  background: #d8e5eba9;
+}
+
+.welcome-page .MuiContainer-root.MuiContainer-maxWidthXl.css-19r6kue-MuiContainer-root {
+  padding: 0;
+}
+
+.welcome-page .general-text {
+  text-align: center;
+  padding-left: 80px !important;
+  padding-top: 30px !important;
+  line-height: 1.5;
+  z-index: 1;
+}
+
+.general-name {
+  font-size: 3.5rem;
+  letter-spacing: 2px;
+  text-shadow:  4px 2px #9fa2a3;
+  margin: 10px;
+}
+
+.general-desript {
+  font-weight: 500;
+  letter-spacing: 1.2px;
+}
+
+.general-welcome {
+  padding: 0;
+  height: auto;
+}
+
+.general-pict {
+  width: 100%;
+  height: auto;
+  z-index: 0;
+}
+
+.authoriz-butt-cont {
+  text-align: end;
+  padding-right: 20px;
+}
+
+.css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+  font-size: 1rem;
+}
+
+.welcome-page button {
+  color: black;
+}
+
+.welcome-page button:hover {
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
+}
+
+.desk-text button {
+  border-color: var(--main-color);
+}
+
+.authoriz-buttons > a:nth-child(2) > button{
+  background: var(--main-color);
+  color: black;
+  font-size: 0.95rem;
+  border-color:  var(--main-color);
+}
+
+.authoriz-buttons > a:nth-child(2) > button:hover {
+  background: var(--secondary-color);
+}
+
+.desk-container {
+  margin: 0px auto;
+  padding: 80px !important;
+  height: auto;
+}
+.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-4.desk-text.css-gj1fbr-MuiGrid-root {
+  width: 150px;
+  height: 150px;
+}
+.avatar {
+  object-fit: cover;
+}
+
+.desk-text,
+.course-text {
+  margin: 0;
+  text-align: center;
+  line-height: 1.5;
+  z-index: 1;
+  font-size: 1.5rem;
+}
+
+.desk-pict {
+  width: 100%;
+  height: auto;
+}
+
+.block-line {
+  width: 80%;
+  height: 2px;
+  background: #9fa2a3;
+  margin: 30px auto;
+}
+
+.welcome-page > .course-container {
+  background: #f7f7f7;
+  margin: 0 auto;
+  padding: 30px !important;
+}
+
+.course-title,
+.team-title {
+  text-align: center;
+  margin-bottom: 60px;
+  font-size: 2rem;
+}
+
+.course-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  margin: auto;
+  background: #b0bde7b9;
+  border-radius: 10px;
+  padding: 40px;
+  color: black;
+  transition: 0.5s ease-in-out;
+  margin-bottom: 50px;
+}
+
+.course-block:hover {
+  background: rgba(91, 172, 168, 0.76);
+  transition: 0.5s ease-in-out;
+}
+
+.course-title {
+  margin-bottom: 20px;
+}
+
+.course-list {
+  margin-top: 20px;
+  font-size: 1.3rem;
+  list-style: square;
+  line-height: 2rem;
+}
+
+.team-container {
+  padding: 10px 40px !important;
+  background-image: 
+     url('../assets/welcome/team1.png');
+  background-size: 35% auto;
+  background-position: left bottom;
+  background-repeat: no-repeat ;
+}
+
+.team-block > section:nth-child(1) {
+  margin-bottom: -21px;
+}
+
+.team-block > section:nth-child(2) > div {
+  margin: 0px auto;
+  background: rgba(91, 172, 168, 0.76);
+  box-shadow: 0px 0px 5px 10px rgba(63, 83, 82, 0.596);
+}
+
+.team-block > section:nth-child(3) > div {
+  margin-left: auto;
+  background: rgba(91, 103, 172, 0.76);
+  box-shadow: 0px 0px 5px 10px rgba(63, 83, 82, 0.596);
+}
+
+.css-1rl1og4-MuiGrid-root>.MuiGrid-item {
+  max-width: 50% !important;
+  margin: 25px;
+}
+
+.team-card {
+  margin-top: 15px !important;
+  padding: 30px !important;
+  background: rgba(143, 174, 209, 0.76);
+  box-shadow: 0px 0px 5px 10px rgba(63, 72, 83, 0.596);
+  flex-wrap: wrap;
+}
+
+.team-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 1.1rem;
+}
+
+.team-name {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.developer {
+  margin: 5px 0 0;
+  color: rgb(94, 91, 91);
+  font-weight: 400;
+}
+
+.git-icon {
+  width: 60px;
+  height: 40px;
+  align-self: flex-end;
+  padding: 0;
+}
+
+@media (max-width: 1140px){
+  .team-card {
+    flex-direction: column !important;
+    align-items: center;
+  }
+  .team-text {
+    margin-top: 20px !important;
+    flex-direction: column !important;
+    max-width: 95% !important;
+  }
+  .team-main-text {
+    text-align: center;
+  }
+  .git-icon {
+    align-self: center;
+  }
+  .team-container {
+    background-size: 60% auto;
+  }
+}
+
+@media (max-width: 945px){
+  .css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+    font-size: 0.87rem;
+  }  
+  .general-desript {
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 1.2rem;
+  }
+  .desk-text,
+  .course-text {
+    font-size: 1.2rem;
+  }
+  .course-list {
+    font-size: 1.1rem;
+  }
+  .css-gj1fbr-MuiGrid-root {
+    max-width: 150px !important;
+  }
+}
+
+@media (max-width: 837px){ 
+  .authoriz-buttons {
+    margin: 20px 10px;
+    align-self: center;
+  }
+  .desk-container {
+    padding: 40px !important;
+}
+  .avatar {
+    text-align: center;
+  }
+  .MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-5.desk-text.css-k3f0g4-MuiGrid-root {
+    flex-basis: 70%;
+    -webkit-flex-basis: 80%;
+  }
+}
+
+@media (max-width: 757px){ 
+  .welcome-page .general-text {
+    padding-top: 0px !important;
+  }
+  .team-block > section:nth-child(1) {
+    margin-bottom: 0px;
+  }
+  .general-name {
+    font-size: 3rem;
+  }
+  .general-desript {
+    font-size: 1.1rem;
+  }
+  .desk-text,
+  .course-text {
+    font-size: 1.1rem;
+  }
+  .team-text,
+  .developer {
+    font-size: 1rem;
+  }
+  .MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-4.desk-text.css-gj1fbr-MuiGrid-root,
+  .avatar {
+    width: 120px !important;
+    height: 120px !important;
+  }
+}
+
+@media (max-width: 670px){ 
+  .general-name {
+    font-size: 2.5rem;
+  }
+  .course-title, 
+  .team-title {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+  }
+  .general-desript {
+    font-size: 1rem;
+    line-height: 1.2rem;
+  }
+  .desk-text,
+  .course-text,
+  .course-list {
+    font-size: 1rem;
+  }
+  .course-list {
+    line-height: 1.3rem;
+  }
+  .team-card {
+    max-width: 70% !important;
+  }
+}
+
+@media (max-width: 595px){ 
+  .general-name {
+    font-size: 2rem;
+  }
+  .general-desript {
+    font-size: 0.9rem;
+    line-height: 1.1rem;
+  }
+  .desk-text,
+  .course-text,
+  .course-list,
+  .team-text,
+  .developer {
+    font-size: 0.9rem;
+  }
+  .course-list {
+    line-height: 1.3rem;
+  }
+  .authoriz-buttons > a > button {
+    font-size: 0.8rem !important;
+  }
+  .welcome-page button {
+    color: black;
+    font-size: 0.75rem;
+  }
+  .desk-container {
+    padding: 10px !important;
+  }
+  .team-card {
+    padding: 15px !important;
+  }
+}
+
+@media (max-width: 535px){ 
+  .welcome-page .general-text {
+    padding-left: 40px !important;
+    padding-top: 10px !important;
+  }
+  .MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-5.desk-text.css-k3f0g4-MuiGrid-root {
+    max-width: 60%;
+  }
+  .team-card {
+    padding: 15px !important;
+    max-width: 100% !important;
+  }
+  .team-name {
+    font-size: 1.2rem;
+  }
+  .MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-4.desk-text.css-gj1fbr-MuiGrid-root,
+  .avatar {
+    width: 100px !important;
+    height: 100px !important;
+  }
+  .team-text {
+    margin-top: 10px !important;
+  }
+  .team-block > section > div {
+    margin: 0px auto;
+  }
+  .team-block {
+    margin: auto !important;
+    width: 100% !important;
+    row-gap: 20px;
+  }
+}
+
+@media (max-width: 453px){ 
+  .welcome-page .general-text {
+    padding-left: 20px !important;
+    padding-top: 10px !important;
+  }
+  .team-container {
+    padding: 10px 25px !important;
+  }
+}
+
+@media (max-width: 412px){ 
+  .general-name {
+    font-size: 1.7rem;
+  }
+  .general-desript {
+    font-size: 0.85rem;
+    line-height: 1rem;
+  }
+  .desk-text,
+  .course-text,
+  .course-list,
+  .team-text,
+  .developer {
+    font-size: 0.85rem;
+  }
+  .authoriz-buttons > a > button {
+    font-size: 0.7rem !important;
+  }
+  .welcome-page button {
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 370px){ 
+  .general-name {
+    font-size: 1.5rem;
+  }
+  .general-desript {
+    font-size: 0.75rem;
+  }
+  .desk-text,
+  .course-text,
+  .course-list,
+  .team-text,
+  .developer {
+    font-size: 0.8rem;
+  }
+  .welcome-page .general-text {
+    padding-left: 15px !important;
+  }
+}

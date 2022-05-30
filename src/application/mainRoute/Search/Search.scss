@@ -1,0 +1,59 @@
+.search-wrap {
+  position: relative;
+  margin: 0 auto;
+  width: max-content;
+  margin-bottom: 25px;
+}
+
+.search-wrap::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 10px;
+  left: 10px;
+  background: transparent url('../../../assets/svg/search-svgrepo-com.svg') no-repeat center center;
+  background-size: contain;
+}
+
+.input-search {
+  padding: 5px 10px 5px 35px;
+  width: 400px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  background-color: inherit;
+  border-radius: 19px;
+  border: 2px solid var(--main-color);
+}
+
+.input-search:hover {
+  border-color: var(--main-color);
+  box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.3);
+}
+
+.input-search:focus {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-color: var(--secondary-color);
+  outline: none;
+  box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.3);
+}
+
+.search-btn {
+  margin-left: 20px;
+  padding: 0 10px;
+  line-height: 34px;
+  font-weight: bold;
+  color: white;
+  background-color: var(--main-color);
+  border-radius: 3px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  /* color: var(--secondary-color); */
+  background-color: var(--secondary-color);
+  box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.3);
+}

@@ -1,0 +1,158 @@
+.board-page {
+  padding: 0;
+  background: #f7f7f7;
+  /* max-height: 100%;
+  min-height: calc(100vh - 150px); */
+}
+
+.board-container {
+  min-height: calc(100vh - 150px);
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.board-info {
+  height: 80px;
+}
+
+.board-name {
+  text-align: center;
+  font-size: 2rem;
+  border-bottom: 1px solid black;
+  cursor: default;
+}
+
+.board-container .button-add-column {
+  margin-left: 35px;
+  margin-right: 20px;
+  color: black;
+  border-color: var(--main-color);
+}
+
+.list-block .list-input-buttons button,
+.list-block .list-close {
+  color: black;
+  border-color: var(--main-darkest-color);
+  font-size: 0.7rem;
+}
+
+.list-block .list-input-buttons {
+  margin-top: 30px;
+  background: rgb(179, 179, 179);
+  position: absolute;
+  z-index: 15;
+}
+
+.board-container .button-add-column:hover,
+.list-block .list-input-buttons button:hover,
+.list-block .add-card:hover,
+.list-block .list-close:hover {
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
+}
+
+.work-container {
+  bottom: 75px;
+  top: 160px;
+  left: 0px;
+  right: 0px;
+  position: absolute;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 0 7px;
+  white-space: nowrap;
+}
+
+.list-container {
+  box-sizing: border-box;
+  display: inline-block;
+  white-space: nowrap;
+  min-width: 300px;
+  max-width: 350px;
+  margin: 0 1rem;
+  height: 100%;
+  vertical-align: top;
+}
+
+.list-block {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+}
+
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 100%;
+  cursor: pointer;
+}
+
+.list-title {
+  text-align: center;
+  min-height: 25px;
+  width: 220px;
+}
+
+.list-title h3 {
+  margin: 0;
+  padding: 10px 5px;
+  max-width: 210px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list-input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.list-block .list-close {
+  min-width: 25px !important;
+  padding: 0;
+}
+
+.list-block .list-close span {
+  width: 25px;
+}
+
+.list-input {
+  height: 25px;
+  outline: none;
+  font-size: 1rem;
+  margin-bottom: 6px;
+  border-radius: 3px;
+  border: 1px solid var(--main-darkest-color)
+}
+
+.list {
+  overflow-y: auto;
+  min-height: 0px;
+  padding-right: 10px;
+}
+
+.list__item {
+  cursor: pointer;
+  background: #f7f7f7;
+  min-height: 20px;
+  margin: 10px;
+  padding: 8px;
+  border-radius: 3px;
+  box-shadow: 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.list-block .add-card {
+  cursor: pointer;
+  min-height: 40px;
+  max-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:rgb(68, 68, 68);
+  font-size: 0.9rem !important;
+}

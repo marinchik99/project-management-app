@@ -1,0 +1,15 @@
+.modal-confirmation {
+  text-align: center;
+}
+
+.remove-btn:hover,
+.modal-delete-buttons button:hover {
+  color: white;
+  border-color: white !important;
+  background-color: var(--secondary-color) !important;
+}
+
+.modal-delete-buttons button {
+  background-color: var(--main-color) !important;
+  color: black;
+}
