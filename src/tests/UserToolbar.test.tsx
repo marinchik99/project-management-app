@@ -15,7 +15,6 @@ describe('Header UserToolbar', () => {
       </MemoryRouter>
     );
 
-    screen.debug();
     expect(screen.getAllByText(/войти/i)).toHaveLength(1);
   });
 });

@@ -5,7 +5,8 @@
 .boards-page {
   padding-top: 2rem;
   padding-bottom: 2rem;
-  &__title {
-    text-align: center;
-  }
+}
+
+.boards-page__title {
+  text-align: center;
 }
