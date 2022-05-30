@@ -31,7 +31,7 @@
   font-size: 1.2rem;
 }
 
-.footer .MuiContainer-root.MuiContainer-maxWidthXl.css-19r6kue-MuiContainer-root {
+.footer > div {
   padding: 15px;
 }
 
