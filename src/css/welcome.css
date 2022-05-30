@@ -49,7 +49,7 @@
 }
 
 .css-1e6y48t-MuiButtonBase-root-MuiButton-root {
-  font-size: 1rem !important;
+  font-size: 1rem;
 }
 
 .welcome-page button {
@@ -240,7 +240,7 @@
 
 @media (max-width: 945px){
   .css-1e6y48t-MuiButtonBase-root-MuiButton-root {
-    font-size: 0.87rem !important;
+    font-size: 0.87rem;
   }  
   .general-desript {
     font-weight: 500;

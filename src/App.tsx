@@ -8,7 +8,7 @@ import MainRoute from './application/mainRoute/MainRoute';
 import SignupPage from './application/authorizationForms/SignupPage/SignupPage';
 import LoginPage from './application/authorizationForms/LoginPage/LoginPage';
 import { useAppDispatch, useAppSelector } from './store';
-import Header from './application/generalComponents/header';
+import Header from './application/welcomePage/header';
 import { selectCurrentUser } from './store/reducers/authSlice';
 import { getUsers } from './store/reducers/usersReducer';
 import EditProfile from './application/generalComponents/EditProfile/editProfile';
@@ -27,7 +27,7 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/" element={token ? <Navigate to="/Boards" /> : <WelcomePage />} />
+        <Route path="/" element={<WelcomePage />} />
         <Route path="/Login" element={token ? <Navigate to="/Boards" /> : <LoginPage />} />
         <Route path="/Signup" element={token ? <Navigate to="/Boards" /> : <SignupPage />} />
         <Route path={`/Boards/boards/:id`} element={!token ? <Navigate to="/" /> : <BoardPage />} />

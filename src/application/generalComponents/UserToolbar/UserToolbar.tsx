@@ -44,17 +44,27 @@ const UserToolbar = () => {
     navigate('/');
   };
 
+  function toggleMenu() {
+    const burgerButton = document.querySelector('.burger');
+    const burgerNav = document.querySelector('.header__block-list');
+    const body = document.querySelector('body');
+
+    burgerButton.classList.remove('active');
+    burgerNav.classList.remove('active');
+    body.classList.remove('lock');
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <>
         {!token && (
           <ButtonGroup className="auth-buttons">
-            <Button variant="outlined" className="auth-login">
+            <Button variant="outlined" className="auth-login" onClick={toggleMenu}>
               <NavLink to="/Login">
                 <Trans i18nKey="header.loginBtn">Войти</Trans>
               </NavLink>
             </Button>
-            <Button variant="contained" className="auth-signup">
+            <Button variant="contained" className="auth-signup" onClick={toggleMenu}>
               <NavLink to="/Signup">
                 <Trans i18nKey="header.signupBtn">Зарегистрироваться</Trans>
               </NavLink>
@@ -63,7 +73,7 @@ const UserToolbar = () => {
         )}
         {token && (
           <Stack direction="row" spacing={2}>
-            <NavLink to="/Edit">
+            <NavLink to="/Edit" onClick={toggleMenu}>
               <Avatar {...stringAvatar(login)} style={{ cursor: 'pointer' }} />
             </NavLink>
             <Button variant="outlined" onClick={onClick}>

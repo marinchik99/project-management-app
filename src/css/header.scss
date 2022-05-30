@@ -8,6 +8,12 @@
   background-color: var(--main-dark-color);
   transition: all ease-in-out 0.3s;
 
+  .header__block .header__home-link {
+    font-weight: bold;
+    font-size: 20px;
+    text-shadow: 2px 2px 3px rgb(78, 78, 78);
+  }
+
   a {
     text-decoration: none;
     color: var(--text-color);
@@ -19,7 +25,7 @@
     border-color: var(--main-darkest-color);
     transition: ease-in-out 0.2s;
   }
-  
+
   button:hover {
     color: var(--secondary-color);
     border-color: var(--secondary-color);
@@ -28,6 +34,10 @@
   .auth-login:hover > a {
     color: var(--secondary-color);
   }
+}
+
+.burger {
+  display: none;
 }
 
 .auth-buttons .auth-signup {
@@ -47,7 +57,7 @@
     color: var(--text-color);
     border-color: var(--main-dark-color);
   }
-  
+
   button:hover {
     color: var(--secondary-color);
     border-color: var(--secondary-color);
@@ -65,4 +75,145 @@
 .lang-toggle {
   height: 36px;
   margin-right: 50px;
+}
+
+@media (max-width: 860px) {
+  body.lock {
+    overflow: hidden;
+  }
+  header {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 50;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--main-darkest-color);
+    z-index: 3;
+  }
+  .header .header__block-list {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 80px 25px 25px;
+    width: 100%;
+    height: 100%;
+    background-color: var(--main-dark-color);
+    overflow: auto;
+    transition: all 0.3s ease 0s;
+    box-sizing: border-box;
+  }
+  .header .header__block > div  {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .nav__list {
+    display: block;
+    overflow: auto;
+  }
+  // .nav__item {
+  //   width: 100%;
+  // }
+  .header__block > a {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+  }
+  .header__block > a:hover {
+    background-color: #808d94;
+  }
+  .header__block > a:hover button {
+    color: #ff8a65;
+  }
+  .header__block button {
+    border: none;
+  }
+  .header__block button:hover {
+    border: none;
+  }
+
+  .header__block-list.active {
+    top: 0;
+  }
+  .burger {
+    display: block;
+    position: relative;
+    margin-left: 20px;
+    width: 100px;
+    height: 20px;
+    font: inherit;
+    background-color: var(--main-darkest-color);
+    border: none;
+    cursor: pointer;
+    z-index: 4;
+  }
+  .burger::before,
+  .burger::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 4px;
+    left: 0;
+    background-color: black;
+    transition: all 0.3s ease 0s;
+  }
+  .burger::before {
+    top: 0;
+  }
+  .burger::after {
+    bottom: 0;
+  }
+  .burger__line {
+    position: absolute;
+    width: 30px;
+    height: 4px;
+    left: 0;
+    top: 8px;
+    background-color: black;
+    transition: all 0.3s ease 0s;
+  }
+  .burger__name {
+    position: absolute;
+    top: 0;
+    line-height: 20px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .burger.active::before {
+    transform: rotate(45deg);
+    top: 8px;
+  }
+  .burger.active::after {
+    transform: rotate(-45deg);
+    bottom: 8px;
+  }
+  .burger.active .burger__line {
+    transform: scale(0);
+  }
+  .burger:hover::before {
+    transform: rotate(7deg);
+  }
+  .burger:hover::after {
+    transform: rotate(-7deg);
+  }
+  .burger.active:hover::before {
+    transform: rotate(38deg);
+  }
+  .burger.active:hover::after {
+    transform: rotate(-38deg);
+  }
 }
