@@ -44,7 +44,6 @@ export const deleteUserById = createAsyncThunk(
   async (id: string, { rejectWithValue }) => {
     try {
       await axiosInstance.delete(`users/${id}`);
-      return console.log('User ' + id + ' was deleted!');
     } catch (err) {
       rejectWithValue((err as Error).message);
     }
@@ -61,7 +60,6 @@ export const updateUserById = createAsyncThunk(
         login,
         password,
       });
-      return console.log('User ' + id + ' was updated!');
     } catch (err) {
       rejectWithValue((err as Error).message);
     }
@@ -89,7 +87,7 @@ export const usersReducer = createSlice({
         state.isLoading = true;
       })
       .addCase(getUsers['rejected'], (_, action) => {
-        console.log(action.payload as string);
+        //console.log(action.payload as string);
       }),
 });
 

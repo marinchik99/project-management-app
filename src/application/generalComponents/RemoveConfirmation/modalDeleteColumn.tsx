@@ -1,6 +1,5 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../../store';
-import { TRemoveConf } from '../../../.d';
 import './RemoveConfirmation.scss';
 import {
   getColumns,
@@ -15,12 +14,19 @@ import { ButtonGroup } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import { Trans } from 'react-i18next';
 
+type TRemoveConf = {
+  id?: string;
+  userId?: string;
+  handleClose: () => void;
+  open: boolean;
+};
+
 export default function DeleteColumnConfirmation(props: TRemoveConf) {
   const dispatch = useAppDispatch();
   const { currentBoard } = useAppSelector(({ boardsReducer }) => boardsReducer);
   const { modalDeleteColumn } = useAppSelector(({ columnsReducer }) => columnsReducer);
   const params = useParams();
-  const { id } = props;
+  const { id, handleClose, open } = props;
 
   const style = {
     position: 'absolute',
@@ -36,20 +42,15 @@ export default function DeleteColumnConfirmation(props: TRemoveConf) {
     pb: 3,
   };
 
-  const handleClose = () => {
-    dispatch(setModalDeleteState({ isOpen: false, type: null }));
-  };
-
   const handleRemove = () => {
     dispatch(deleteColumnById({ currentBoard, id }));
-    dispatch(setModalDeleteState({ isOpen: false, type: null }));
     setTimeout(() => dispatch(getColumns(params.id)), 10);
   };
 
   return (
     <div id="modal-remove-confirm" className="modal modal-remove-confirm">
       <Modal
-        open={modalDeleteColumn.isOpen}
+        open={open}
         onClose={handleClose}
         className="modal-confirmation"
         aria-labelledby="modal-modal-title"
