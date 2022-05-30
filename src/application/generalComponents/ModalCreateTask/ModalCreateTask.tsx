@@ -68,7 +68,6 @@ export default function ModalCreateTask({ open, handleClose, boardId, columnId }
 
   const onSubmit = async (data: Pick<TaskType, 'title' | 'description' | 'userId'>) => {
     const { title, description, userId } = data;
-    console.log(data);
     // const userId = users.filter((user) => user.login === login)[0].id;
     if (userId) {
       await dispatch(createTask({ boardId, columnId, title, description, userId })).unwrap();
