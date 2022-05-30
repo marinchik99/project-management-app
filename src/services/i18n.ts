@@ -124,6 +124,7 @@ i18n
             titleLabel: 'Task title',
             titleInputError: '*Fill this field',
             descriptionLabel: 'Task description',
+            executor: 'Performer',
           },
 
           editProfile: {
@@ -274,6 +275,7 @@ i18n
             titleInputError: '*Заполните поле',
             descriptionLabel: 'Описание задачи',
             applyBtn: 'Создать',
+            executor: 'Исполнитель',
           },
 
           editProfile: {

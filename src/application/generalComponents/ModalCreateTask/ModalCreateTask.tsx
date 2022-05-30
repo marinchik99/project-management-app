@@ -97,7 +97,9 @@ export default function ModalCreateTask({ open, handleClose, boardId, columnId }
                 }}
                 render={({ field }) => (
                   <FormControl fullWidth variant="outlined" error={!!errors.userId}>
-                    <InputLabel id="native-select">Исполнитель</InputLabel>
+                    <InputLabel id="native-select">
+                      <Trans i18nKey="editTaskModal.executor">Исполнитель</Trans>
+                    </InputLabel>
                     <Select {...field} fullWidth labelId="native-select" label="Исполнитель">
                       {users.map((user) => {
                         return (
