@@ -134,6 +134,7 @@ i18n
           removeConfirmModal: {
             boardText: 'Are you sure you want to delete this board?',
             columnText: 'Are you sure you want to delete this column?',
+            deleteTask: 'Are you sure you want to delete this task?',
           },
 
           saveBtn: 'Save',
@@ -274,6 +275,7 @@ i18n
             boardText: 'Вы уверены, что хотите удалить эту доску?',
             columnText: 'Вы уверены, что хотите удалить колонку?',
             userText: 'Вы уверены, что хотите удалить полользователя?',
+            deleteTask: 'Вы уверены, что хотите удалить эту задачу?',
           },
 
           saveBtn: 'Сохранить',
