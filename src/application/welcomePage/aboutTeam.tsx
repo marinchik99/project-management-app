@@ -47,7 +47,8 @@ export default function AboutTeam() {
                   <h4 className="developer">Team leader, frontend developer</h4>
                   <p className="person-text">
                     <Trans i18nKey="welcomePage.aboutTeam.marina.done">
-                      Структура приложения, роутинг, страница приветсвия, страница доски.
+                      Структура приложения, роутинг, страница приветствия, страница доски, колонки
+                      для доски.
                     </Trans>
                   </p>
                 </div>
@@ -80,7 +81,7 @@ export default function AboutTeam() {
                   <h4 className="developer">Frontend developer</h4>
                   <p className="person-text">
                     <Trans i18nKey="welcomePage.aboutTeam.petr.done">
-                      Страница досок, шапку сайта, локализацию.
+                      Страница досок, шапка сайта, локализация.
                     </Trans>
                   </p>
                 </div>
@@ -111,7 +112,9 @@ export default function AboutTeam() {
                     <Trans i18nKey="welcomePage.aboutTeam.sergey.name">Сергей</Trans>
                   </h3>
                   <h4 className="developer">Frontend developer</h4>
-                  <Trans i18nKey="welcomePage.aboutTeam.sergey.done">Авторизцию, задачи.</Trans>
+                  <Trans i18nKey="welcomePage.aboutTeam.sergey.done">
+                    Авторизация, задачи для досок.
+                  </Trans>
                   <p className="person-text"></p>
                 </div>
                 <a

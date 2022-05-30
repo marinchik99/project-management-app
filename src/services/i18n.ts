@@ -72,7 +72,7 @@ i18n
             aboutTeam: {
               marina: {
                 name: 'Marina',
-                done: 'App structure, Routing, Welcome page, Board page.',
+                done: 'App structure, Routing, Welcome page, Board page, Columns on the Board page.',
               },
               petr: {
                 name: 'Petr',
@@ -211,7 +211,7 @@ i18n
             aboutTeam: {
               marina: {
                 name: 'Марина',
-                done: 'Структура приложения, роутинг, страница приветсвия, страница доски.',
+                done: 'Структура приложения, роутинг, страница приветствия, страница доски, колонки для доски.',
               },
               petr: {
                 name: 'Пётр',
@@ -219,7 +219,7 @@ i18n
               },
               sergey: {
                 name: 'Сергей',
-                done: 'Авторизцию, задачи.',
+                done: 'Авторизация, задачи для досок.',
               },
             },
           },
